@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1650329443 source:/home/balton1/Desktop/TeamKWordle/view/MainGameWindow.cpp
+	"MainGameWindow.h"
+
+1650329386 /home/balton1/Desktop/TeamKWordle/view/MainGameWindow.h
+	<FL/Fl_Window.H>
+
+1650330195 source:/home/balton1/Desktop/TeamKWordle/main.cpp
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	"MainGameWindow.h"
+
+1650330266 source:/home/balton1/Desktop/TeamKWordle/view/GameWindow.cpp
+	"GameWindow.h"
+
+1650330194 /home/balton1/Desktop/TeamKWordle/view/GameWindow.h
+	<FL/Fl_Window.H>
+
