@@ -3,6 +3,7 @@
 
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
+#include <FL/Fl_Button.H>
 
 #include <vector>
 #include <string>
@@ -26,10 +27,16 @@ class GameWindow : public Fl_Window
         int NUMBER_OF_ROWS;
         int NUMBER_OF_COLUMNS;
 
+        int KEY_WIDTH;
+        int KEY_HEIGHT;
+
         static vector<string> qwertyKeyLabels;
 
         vector<vector<Fl_Box*>> guessBoxes;
         void drawGuessBoxes();
+
+        vector<Fl_Button*> keyboard;
+        void drawKeyboard();
 
     public:
         GameWindow(int width, int height, const char* title);

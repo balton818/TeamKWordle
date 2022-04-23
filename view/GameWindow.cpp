@@ -20,7 +20,11 @@ GameWindow::GameWindow(int width, int height, const char* title) : Fl_Window(wid
     this->NUMBER_OF_ROWS = 6;
     this->NUMBER_OF_COLUMNS = 5;
 
+    this->KEY_HEIGHT = 40;
+    this->KEY_WIDTH = 40;
+
     this->drawGuessBoxes();
+    this->drawKeyboard();
 }
 
 void GameWindow::drawGuessBoxes()
@@ -43,6 +47,22 @@ void GameWindow::drawGuessBoxes()
         this->guessBoxes.push_back(currentRow);
     }
 }
+
+void GameWindow::drawKeyboard()
+{
+    int keyLayout [3] = {10, 9, 7};
+
+    for (int keyRow = 0; keyRow < sizeof(keyLayout); keyRow++)
+    {
+        for (int keyIndex = 0; keyIndex < keyLayout[keyRow]; keyIndex++)
+        {
+            //int startX = (this->WINDOW_WIDTH / 2) - (keyLayout[keyRow] / 2 * this->KEY_WIDTH) + (keyIndex * this->KEY_WIDTH);
+            //int startY = (this->WINDOW_HEIGHT / 2) + (40 * keyRow) + (10 * keyRow);
+            Fl_Button* button = new Fl_Button(20, 400, 40, 40, "Q");
+        }
+    }
+}
+
 
 GameWindow::~GameWindow()
 {
