@@ -64,8 +64,9 @@ void GameWindow::drawKeyboard()
         {
             int startX = (this->WINDOW_WIDTH / 2) - ((keyCount[keyRow] * (this->KEY_WIDTH) / 2)) + (keyIndex * this->KEY_WIDTH);
             int startY = ((this->WINDOW_HEIGHT / 2) + this->TOP_OFFSET) + (this->KEY_HEIGHT * keyRow) + (10 * keyRow);
-            Fl_Toggle_Button* button = new Fl_Toggle_Button(startX, startY, this->KEY_WIDTH, this->KEY_HEIGHT, this->qwertyKeyLabels[keyNumber].c_str());
+            Fl_Button* button = new Fl_Button(startX, startY, this->KEY_WIDTH, this->KEY_HEIGHT, this->qwertyKeyLabels[keyNumber].c_str());
             button->labelsize(20);
+            button->callback(this->buttonClick_callback, (void*)this);
             this->keyboard.push_back(button);
             finalX = startX;
             finalY = startY;
@@ -80,12 +81,33 @@ void GameWindow::addEnterKey(int xPosition, int yPosition)
 {
     this->enterKey = new Fl_Return_Button(xPosition, yPosition, (this->KEY_WIDTH * 1.5), this->KEY_HEIGHT, "ENTER");
     this->enterKey->labelsize(10);
-
+    this->enterKey->callback(this->enterClick_callback);
 }
 
 void GameWindow::addBackspaceKey(int xPosition, int yPosition)
 {
     this->backspace = new Fl_Button(xPosition, yPosition, (this->KEY_WIDTH * 1.5), this->KEY_HEIGHT, "DELETE");
+    this->backspace->callback(this->backspaceClick_callback);
+}
+
+void GameWindow::buttonClick_callback(Fl_Widget* widget, void* data)
+{
+    cout << widget->label() << endl;
+}
+
+void GameWindow::enterClick_callback(Fl_Widget* widget, void* data)
+{
+    cout << widget->label() << endl;
+}
+
+void GameWindow::backspaceClick_callback(Fl_Widget* widget, void* data)
+{
+    cout << widget->label() << endl;
+}
+
+void addLetterToCurrentGuess(const char* letter)
+{
+
 }
 
 GameWindow::~GameWindow()

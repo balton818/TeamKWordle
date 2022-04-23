@@ -46,6 +46,12 @@ class GameWindow : public Fl_Window
         vector<Fl_Button*> keyboard;
         void drawKeyboard();
 
+        static void buttonClick_callback(Fl_Widget* widget, void* data);
+        static void enterClick_callback(Fl_Widget* widget, void* data);
+        static void backspaceClick_callback(Fl_Widget* widget, void* data);
+
+        void addLetterToCurrentGuess(const char* letter);
+
     public:
         GameWindow(int width, int height, const char* title);
         virtual ~GameWindow();
