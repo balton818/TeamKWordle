@@ -26,7 +26,6 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="view/GameWindow.cpp" />
 		<Unit filename="view/GameWindow.h" />
-		<Unit filename="view/MainGameWindow.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
