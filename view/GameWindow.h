@@ -4,6 +4,8 @@
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Button.H>
+#include <FL/Fl_Toggle_Button.H>
+#include <FL/Fl_Return_Button.H>
 
 #include <vector>
 #include <string>
@@ -14,6 +16,7 @@ namespace view
 class GameWindow : public Fl_Window
 {
     private:
+        int TOP_OFFSET;
         int WINDOW_WIDTH;
         int WINDOW_HEIGHT;
         int GUESS_BOXES_START_X;
@@ -30,7 +33,12 @@ class GameWindow : public Fl_Window
         int KEY_WIDTH;
         int KEY_HEIGHT;
 
-        static vector<string> qwertyKeyLabels;
+        Fl_Return_Button* enterKey;
+        void addEnterKey(int xPosition, int yPosition);
+        Fl_Button* backspace;
+        void addBackspaceKey(int xPosition, int yPosition);
+
+        vector<string> qwertyKeyLabels;
 
         vector<vector<Fl_Box*>> guessBoxes;
         void drawGuessBoxes();
