@@ -16,6 +16,7 @@
 					<Add directory="view" />
 					<Add directory="Sources/model" />
 					<Add directory="model" />
+					<Add directory="enums" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -25,6 +26,7 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="enums/SpecialKey.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/User.cpp" />
 		<Unit filename="model/User.h" />
