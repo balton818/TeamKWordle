@@ -18,6 +18,7 @@
 					<Add directory="model" />
 					<Add directory="../TeamKWordle" />
 					<Add directory="datatier" />
+					<Add directory="enums" />
 				</Compiler>
 			</Target>
 		</Build>
@@ -29,6 +30,7 @@
 		</Linker>
 		<Unit filename="datatier/DictionaryLoader.cpp" />
 		<Unit filename="datatier/DictionaryLoader.h" />
+		<Unit filename="enums/SpecialKey.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
 		<Unit filename="model/Dictionary.h" />
