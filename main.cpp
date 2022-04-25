@@ -2,6 +2,12 @@
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>
 
+#include <iostream>
+using namespace std;
+#include "Dictionary.h"
+using namespace model;
+#include "DictionaryLoader.h"
+using namespace datatier;
 #include "GameWindow.h"
 using namespace view;
 
@@ -22,6 +28,11 @@ int main (int argc, char ** argv)
 
     GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner");
     mainWindow.show();
+    DictionaryLoader dict;
+    Dictionary dictionary = dict.readDictionaryFile();
+    dictionary.getWordToGuess();
+
+
 
     int exitCode = Fl::run();
     return exitCode;

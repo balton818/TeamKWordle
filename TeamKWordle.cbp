@@ -16,6 +16,8 @@
 					<Add directory="view" />
 					<Add directory="Sources/model" />
 					<Add directory="model" />
+					<Add directory="../TeamKWordle" />
+					<Add directory="datatier" />
 					<Add directory="enums" />
 				</Compiler>
 			</Target>
@@ -26,8 +28,14 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="datatier/DictionaryLoader.cpp" />
+		<Unit filename="datatier/DictionaryLoader.h" />
 		<Unit filename="enums/SpecialKey.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="model/Dictionary.cpp" />
+		<Unit filename="model/Dictionary.h" />
+		<Unit filename="model/DictionaryNode.cpp" />
+		<Unit filename="model/DictionaryNode.h" />
 		<Unit filename="model/User.cpp" />
 		<Unit filename="model/User.h" />
 		<Unit filename="view/GameWindow.cpp" />

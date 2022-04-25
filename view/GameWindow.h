@@ -11,6 +11,7 @@
 #include <string>
 using namespace std;
 
+#include <FL/Fl_Window.H>
 namespace view
 {
 class GameWindow : public Fl_Window
