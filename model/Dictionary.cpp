@@ -10,7 +10,6 @@ namespace model
 {
 Dictionary::Dictionary()
 {
-        //DictionaryNode dictNode;
         this->root = new DictionaryNode();
 }
 
