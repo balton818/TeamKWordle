@@ -1,5 +1,10 @@
 #include "GameWindow.h"
 
+#include <FL/Fl.H>
+
+#include "SpecialKey.h"
+using namespace enums;
+
 #include <iostream>
 #include <string>
 using namespace std;
@@ -11,7 +16,6 @@ namespace view
 GameWindow::GameWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
 {
     this->qwertyKeyLabels = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M", "ENTER", "BACK"};
-
     this->TOP_OFFSET = 40;
     this->WINDOW_WIDTH = 500;
     this->WINDOW_HEIGHT = 700;
@@ -27,6 +31,10 @@ GameWindow::GameWindow(int width, int height, const char* title) : Fl_Window(wid
 
     this->KEY_HEIGHT = 45;
     this->KEY_WIDTH = 45;
+
+    this->MAX_GUESS_LENGTH = 5;
+
+    this->currentGuessNumber = 0;
 
     this->drawGuessBoxes();
     this->drawKeyboard();
@@ -58,7 +66,7 @@ void GameWindow::drawKeyboard()
     int finalX;
     int finalY;
 
-    for (int keyRow = 0; keyRow < 3; keyRow++)
+    for (int keyRow = 0; keyRow < sizeof(keyCount)/sizeof(int); keyRow++)
     {
         for (int keyIndex = 0; keyIndex < keyCount[keyRow]; keyIndex++)
         {
@@ -79,35 +87,96 @@ void GameWindow::drawKeyboard()
 
 void GameWindow::addEnterKey(int xPosition, int yPosition)
 {
-    this->enterKey = new Fl_Return_Button(xPosition, yPosition, (this->KEY_WIDTH * 1.5), this->KEY_HEIGHT, "ENTER");
-    this->enterKey->labelsize(10);
-    this->enterKey->callback(this->enterClick_callback);
+    this->enterKey = new Fl_Button(xPosition, yPosition, (this->KEY_WIDTH * 1.5), this->KEY_HEIGHT, "ENTER");
+    this->enterKey->callback(this->enterClick_callback, (void*)this);
 }
 
 void GameWindow::addBackspaceKey(int xPosition, int yPosition)
 {
     this->backspace = new Fl_Button(xPosition, yPosition, (this->KEY_WIDTH * 1.5), this->KEY_HEIGHT, "DELETE");
-    this->backspace->callback(this->backspaceClick_callback);
+    this->backspace->callback(this->backspaceClick_callback, (void*)this);
 }
 
 void GameWindow::buttonClick_callback(Fl_Widget* widget, void* data)
 {
-    cout << widget->label() << endl;
+    GameWindow* window = (GameWindow*)data;
+    window->addLetterToCurrentGuess(widget->label());
 }
 
 void GameWindow::enterClick_callback(Fl_Widget* widget, void* data)
 {
-    cout << widget->label() << endl;
+    GameWindow* window = (GameWindow*)data;
+    window->enterGuess();
 }
 
 void GameWindow::backspaceClick_callback(Fl_Widget* widget, void* data)
 {
-    cout << widget->label() << endl;
+    GameWindow* window = (GameWindow*)data;
+    window->removeLastLetter();
 }
 
-void addLetterToCurrentGuess(const char* letter)
+void GameWindow::addLetterToCurrentGuess(const char* letter)
 {
+    int guessLength = this->currentGuess.size();
+    if (guessLength < this->MAX_GUESS_LENGTH)
+    {
+        this->currentGuess.push_back(*letter);
+        this->updateGuessBox(letter);
+    }
+}
 
+void GameWindow::updateGuessBox(const char* letter)
+{
+    vector<Fl_Box*> currentRow = this->guessBoxes[this->currentGuessNumber];
+    Fl_Box* currentBox = currentRow[this->currentGuess.size() - 1];
+    currentBox->label(letter);
+    currentBox->redraw();
+}
+
+void GameWindow::removeLastLetter()
+{
+    if (!this->currentGuess.size() == 0)
+    {
+        Fl_Box* currentBox = this->guessBoxes.at(this->currentGuessNumber).at(this->currentGuess.size() - 1);
+        this->currentGuess.pop_back();
+        currentBox->label("");
+        currentBox->redraw();
+    }
+}
+
+void GameWindow::enterGuess()
+{
+    if (this->currentGuess.size() == this->MAX_GUESS_LENGTH)
+    {
+        string guess;
+        for (char currentChar : this->currentGuess) {
+            guess.push_back(currentChar);
+        }
+        //TODO check guess here
+    }
+}
+
+int GameWindow::handle(int e)
+{
+    int returnValue = Fl_Window::handle(e);
+    if (e == FL_KEYUP)
+    {
+        int keyCode = Fl::event_key();
+        if (keyCode == SpecialKey::DELETE)
+        {
+            this->removeLastLetter();
+        }
+        else if (keyCode == SpecialKey::ENTER)
+        {
+            this->enterGuess();
+        }
+        else if (keyCode >= SpecialKey::A && keyCode <= SpecialKey::Z)
+        {
+            this->addLetterToCurrentGuess(Fl::event_text());
+        }
+    }
+
+    return returnValue;
 }
 
 GameWindow::~GameWindow()

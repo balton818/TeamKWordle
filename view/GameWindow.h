@@ -33,7 +33,12 @@ class GameWindow : public Fl_Window
         int KEY_WIDTH;
         int KEY_HEIGHT;
 
-        Fl_Return_Button* enterKey;
+        int MAX_GUESS_LENGTH;
+
+        int currentGuessNumber;
+        vector<char> currentGuess;
+
+        Fl_Button* enterKey;
         void addEnterKey(int xPosition, int yPosition);
         Fl_Button* backspace;
         void addBackspaceKey(int xPosition, int yPosition);
@@ -51,6 +56,11 @@ class GameWindow : public Fl_Window
         static void backspaceClick_callback(Fl_Widget* widget, void* data);
 
         void addLetterToCurrentGuess(const char* letter);
+        void updateGuessBox(const char* letter);
+        void removeLastLetter();
+        void enterGuess();
+
+        int handle(int e);
 
     public:
         GameWindow(int width, int height, const char* title);
