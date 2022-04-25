@@ -12,11 +12,11 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
 					<Add directory="view" />
 					<Add directory="Sources/model" />
 					<Add directory="model" />
-					<Add directory="../TeamKWordle" />
 					<Add directory="datatier" />
 					<Add directory="enums" />
 				</Compiler>
@@ -36,6 +36,8 @@
 		<Unit filename="model/Dictionary.h" />
 		<Unit filename="model/DictionaryNode.cpp" />
 		<Unit filename="model/DictionaryNode.h" />
+		<Unit filename="model/Settings.cpp" />
+		<Unit filename="model/Settings.h" />
 		<Unit filename="model/User.cpp" />
 		<Unit filename="model/User.h" />
 		<Unit filename="view/GameWindow.cpp" />

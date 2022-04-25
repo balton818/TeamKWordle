@@ -2,9 +2,8 @@
 
 #include <FL/Fl.H>
 
-#include "SpecialKey.h"
-using namespace enums;
-
+#include "../enums/SpecialKey.h"
+using namespace enums
 #include <iostream>
 #include <string>
 using namespace std;

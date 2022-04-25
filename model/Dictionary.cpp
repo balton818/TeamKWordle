@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string.h>
 #include <random>
+#include <vector>
+#include <algorithm>
 using namespace std;
 namespace model
 {
@@ -52,9 +54,10 @@ bool Dictionary::isValidWord(string& wordToCheck)
     return dictCrawler->isEndOfWord();
 }
 
-string& Dictionary::getWordToGuess()
+string& Dictionary::getWordToGuess(bool reuseLetters)
 {
     char wordBuilder[5];
+    vector<int> charIndexesUsed;
     DictionaryNode* dictCrawler = this->root;
     int randomIndex = this->getRandomIndex();
 
@@ -65,6 +68,10 @@ string& Dictionary::getWordToGuess()
         while (tempNode == NULL)
         {
             randomIndex = this->getRandomIndex();
+            if (!reuseLetters &&  count(charIndexesUsed.begin(), charIndexesUsed.end(), randomIndex))
+            {
+                randomIndex = this->getUnusedLetter(charIndexesUsed, randomIndex, tempNode);
+            }
             tempNode = dictCrawler->children[randomIndex];
         }
 
@@ -80,6 +87,15 @@ string& Dictionary::getWordToGuess()
         cout << this->wordToGuess << endl;
         return this->wordToGuess;
     }
+}
+
+int Dictionary::getUnusedLetter(vector<int> charIndexesUsed, int randomIndex, DictionaryNode* tempNode)
+{
+    while (count(charIndexesUsed.begin(), charIndexesUsed.end(), randomIndex && tempNode->children[randomIndex] != NULL))
+    {
+        randomIndex = getRandomIndex();
+    }
+    return randomIndex;
 }
 
 int Dictionary::getRandomIndex()

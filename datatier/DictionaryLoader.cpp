@@ -1,13 +1,13 @@
 #include "DictionaryLoader.h"
 
+#include "Dictionary.h"
+using namespace model;
+
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
-#include <sstream>
 using namespace std;
-#include "Dictionary.h"
-using namespace model;
 
 namespace datatier
 {

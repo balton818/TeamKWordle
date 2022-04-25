@@ -33,6 +33,9 @@ void User::createGuessDistribution()
 
 double User::getWinPercentage()
 {
+    int oneHundred = 100;
+    int winPercent = this->gamesWon / this->gamesPlayed;
+    return winPercent * oneHundred;
 
 }
 

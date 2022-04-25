@@ -1,6 +1,8 @@
 #ifndef DICTIONARY_H
 #define DICTIONARY_H
 
+#include <vector>
+using namespace std;
 #include "DictionaryNode.h"
 namespace model
 {
@@ -37,15 +39,19 @@ class Dictionary
 
         // Gets a random word for the player to guess
         //
+        // Param - reuseLetters - indicates if guess word can reuse letters
+        //
         // Returns - the word for the player to guess
         //
-        string& getWordToGuess();
+        string& getWordToGuess(bool reuseLetters);
+
 
     private:
         DictionaryNode* root;
         string wordToGuess;
         int getRandomIndex();
         char trieOffset = 'a';
+        int getUnusedLetter(vector<int> charIndexesUsed, int randomIndex, DictionaryNode* tempNode);
 };
 
 }
