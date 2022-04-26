@@ -13,8 +13,10 @@ namespace view
 {
 
 
-GameWindow::GameWindow(int width, int height, const char* title) : Fl_Window(width, height, title)
+GameWindow::GameWindow(int width, int height, const char* title, GuessChecker* checker) : Fl_Window(width, height, title)
 {
+    this->checker = checker;
+
     this->qwertyKeyLabels = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M", "ENTER", "BACK"};
     this->TOP_OFFSET = 40;
     this->WINDOW_WIDTH = 500;
@@ -129,7 +131,7 @@ void GameWindow::updateGuessBox(const char* letter)
 {
     vector<Fl_Box*> currentRow = this->guessBoxes[this->currentGuessNumber];
     Fl_Box* currentBox = currentRow[this->currentGuess.size() - 1];
-    currentBox->label(letter);
+    currentBox->copy_label(letter);
     currentBox->redraw();
 }
 
@@ -152,7 +154,9 @@ void GameWindow::enterGuess()
         for (char currentChar : this->currentGuess) {
             guess.push_back(currentChar);
         }
-        //TODO check guess here
+        this->handleCheckerResult(this->checker->checkGuess(guess));
+        this->currentGuess.clear();
+        this->currentGuessNumber++;
     }
 }
 
@@ -166,7 +170,7 @@ int GameWindow::handle(int e)
         {
             this->removeLastLetter();
         }
-        else if (keyCode == SpecialKey::ENTER)
+        else if (keyCode == FL_Enter)
         {
             this->enterGuess();
         }
@@ -177,6 +181,54 @@ int GameWindow::handle(int e)
     }
 
     return returnValue;
+}
+
+void GameWindow::handleCheckerResult(vector<GuessCheckerResult> result)
+{
+    this->updateGuessBoxAndKeyColors(result);
+}
+
+void GameWindow::updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result)
+{
+    vector<Fl_Box*> currentRow = this->guessBoxes[this->currentGuessNumber];
+    for (int index = 0; index < 5; index++)
+    {
+        Fl_Box* currentBox = currentRow[index];
+        GuessCheckerResult currentResult = result[index];
+        currentBox->color(this->determineColorForResult(currentResult));
+        const char* labelText = currentBox->label();
+        this->updateKeyColor(labelText, currentResult);
+        currentBox->redraw();
+    }
+}
+
+void GameWindow::updateKeyColor(const char* keyLabel, GuessCheckerResult result)
+{
+    for (Fl_Button* currentKey : this->keyboard)
+    {
+        string label = currentKey->label();
+        if (label == keyLabel)
+        {
+            currentKey->color(this->determineColorForResult(result));
+            currentKey->redraw();
+        }
+    }
+}
+
+Fl_Color GameWindow::determineColorForResult(GuessCheckerResult checkerResult)
+{
+    if (checkerResult == GuessCheckerResult::CORRECT)
+    {
+        return(FL_GREEN);
+    }
+    else if (checkerResult == GuessCheckerResult::WRONG_POSITION)
+    {
+        return FL_YELLOW;
+    }
+    else
+    {
+        return FL_DARK2;
+    }
 }
 
 GameWindow::~GameWindow()

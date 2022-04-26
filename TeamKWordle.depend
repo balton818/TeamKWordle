@@ -17,13 +17,15 @@
 1650330194 /home/balton1/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 
-1650330305 source:/home/balton1/TeamKWordle/main.cpp
+1650982277 source:/home/balton1/TeamKWordle/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	"GameWindow.h"
+	"GuessChecker.h"
+	<iostream>
 
-1650849466 /home/balton1/TeamKWordle/view/GameWindow.h
+1650984473 /home/balton1/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
@@ -31,8 +33,10 @@
 	<FL/Fl_Return_Button.H>
 	<vector>
 	<string>
+	"GuessChecker.h"
+	"GuessCheckerResult.h"
 
-1650766619 source:/home/balton1/TeamKWordle/view/GameWindow.cpp
+1650986058 source:/home/balton1/TeamKWordle/view/GameWindow.cpp
 	"GameWindow.h"
 	<FL/Fl.H>
 	"SpecialKey.h"
@@ -48,5 +52,15 @@
 	<string>
 	<map>
 
-1650760465 /home/balton1/TeamKWordle/enums/SpecialKey.h
+1650850932 /home/balton1/TeamKWordle/enums/SpecialKey.h
+
+1650935604 source:/home/balton1/TeamKWordle/model/GuessChecker.cpp
+	"GuessChecker.h"
+
+1650935440 /home/balton1/TeamKWordle/model/GuessChecker.h
+	"GuessCheckerResult.h"
+	<string>
+	<vector>
+
+1650852038 /home/balton1/TeamKWordle/enums/GuessCheckerResult.h
 
