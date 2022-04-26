@@ -21,6 +21,7 @@
 					<Add directory="../TeamKWordle" />
 					<Add directory="datatier" />
 					<Add directory="enums" />
+					<Add directory="viewmodel" />
 				</Compiler>
 				<Linker>
 					<Add option="`fltk-config --ldstaticflags`" />
@@ -48,6 +49,8 @@
 		<Unit filename="model/User.h" />
 		<Unit filename="view/GameWindow.cpp" />
 		<Unit filename="view/GameWindow.h" />
+		<Unit filename="viewmodel/ViewModel.cpp" />
+		<Unit filename="viewmodel/ViewModel.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
