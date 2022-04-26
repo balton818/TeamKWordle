@@ -1,5 +1,6 @@
 #include "DictionaryNode.h"
 
+#include <iostream>
 using namespace std;
 
 namespace model
@@ -30,6 +31,7 @@ void DictionaryNode::setEndOfWord(bool toSet)
 {
     this->endOfWord = toSet;
 }
+
 
 //
 //DictionaryNode* DictionaryNode::createNode()

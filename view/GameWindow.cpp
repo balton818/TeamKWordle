@@ -3,7 +3,8 @@
 #include <FL/Fl.H>
 
 #include "../enums/SpecialKey.h"
-using namespace enums
+using namespace enums;
+
 #include <iostream>
 #include <string>
 using namespace std;

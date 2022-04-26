@@ -14,15 +14,21 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add option="`fltk-config --cxxflags`" />
 					<Add directory="view" />
 					<Add directory="Sources/model" />
 					<Add directory="model" />
+					<Add directory="../TeamKWordle" />
 					<Add directory="datatier" />
 					<Add directory="enums" />
 				</Compiler>
+				<Linker>
+					<Add option="`fltk-config --ldstaticflags`" />
+				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-std=c++11" />
 			<Add option="`fltk-config --cxxflags`" />
 		</Compiler>
 		<Linker>

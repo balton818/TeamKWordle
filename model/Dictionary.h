@@ -45,14 +45,15 @@ class Dictionary
         //
         string& getWordToGuess(bool reuseLetters);
 
-
     private:
+
         DictionaryNode* root;
         string wordToGuess;
         int getRandomIndex();
         char trieOffset = 'a';
-        int getUnusedLetter(vector<int> charIndexesUsed, int randomIndex, DictionaryNode* tempNode);
+        int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
+        bool checkIfUniqueChars(char wordBuilder[]);
+        void generateWordToGuess(bool reuseLetters);
 };
-
 }
 #endif // DICTIONARY_H
