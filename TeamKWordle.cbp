@@ -12,24 +12,15 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add option="`fltk-config --cxxflags`" />
 					<Add directory="view" />
 					<Add directory="Sources/model" />
 					<Add directory="model" />
-					<Add directory="../TeamKWordle" />
-					<Add directory="datatier" />
 					<Add directory="enums" />
-					<Add directory="viewmodel" />
 				</Compiler>
-				<Linker>
-					<Add option="`fltk-config --ldstaticflags`" />
-				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
-			<Add option="-std=c++11" />
 			<Add option="`fltk-config --cxxflags`" />
 		</Compiler>
 		<Linker>
@@ -37,12 +28,15 @@
 		</Linker>
 		<Unit filename="datatier/DictionaryLoader.cpp" />
 		<Unit filename="datatier/DictionaryLoader.h" />
+		<Unit filename="enums/GuessCheckerResult.h" />
 		<Unit filename="enums/SpecialKey.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
 		<Unit filename="model/Dictionary.h" />
 		<Unit filename="model/DictionaryNode.cpp" />
 		<Unit filename="model/DictionaryNode.h" />
+		<Unit filename="model/GuessChecker.cpp" />
+		<Unit filename="model/GuessChecker.h" />
 		<Unit filename="model/Settings.cpp" />
 		<Unit filename="model/Settings.h" />
 		<Unit filename="model/User.cpp" />

@@ -6,7 +6,7 @@
 #include "Dictionary.h"
 using namespace model;
 
-#include "DictionaryLoader.h"
+#include "../datatier/DictionaryLoader.h"
 using namespace datatier;
 
 class ViewModel
@@ -17,9 +17,9 @@ class ViewModel
 
 
     private:
-        User currentUser;
-        Dictionary wordleDictionary;
-        Settings gameSettings;
+//        User currentUser;
+//        Dictionary wordleDictionary;
+//        Settings gameSettings;
 
 };
 

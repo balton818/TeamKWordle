@@ -17,15 +17,18 @@
 1650330194 /home/balton1/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 
-1650982277 source:/home/balton1/TeamKWordle/main.cpp
+1650987540 source:/home/balton1/TeamKWordle/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
+	<iostream>
+	"datatier/DictionaryLoader.h"
+	"Dictionary.h"
 	"GameWindow.h"
 	"GuessChecker.h"
 	<iostream>
 
-1650984473 /home/balton1/TeamKWordle/view/GameWindow.h
+1650987380 /home/balton1/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
@@ -35,34 +38,35 @@
 	<string>
 	"GuessChecker.h"
 	"GuessCheckerResult.h"
+	<FL/Fl_Window.H>
 
-1650986058 source:/home/balton1/TeamKWordle/view/GameWindow.cpp
+1650986749 source:/home/balton1/TeamKWordle/view/GameWindow.cpp
 	"GameWindow.h"
 	<FL/Fl.H>
-	"SpecialKey.h"
+	"../enums/SpecialKey.h"
 	<iostream>
 	<string>
 
-1650720812 source:/home/balton1/TeamKWordle/model/User.cpp
+1650986749 source:/home/balton1/TeamKWordle/model/User.cpp
 	"User.h"
 	<string>
 	<map>
 
-1650720812 /home/balton1/TeamKWordle/model/User.h
+1650986749 /home/balton1/TeamKWordle/model/User.h
 	<string>
 	<map>
 
 1650850932 /home/balton1/TeamKWordle/enums/SpecialKey.h
 
-1650935604 source:/home/balton1/TeamKWordle/model/GuessChecker.cpp
+1650986622 source:/home/balton1/TeamKWordle/model/GuessChecker.cpp
 	"GuessChecker.h"
 
-1650935440 /home/balton1/TeamKWordle/model/GuessChecker.h
+1650986622 /home/balton1/TeamKWordle/model/GuessChecker.h
 	"GuessCheckerResult.h"
 	<string>
 	<vector>
 
-1650852038 /home/balton1/TeamKWordle/enums/GuessCheckerResult.h
+1650986622 /home/balton1/TeamKWordle/enums/GuessCheckerResult.h
 
 1650900579 D
 	"datatier/DictionaryLoader.h"
@@ -156,4 +160,47 @@
 	"Settings.h"
 
 1650980447 /home/jwagner2/Desktop/TeamKWordle/model/Settings.h
+
+1650986749 /home/balton1/TeamKWordle/datatier/DictionaryLoader.h
+	"Dictionary.h"
+
+1650986749 /home/balton1/TeamKWordle/model/Dictionary.h
+	<vector>
+	"DictionaryNode.h"
+
+1650986749 /home/balton1/TeamKWordle/model/DictionaryNode.h
+	<memory>
+
+1650986749 source:/home/balton1/TeamKWordle/datatier/DictionaryLoader.cpp
+	"DictionaryLoader.h"
+	"Dictionary.h"
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+
+1650986749 source:/home/balton1/TeamKWordle/model/Dictionary.cpp
+	"Dictionary.h"
+	<iostream>
+	<string>
+	<random>
+	<bits/stdc++.h>
+
+1650986749 source:/home/balton1/TeamKWordle/model/DictionaryNode.cpp
+	"DictionaryNode.h"
+	<iostream>
+
+1650986749 source:/home/balton1/TeamKWordle/model/Settings.cpp
+	"Settings.h"
+
+1650986749 /home/balton1/TeamKWordle/model/Settings.h
+
+1650986749 source:/home/balton1/TeamKWordle/viewmodel/ViewModel.cpp
+	"ViewModel.h"
+
+1650987479 /home/balton1/TeamKWordle/viewmodel/ViewModel.h
+	"User.h"
+	"Settings.h"
+	"Dictionary.h"
+	"../datatier/DictionaryLoader.h"
 

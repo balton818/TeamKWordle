@@ -11,16 +11,13 @@
 #include <string>
 using namespace std;
 
-<<<<<<< HEAD
 #include "GuessChecker.h"
 using namespace model;
 
 #include "GuessCheckerResult.h"
 using namespace enums;
 
-=======
 #include <FL/Fl_Window.H>
->>>>>>> 40823b162f1cca38e657558392d1aad0be2af11f
 namespace view
 {
 class GameWindow : public Fl_Window

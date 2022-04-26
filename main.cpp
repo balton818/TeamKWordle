@@ -20,21 +20,13 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
-    string answer = "HELLO";
+    DictionaryLoader* load = new DictionaryLoader();
+    Dictionary dict =   load->readDictionaryFile();
+    string answer = dict.getWordToGuess(true);
     cout << "Wordle answer: " << answer << endl;
     GuessChecker* checker = new GuessChecker(answer);
     GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner", checker);
     mainWindow.show();
-    DictionaryLoader* load = new DictionaryLoader();
-    Dictionary dict =   load->readDictionaryFile();
-    int i =0;
-    while (i < 50)
-    {
-        string test = dict.getWordToGuess(false);
-        cout << test << endl;
-        i++;
-
-    }
 
     int exitCode = Fl::run();
     return exitCode;
