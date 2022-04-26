@@ -11,11 +11,19 @@
 #include <string>
 using namespace std;
 
+#include "GuessChecker.h"
+using namespace model;
+
+#include "GuessCheckerResult.h"
+using namespace enums;
+
 namespace view
 {
 class GameWindow : public Fl_Window
 {
     private:
+        GuessChecker* checker;
+
         int TOP_OFFSET;
         int WINDOW_WIDTH;
         int WINDOW_HEIGHT;
@@ -59,11 +67,14 @@ class GameWindow : public Fl_Window
         void updateGuessBox(const char* letter);
         void removeLastLetter();
         void enterGuess();
-
+        void handleCheckerResult(vector<GuessCheckerResult> result);
+        void updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result);
+        void updateKeyColor(const char* keyLabel, GuessCheckerResult checkerResult);
+        Fl_Color determineColorForResult(GuessCheckerResult checkerResult);
         int handle(int e);
 
     public:
-        GameWindow(int width, int height, const char* title);
+        GameWindow(int width, int height, const char* title, GuessChecker* checker);
         virtual ~GameWindow();
 };
 }
