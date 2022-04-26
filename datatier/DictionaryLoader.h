@@ -1,5 +1,6 @@
 #ifndef DICTIONARYLOADER_H
 #define DICTIONARYLOADER_H
+
 #include "Dictionary.h"
 using namespace model;
 

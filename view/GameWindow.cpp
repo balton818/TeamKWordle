@@ -2,7 +2,7 @@
 
 #include <FL/Fl.H>
 
-#include "SpecialKey.h"
+#include "../enums/SpecialKey.h"
 using namespace enums;
 
 #include <iostream>
