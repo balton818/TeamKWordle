@@ -43,7 +43,7 @@ class Dictionary
         //
         // Returns - the word for the player to guess
         //
-        string& getWordToGuess(bool reuseLetters);
+        string& getWordToGuess(bool canReuseLetters);
 
     private:
 
@@ -53,7 +53,8 @@ class Dictionary
         char trieOffset = 'a';
         int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
         bool checkIfUniqueChars(char wordBuilder[]);
-        void generateWordToGuess(bool reuseLetters);
+        void generateWordToGuess(bool canReuseLetters);
+        bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
 };
 }
 #endif // DICTIONARY_H

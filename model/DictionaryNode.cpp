@@ -33,21 +33,6 @@ void DictionaryNode::setEndOfWord(bool toSet)
 }
 
 
-//
-//DictionaryNode* DictionaryNode::createNode()
-//{
-//    DictionaryNode* dictNode = new DictionaryNode();
-//
-//	for (int i = 0; i < ALPHA_CHARS; i++)
-//    {
-//        dictNode->children[i] = NULL;
-//    }
-//
-//	dictNode->isEndOfWord = false;
-//
-//	return dictNode;
-//};
-
 bool DictionaryNode::isEndOfWord()
 {
     return this->endOfWord;
