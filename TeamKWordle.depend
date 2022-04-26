@@ -50,11 +50,16 @@
 
 1650760465 /home/balton1/TeamKWordle/enums/SpecialKey.h
 
+<<<<<<< HEAD
 1650935109 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
+=======
+1650900579 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
+>>>>>>> main
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<iostream>
+<<<<<<< HEAD
 	"datatier/DictionaryLoader.h"
 	"Dictionary.h"
 	"GameWindow.h"
@@ -66,6 +71,21 @@
 1650934171 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
 	<memory>
 
+=======
+	"Dictionary.h"
+	"DictionaryLoader.h"
+	"GameWindow.h"
+
+1650900579 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
+	"DictionaryNode.h"
+
+1650895945 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
+	<memory>
+
+1650900579 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
+	"Dictionary.h"
+
+>>>>>>> main
 1650895650 /home/jwagner2/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -76,7 +96,11 @@
 	<string>
 	<FL/Fl_Window.H>
 
+<<<<<<< HEAD
 1650900799 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
+=======
+1650900579 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
+>>>>>>> main
 	"User.h"
 	<string>
 	<map>
@@ -85,6 +109,7 @@
 	<string>
 	<map>
 
+<<<<<<< HEAD
 1650901098 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
 	"GameWindow.h"
 	<FL/Fl.H>
@@ -95,10 +120,24 @@
 1650900799 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 	"Dictionary.h"
+=======
+1650900579 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
+	"GameWindow.h"
+	<FL/Fl.H>
+	"SpecialKey.h"
+	<iostream>
+	<string>
+
+1650895650 /home/jwagner2/Desktop/TeamKWordle/enums/SpecialKey.h
+
+1650900579 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
+	"DictionaryLoader.h"
+>>>>>>> main
 	<iostream>
 	<fstream>
 	<string>
 	<vector>
+<<<<<<< HEAD
 
 1650900799 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
 	"Dictionary.h"
@@ -120,4 +159,19 @@
 1650900799 /home/jwagner2/Desktop/TeamKWordle/model/Settings.h
 
 1650895650 /home/jwagner2/Desktop/TeamKWordle/enums/SpecialKey.h
+=======
+	<sstream>
+	"Dictionary.h"
+
+1650900579 source:/home/jwagner2/Desktop/TeamKWordle/model/Dictionary.cpp
+	"Dictionary.h"
+	<iostream>
+	<string>
+	<iostream>
+	<string.h>
+	<random>
+
+1650895650 source:/home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.cpp
+	"DictionaryNode.h"
+>>>>>>> main
 

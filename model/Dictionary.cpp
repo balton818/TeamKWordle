@@ -72,9 +72,7 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
     for (int charIndex = 0; charIndex < sizeof(wordBuilder); charIndex++) {
 
         DictionaryNode* tempNode = dictCrawler->children[randomIndex];
-
         randomIndex = this->getNextLetter(tempNode, dictCrawler, randomIndex);
-
         tempNode = dictCrawler->children[randomIndex];
         wordBuilder[charIndex] = randomIndex + this->trieOffset;
         randomIndex = this->getRandomIndex();
@@ -83,16 +81,27 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
 
     if (dictCrawler->isEndOfWord())
     {
-        if (!canReuseLetters)
+        if (!this->reUseLettersCheck(canReuseLetters, wordBuilder))
+        {
+           return;
+        }
+    }
+    this->wordToGuess = wordBuilder;
+}
+
+
+
+bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
+{
+     if (!canReuseLetters)
         {
             if (!this->checkIfUniqueChars(wordBuilder))
             {
                 this->wordToGuess = "";
-                return;
+                return false;
             }
         }
-    }
-    this->wordToGuess = wordBuilder;
+    return true;
 }
 
 bool Dictionary::checkIfUniqueChars(char wordBuilder[])

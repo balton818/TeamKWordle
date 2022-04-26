@@ -5,7 +5,9 @@ namespace model
 
 Settings::Settings()
 {
-    this->reuseLetters = false;
+    this->onlyUniqueChars = false;
+    this->playerCanReuseChars = true;
+    this->hardMode = false;
 }
 
 Settings::~Settings()
@@ -13,14 +15,34 @@ Settings::~Settings()
     //dtor
 }
 
-void Settings::setReuseLetters(bool toSet)
+void Settings::setOnlyUniqueChars(bool toSet)
 {
-    this->reuseLetters = toSet;
+    this->onlyUniqueChars = toSet;
 }
 
-bool Settings::getReuseLetters()
+bool Settings::getOnlyUniqueChars()
 {
-    return this->reuseLetters;
+    return this->onlyUniqueChars;
+}
+
+void Settings::setPlayerReuseChars(bool toSet)
+{
+    this->playerCanReuseChars = toSet;
+}
+
+bool Settings::getPlayerReuseChars()
+{
+    return this->playerCanReuseChars;
+}
+
+void Settings::setHardMode(bool toSet)
+{
+    this->hardMode = toSet;
+}
+
+bool Settings::getHardMode()
+{
+    return this->hardMode;
 }
 
 }
