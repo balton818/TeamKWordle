@@ -163,7 +163,7 @@ void GameWindow::enterGuess()
         }
         else
         {
-            fl_message("Invalid Word");
+            fl_message("Invalid word");
         }
 
     }
