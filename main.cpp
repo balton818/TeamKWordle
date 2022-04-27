@@ -20,12 +20,16 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
-    DictionaryLoader* load = new DictionaryLoader();
-    Dictionary dict =   load->readDictionaryFile();
-    string answer = dict.getWordToGuess(true);
-    cout << "Wordle answer: " << answer << endl;
-    GuessChecker* checker = new GuessChecker(answer);
-    GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner", checker);
+   // DictionaryLoader* load = new DictionaryLoader();
+    //Dictionary dict =   load->readDictionaryFile();
+    //tring answer = dict.getWordToGuess(true);
+
+    //GuessChecker* checker = new GuessChecker();
+    //checker->setAnswer(answer);
+    ViewModel* viewModel = new ViewModel();
+    string username = "test";
+    viewModel->initializeGame(username);
+    GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner", viewModel);
     mainWindow.show();
 
     int exitCode = Fl::run();

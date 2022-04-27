@@ -17,9 +17,10 @@ class GuessChecker
         bool answerContains(char letter);
 
     public:
-        GuessChecker(string& answerWord);
+        GuessChecker();
         virtual ~GuessChecker();
         vector<GuessCheckerResult> checkGuess(string& guess);
+        void setAnswer(string& answerWord);
 };
 }
 
