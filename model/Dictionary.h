@@ -50,7 +50,7 @@ class Dictionary
         DictionaryNode* root;
         string wordToGuess;
         int getRandomIndex();
-        char trieOffset = 'a';
+        char trieOffset = 'A';
         int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
         bool checkIfUniqueChars(char wordBuilder[]);
         void generateWordToGuess(bool canReuseLetters);

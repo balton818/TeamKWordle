@@ -6,9 +6,8 @@ using namespace std;
 
 namespace model
 {
-User::User(const string& username)
+User::User()
 {
-    this->username = username;
     this->currentWinStreak = 0;
     this->gamesPlayed = 0;
     this->gamesWon = 0;
@@ -19,6 +18,11 @@ User::User(const string& username)
 User::~User()
 {
     //dtor
+}
+
+void User::setUserName(const string& username)
+{
+    this->username = username;
 }
 
 void User::createGuessDistribution()

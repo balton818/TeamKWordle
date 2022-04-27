@@ -25,7 +25,7 @@ class DictionaryLoader
 
         // reads a file in and builds a trie
         //
-        Dictionary readDictionaryFile();
+        Dictionary* readDictionaryFile();
 };
 }
 

@@ -6,13 +6,16 @@
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Toggle_Button.H>
 #include <FL/Fl_Return_Button.H>
+#include <FL/Fl.H>
+#include <FL/fl_ask.H>
+
 
 #include <vector>
 #include <string>
 using namespace std;
 
-#include "GuessChecker.h"
-using namespace model;
+#include "ViewModel.h"
+using namespace viewmodel;
 
 #include "GuessCheckerResult.h"
 using namespace enums;
@@ -23,7 +26,7 @@ namespace view
 class GameWindow : public Fl_Window
 {
     private:
-        GuessChecker* checker;
+        ViewModel* viewModel;
 
         int TOP_OFFSET;
         int WINDOW_WIDTH;
@@ -32,6 +35,8 @@ class GameWindow : public Fl_Window
         int GUESS_BOXES_START_Y;
         int GUESS_BOX_WIDTH;
         int GUESS_BOX_HEIGHT;
+        const char* INVALID_GUESS = "Invalid Word";
+
 
         int ROW_SPACING;
         int COLUMN_SPACING;
@@ -68,14 +73,15 @@ class GameWindow : public Fl_Window
         void updateGuessBox(const char* letter);
         void removeLastLetter();
         void enterGuess();
-        void handleCheckerResult(vector<GuessCheckerResult> result);
+        bool handleCheckerResult(vector<GuessCheckerResult> result);
         void updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result);
         void updateKeyColor(const char* keyLabel, GuessCheckerResult checkerResult);
         Fl_Color determineColorForResult(GuessCheckerResult checkerResult);
         int handle(int e);
+        Fl_Box* invalidGuess;
 
     public:
-        GameWindow(int width, int height, const char* title, GuessChecker* checker);
+        GameWindow(int width, int height, const char* title, ViewModel* viewModel);
         virtual ~GameWindow();
 };
 }

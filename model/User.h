@@ -17,9 +17,7 @@ class User
     public:
         // Constructor for the user object
         //
-        // Param - username - the desired username
-        //
-        User(const string& username);
+        User();
 
         // user deconstructor
         //
@@ -70,6 +68,12 @@ class User
         // Updates the player stats on loss
         //
         void updateStatsOnLoss();
+
+        // sets user name for the user
+        //
+        // Param - the desired username
+        //
+        void setUserName(const string& username);
 
 
     private:

@@ -13,9 +13,9 @@ namespace view
 {
 
 
-GameWindow::GameWindow(int width, int height, const char* title, GuessChecker* checker) : Fl_Window(width, height, title)
+GameWindow::GameWindow(int width, int height, const char* title, ViewModel* viewModel) : Fl_Window(width, height, title)
 {
-    this->checker = checker;
+    this->viewModel = viewModel;
 
     this->qwertyKeyLabels = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M", "ENTER", "BACK"};
     this->TOP_OFFSET = 40;
@@ -109,6 +109,7 @@ void GameWindow::enterClick_callback(Fl_Widget* widget, void* data)
 {
     GameWindow* window = (GameWindow*)data;
     window->enterGuess();
+
 }
 
 void GameWindow::backspaceClick_callback(Fl_Widget* widget, void* data)
@@ -146,6 +147,7 @@ void GameWindow::removeLastLetter()
     }
 }
 
+
 void GameWindow::enterGuess()
 {
     if (this->currentGuess.size() == this->MAX_GUESS_LENGTH)
@@ -154,9 +156,16 @@ void GameWindow::enterGuess()
         for (char currentChar : this->currentGuess) {
             guess.push_back(currentChar);
         }
-        this->handleCheckerResult(this->checker->checkGuess(guess));
-        this->currentGuess.clear();
-        this->currentGuessNumber++;
+        if (this->handleCheckerResult(this->viewModel->checkGuess(guess)))
+        {
+            this->currentGuessNumber++;
+            this->currentGuess.clear();
+        }
+        else
+        {
+            fl_message("Invalid word");
+        }
+
     }
 }
 
@@ -183,9 +192,14 @@ int GameWindow::handle(int e)
     return returnValue;
 }
 
-void GameWindow::handleCheckerResult(vector<GuessCheckerResult> result)
+bool GameWindow::handleCheckerResult(vector<GuessCheckerResult> result)
 {
-    this->updateGuessBoxAndKeyColors(result);
+    if (!result.empty())
+    {
+        this->updateGuessBoxAndKeyColors(result);
+        return true;
+    }
+    return false;
 }
 
 void GameWindow::updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result)

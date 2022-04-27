@@ -73,7 +73,7 @@
 	"Dictionary.h"
 	"GameWindow.h"
 
-1650980447 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -81,6 +81,8 @@
 	"datatier/DictionaryLoader.h"
 	"Dictionary.h"
 	"GameWindow.h"
+	"GuessChecker.h"
+	<iostream>
 
 1650895650 n
 	<FL/Fl.H>
@@ -95,49 +97,54 @@
 	<string>
 	<vector>
 
-1650980447 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
 	<vector>
 	"DictionaryNode.h"
 
 1650934171 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
 	<memory>
 
-1650980447 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
 	"Dictionary.h"
 
-1650895650 /home/jwagner2/Desktop/TeamKWordle/view/GameWindow.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
 	<FL/Fl_Toggle_Button.H>
 	<FL/Fl_Return_Button.H>
+	<FL/Fl.H>
+	<FL/fl_ask.H>
 	<vector>
 	<string>
+	"ViewModel.h"
+	"GuessCheckerResult.h"
 	<FL/Fl_Window.H>
 
-1650980447 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
 	"User.h"
 	<string>
 	<map>
 
-1650895650 /home/jwagner2/Desktop/TeamKWordle/model/User.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/model/User.h
 	<string>
 	<map>
 
-1650980447 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
+1651084491 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
 	"GameWindow.h"
 	<FL/Fl.H>
 	"../enums/SpecialKey.h"
 	<iostream>
 	<string>
 
-1650980447 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 	"Dictionary.h"
 	<iostream>
 	<fstream>
 	<string>
 	<vector>
+	<algorithm>
 
 1650900799 y.h"
 
@@ -145,7 +152,7 @@
 	<sstream>
 	"Dictionary.h"
 
-1650980447 source:/home/jwagner2/Desktop/TeamKWordle/model/Dictionary.cpp
+1651077160 source:/home/jwagner2/Desktop/TeamKWordle/model/Dictionary.cpp
 	"Dictionary.h"
 	<iostream>
 	<string>
@@ -203,4 +210,44 @@
 	"Settings.h"
 	"Dictionary.h"
 	"../datatier/DictionaryLoader.h"
+
+1651088755 /home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.h
+	"GuessCheckerResult.h"
+	<string>
+	<vector>
+
+1650986943 /home/jwagner2/Desktop/TeamKWordle/enums/GuessCheckerResult.h
+
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.cpp
+	"GuessChecker.h"
+	<algorithm>
+	<string>
+
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.cpp
+	"../model/User.h"
+	"../model/Dictionary.h"
+	"../model/Settings.h"
+	"../model/GuessChecker.h"
+	<iostream>
+	<string>
+	"../datatier/DictionaryLoader.h"
+	"ViewModel.h"
+
+1651088755 /home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.h
+	"../model/User.h"
+	"../model/Dictionary.h"
+	"../model/Settings.h"
+	"../model/GuessChecker.h"
+	<string>
+	"../datatier/DictionaryLoader.h"
+
+1651082386 source:/home/jwagner2/Desktop/TeamKWordle/view/InvalidWordWindow.cpp
+	"InvalidWordWindow.h"
+
+1651082257 /home/jwagner2/Desktop/TeamKWordle/view/InvalidWordWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Toggle_Button.H>
+	<FL/Fl_Return_Button.H>
 

@@ -7,10 +7,8 @@ using namespace std;
 namespace model
 {
 
-GuessChecker::GuessChecker(string& answerWord)
+GuessChecker::GuessChecker()
 {
-    transform(answerWord.begin(), answerWord.end(), answerWord.begin(), ::toupper);
-    this->answer = answerWord;
 }
 
 vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
@@ -33,6 +31,11 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
         }
     }
     return result;
+}
+
+void GuessChecker::setAnswer(string& answerWord)
+{
+    this->answer = answerWord;
 }
 
 bool GuessChecker::answerContains(char letter)
