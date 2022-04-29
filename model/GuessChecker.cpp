@@ -9,10 +9,12 @@ namespace model
 
 GuessChecker::GuessChecker()
 {
+
 }
 
 vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
 {
+    int duplicateTracking = 0;
     vector<GuessCheckerResult> result;
     for (int index = 0; index < 5; index++)
     {
@@ -33,6 +35,11 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
     return result;
 }
 
+void GuessChecker()::setAnswerCharRates(unordered_map<char, int> answerCharRates)
+{
+    this->answerCharRates = answerCharRates;
+}
+
 void GuessChecker::setAnswer(string& answerWord)
 {
     this->answer = answerWord;
@@ -48,6 +55,13 @@ bool GuessChecker::answerContains(char letter)
         }
     }
     return false;
+}
+
+void GuessChecker::determineGuessCharRates(string& guess)
+{
+    for (int charPosition = 0; charPosition < strlen(guess); charPosition++) {
+        this->guessCharRates[guess[charPosition]]++;
+    }
 }
 
 GuessChecker::~GuessChecker()

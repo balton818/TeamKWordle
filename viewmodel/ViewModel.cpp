@@ -32,6 +32,7 @@ void ViewModel::initializeGame(string& username)
     this->currentSolution = this->dictionary->getWordToGuess(true);
     cout << "Wordle answer: " << this->currentSolution << endl;
     this->currentUser.setUserName(username);
+    this->guessChecker.answerCharRates(this->dictionary.getCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 
 }
