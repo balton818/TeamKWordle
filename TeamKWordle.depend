@@ -97,8 +97,9 @@
 	<string>
 	<vector>
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
+1651152260 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
 	<vector>
+	<bits/stdc++.h>
 	"DictionaryNode.h"
 
 1651091372 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
@@ -211,12 +212,13 @@
 	"Dictionary.h"
 	"../datatier/DictionaryLoader.h"
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.h
+1651152260 /home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.h
 	"GuessCheckerResult.h"
 	<string>
 	<vector>
+	<bits/stdc++.h>
 
-1651091372 /home/jwagner2/Desktop/TeamKWordle/enums/GuessCheckerResult.h
+1651096735 /home/jwagner2/Desktop/TeamKWordle/enums/GuessCheckerResult.h
 
 1651091921 source:/home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.cpp
 	"GuessChecker.h"

@@ -93,9 +93,9 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
 
 bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
 {
-     if (!canReuseLetters)
+     if (!this->hasUniqueChars(wordBuilder))
         {
-            if (!this->checkIfUniqueChars(wordBuilder))
+            if (!canReuseLetters)
             {
                 this->wordToGuess = "";
                 return false;
@@ -104,13 +104,18 @@ bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
     return true;
 }
 
-bool Dictionary::checkIfUniqueChars(char wordBuilder[])
+unordered_map<char, int> Dictionary:: getCharRates()
 {
-    unordered_map<char, int> rates;
+    return this->rates;
+}
+
+bool Dictionary::hasUniqueChars(char wordBuilder[])
+{
+
     for (int charPosition = 0; charPosition < strlen(wordBuilder); charPosition++) {
-        rates[wordBuilder[charPosition]]++;
+        this->rates[wordBuilder[charPosition]]++;
     }
-    for (auto currentChar : rates) {
+    for (auto currentChar : this->rates) {
         if (currentChar.second > 1)
          return false;
     }
