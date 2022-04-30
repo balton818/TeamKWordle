@@ -65,7 +65,6 @@ void UserSelectionWindow::playGame_callback(Fl_Widget* widget, void* data)
     }
 }
 
-
 void UserSelectionWindow::handlePlayGame()
 {
 

@@ -1,4 +1,5 @@
-#define EZMODE 0 //change to 1 to show answer in terminal
+#define EZMODE 1
+ //change to 1 to show answer in terminal
 
 #include "../model/User.h"
 #include "../model/Dictionary.h"
@@ -31,6 +32,7 @@ void ViewModel::initializeGame(string& username)
 {
     this->dictionary = this->dictLoader->readDictionaryFile();
     this->currentSolution = this->dictionary->getWordToGuess(true);
+
 #if EZMODE == 1 //EZMODE value assigned on first line of file
     cout << "Wordle answer: " << this->currentSolution << endl;
 #endif // EZMODE

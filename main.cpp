@@ -5,18 +5,11 @@
 #include <iostream>
 using namespace std;
 
-#include "datatier/DictionaryLoader.h"
-#include "datatier/UserFileHandler.h"
-using namespace datatier;
-#include "Dictionary.h"
-using namespace model;
-#include "GameWindow.h"
-
 #include "UserSelectionWindow.h"
 using namespace view;
 
-#include "GuessChecker.h"
-using namespace model;
+#include "ViewModel.h"
+using namespace viewmodel;
 
 #include <iostream>
 using namespace std;
@@ -29,11 +22,6 @@ int main (int argc, char ** argv)
     UserSelectionWindow userWindow(400, 300, pageTitle.c_str(), viewModel);
     userWindow.show();
 
-//    string username = "test";
-//    viewModel->initializeGame(username);
-//    GameWindow mainWindow(500, 700, pageTitle.c_str(), viewModel);
-//    mainWindow.show();
-//
     int exitCode = Fl::run();
     return exitCode;
 }

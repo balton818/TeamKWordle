@@ -17,17 +17,13 @@
 1650330194 /home/balton1/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 
-1651345674 source:/home/balton1/TeamKWordle/main.cpp
+1651348323 source:/home/balton1/TeamKWordle/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<iostream>
-	"datatier/DictionaryLoader.h"
-	"datatier/UserFileHandler.h"
-	"Dictionary.h"
-	"GameWindow.h"
 	"UserSelectionWindow.h"
-	"GuessChecker.h"
+	"ViewModel.h"
 	<iostream>
 
 1651335863 /home/balton1/TeamKWordle/view/GameWindow.h
@@ -270,7 +266,7 @@
 	<FL/Fl_Toggle_Button.H>
 	<FL/Fl_Return_Button.H>
 
-1651347454 source:/home/balton1/TeamKWordle/view/UserSelectionWindow.cpp
+1651348325 source:/home/balton1/TeamKWordle/view/UserSelectionWindow.cpp
 	"UserSelectionWindow.h"
 	<GameWindow.h>
 	<FL/Fl_Box.H>

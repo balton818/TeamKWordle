@@ -55,6 +55,8 @@
 		<Unit filename="userData.wuf" />
 		<Unit filename="view/GameWindow.cpp" />
 		<Unit filename="view/GameWindow.h" />
+		<Unit filename="view/SettingsWindow.cpp" />
+		<Unit filename="view/SettingsWindow.h" />
 		<Unit filename="view/UserSelectionWindow.cpp" />
 		<Unit filename="view/UserSelectionWindow.h" />
 		<Unit filename="viewmodel/ViewModel.cpp" />
