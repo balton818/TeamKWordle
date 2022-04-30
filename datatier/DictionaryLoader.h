@@ -13,19 +13,19 @@ namespace datatier
 //
 class DictionaryLoader
 {
-    public:
+public:
 
-        // Constructs a dictionary loader
-        //
-        DictionaryLoader();
+    // Constructs a dictionary loader
+    //
+    DictionaryLoader();
 
-        // deconstructs a dictionary loader
-        //
-        virtual ~DictionaryLoader();
+    // deconstructs a dictionary loader
+    //
+    virtual ~DictionaryLoader();
 
-        // reads a file in and builds a trie
-        //
-        Dictionary* readDictionaryFile();
+    // reads a file in and builds a trie
+    //
+    Dictionary* readDictionaryFile();
 };
 }
 

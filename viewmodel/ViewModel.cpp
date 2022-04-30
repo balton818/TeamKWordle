@@ -1,3 +1,5 @@
+#define EZMODE 0 //change to 1 to show answer in terminal
+
 #include "../model/User.h"
 #include "../model/Dictionary.h"
 #include "../model/Settings.h"
@@ -8,9 +10,6 @@ using namespace model;
 #include<string>
 using namespace std;
 
-#include "../datatier/DictionaryLoader.h"
-using namespace datatier;
-
 #include "ViewModel.h"
 namespace viewmodel
 {
@@ -18,23 +17,38 @@ namespace viewmodel
 ViewModel::ViewModel()
 {
     this->dictLoader = new DictionaryLoader();
+    this->fileHandler = new UserFileHandler();
+    this->users = this->fileHandler->loadUserData();
 }
 
 ViewModel::~ViewModel()
 {
     delete this->dictLoader;
-
+    delete this->fileHandler;
 }
 
 void ViewModel::initializeGame(string& username)
 {
     this->dictionary = this->dictLoader->readDictionaryFile();
     this->currentSolution = this->dictionary->getWordToGuess(true);
+#if EZMODE == 1 //EZMODE value assigned on first line of file
     cout << "Wordle answer: " << this->currentSolution << endl;
-    this->currentUser.setUserName(username);
-    this->guessChecker.answerCharRates(this->dictionary.getCharRates());
-    this->guessChecker.setAnswer(this->currentSolution);
+#endif // EZMODE
 
+    if (!this->users.count(username))
+    {
+        this->users.insert(pair<string, User*>(username, new User(username)));
+    }
+
+    this->currentUser = this->users[username];
+    this->gameSettings = this->currentUser->getSettings();
+    this->guessChecker.setAnswerCharRates(this->dictionary->getCharRates());
+    this->guessChecker.setAnswer(this->currentSolution);
+}
+
+bool ViewModel::userExists(string& username)
+{
+    return this->users[username] == nullptr;
 }
 
 vector<GuessCheckerResult> ViewModel::checkGuess(string& guessToCheck)
@@ -55,10 +69,6 @@ string& ViewModel::getStats()
 
 }
 
-void ViewModel::loadUser()
-{
-
-}
 void ViewModel::saveUser()
 {
 

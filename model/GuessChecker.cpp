@@ -35,7 +35,7 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
     return result;
 }
 
-void GuessChecker()::setAnswerCharRates(unordered_map<char, int> answerCharRates)
+void GuessChecker::setAnswerCharRates(unordered_map<char, int> answerCharRates)
 {
     this->answerCharRates = answerCharRates;
 }
@@ -59,7 +59,8 @@ bool GuessChecker::answerContains(char letter)
 
 void GuessChecker::determineGuessCharRates(string& guess)
 {
-    for (int charPosition = 0; charPosition < strlen(guess); charPosition++) {
+    for (int charPosition = 0; charPosition < guess.length(); charPosition++)
+    {
         this->guessCharRates[guess[charPosition]]++;
     }
 }

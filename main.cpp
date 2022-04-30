@@ -6,10 +6,13 @@
 using namespace std;
 
 #include "datatier/DictionaryLoader.h"
+#include "datatier/UserFileHandler.h"
 using namespace datatier;
 #include "Dictionary.h"
 using namespace model;
 #include "GameWindow.h"
+
+#include "UserSelectionWindow.h"
 using namespace view;
 
 #include "GuessChecker.h"
@@ -20,18 +23,17 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
-   // DictionaryLoader* load = new DictionaryLoader();
-    //Dictionary dict =   load->readDictionaryFile();
-    //tring answer = dict.getWordToGuess(true);
+    string pageTitle = "Wordle by Alton, Wagner";
 
-    //GuessChecker* checker = new GuessChecker();
-    //checker->setAnswer(answer);
     ViewModel* viewModel = new ViewModel();
-    string username = "test";
-    viewModel->initializeGame(username);
-    GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner", viewModel);
-    mainWindow.show();
+    UserSelectionWindow userWindow(400, 300, pageTitle.c_str(), viewModel);
+    userWindow.show();
 
+//    string username = "test";
+//    viewModel->initializeGame(username);
+//    GameWindow mainWindow(500, 700, pageTitle.c_str(), viewModel);
+//    mainWindow.show();
+//
     int exitCode = Fl::run();
     return exitCode;
 }
