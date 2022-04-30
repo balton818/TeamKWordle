@@ -20,6 +20,7 @@ ViewModel::ViewModel()
     this->dictLoader = new DictionaryLoader();
     this->fileHandler = new UserFileHandler();
     this->users = this->fileHandler->loadUserData();
+    this->gameSettings = nullptr;
 }
 
 ViewModel::~ViewModel()
@@ -30,20 +31,28 @@ ViewModel::~ViewModel()
 
 void ViewModel::initializeGame(string& username)
 {
-    this->dictionary = this->dictLoader->readDictionaryFile();
-    this->currentSolution = this->dictionary->getWordToGuess(true);
-
-#if EZMODE == 1 //EZMODE value assigned on first line of file
-    cout << "Wordle answer: " << this->currentSolution << endl;
-#endif // EZMODE
-
     if (!this->users.count(username))
     {
         this->users.insert(pair<string, User*>(username, new User(username)));
     }
 
     this->currentUser = this->users[username];
-    this->gameSettings = this->currentUser->getSettings();
+    cout << "Current player: " << this->currentUser->getUsername() << endl;
+
+    if (this->gameSettings == nullptr)
+    {
+        this->gameSettings = this->currentUser->getSettings();
+    }
+
+    this->dictionary = this->dictLoader->readDictionaryFile();
+    this->currentSolution = this->dictionary->getWordToGuess(this->gameSettings->getOnlyUniqueChars());
+
+#if EZMODE == 1 //EZMODE value assigned on first line of file
+    cout << "Wordle answer: " << this->currentSolution << endl;
+#endif // EZMODE
+
+    cout << "Hard: " << this->gameSettings->getHardMode() << endl;
+    cout << "Unique: " << this->gameSettings->getOnlyUniqueChars() << endl;
     this->guessChecker.setAnswerCharRates(this->dictionary->getCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 }
@@ -58,12 +67,21 @@ vector<GuessCheckerResult> ViewModel::checkGuess(string& guessToCheck)
     vector<GuessCheckerResult> result;
     if (this->dictionary->isValidWord(guessToCheck))
     {
-        cout << guessToCheck << endl;
+        cout << "Your last guess: " << guessToCheck << endl;
         result = this->guessChecker.checkGuess(guessToCheck);
         return result;
 
     }
     return {};
+}
+
+void ViewModel::updateSettings(bool hardModeEnabled, bool letterReuseEnabled)
+{
+    delete this->gameSettings;
+    Settings* newSettings = new Settings();
+    newSettings->setHardMode(hardModeEnabled);
+    newSettings->setOnlyUniqueChars(!letterReuseEnabled);
+    this->gameSettings = newSettings;
 }
 
 string& ViewModel::getStats()

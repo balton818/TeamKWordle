@@ -30,6 +30,7 @@ public:
     void startNewGame();
     void handleWin();
     void handleLoss();
+    void updateSettings(bool hardModeEnabled, bool letterReuseEnabled);
 
 
 
@@ -42,6 +43,7 @@ private:
     Settings* gameSettings;
     GuessChecker guessChecker;
     string currentSolution;
+
 
     bool userExists(string& username);
 

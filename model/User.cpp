@@ -14,6 +14,7 @@ User::User(string username)
     this->gamesWon = 0;
     this->maxWinStreak = 0;
     this->createGuessDistribution();
+    this->settings = new Settings();
 }
 
 User::User(string username, int gamesPlayed, int gamesWon, int currentStreak, int maxStreak, map<int, int> guessDistribution, Settings* settings)
@@ -102,4 +103,10 @@ Settings* User::getSettings()
 {
     return this->settings;
 }
+
+void User::changeSettings(Settings* settings)
+{
+    this->settings = settings;
+}
+
 }

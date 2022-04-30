@@ -81,6 +81,7 @@ public:
     string getUsername();
 
     Settings* getSettings();
+    void changeSettings(Settings* settings);
 
 private:
     string username;

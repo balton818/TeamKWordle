@@ -31,7 +31,6 @@ private:
     int BUTTON_HEIGHT = 30;
     int BUTTON_TOP_OFFSET = 20;
     const char* PAGE_TITLE = "Wordle";
-    const char* USER_ERROR = "Please enter a username";
 
     ViewModel* viewModel;
 
@@ -41,7 +40,7 @@ private:
     void addPlayGameButton();
     void addSettingsButton();
     static void playGame_callback(Fl_Widget* widget, void* data);
-    void handlePlayGame();
+    static void settings_callback(Fl_Widget* widget, void* data);
 
 public:
     UserSelectionWindow(int width, int height, const char* title, ViewModel* viewModel);

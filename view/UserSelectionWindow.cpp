@@ -1,6 +1,7 @@
 #include "UserSelectionWindow.h"
 
-#include <GameWindow.h>
+#include "GameWindow.h"
+#include "SettingsWindow.h"
 #include <FL/Fl_Box.H>
 
 namespace view
@@ -50,6 +51,7 @@ void UserSelectionWindow::addSettingsButton()
     int startX = (this->MAIN_WINDOW_WIDTH / 2) - (this->BUTTON_WIDTH / 2);
     int startY = (this->MAIN_WINDOW_HEIGHT / 2 + this->BUTTON_HEIGHT + 2 * this->BUTTON_TOP_OFFSET);
     this->changeSettings = new Fl_Button(startX, startY, this->BUTTON_WIDTH, this->BUTTON_HEIGHT, "Settings");
+    this->changeSettings->callback(this->settings_callback, this);
 }
 
 void UserSelectionWindow::playGame_callback(Fl_Widget* widget, void* data)
@@ -65,9 +67,15 @@ void UserSelectionWindow::playGame_callback(Fl_Widget* widget, void* data)
     }
 }
 
-void UserSelectionWindow::handlePlayGame()
+void UserSelectionWindow::settings_callback(Fl_Widget* widget, void* data)
 {
-
+    UserSelectionWindow* window = (UserSelectionWindow*)data;
+    string username = window->usernameInput->value();
+    if (username.length() > 0)
+    {
+        SettingsWindow* settingsWindow = new SettingsWindow(300, 200, "Settings", window->viewModel);
+        settingsWindow->show();
+    }
 }
 
 UserSelectionWindow::~UserSelectionWindow()

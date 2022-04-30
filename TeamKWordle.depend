@@ -45,12 +45,12 @@
 	<iostream>
 	<string>
 
-1651344328 source:/home/balton1/TeamKWordle/model/User.cpp
+1651358563 source:/home/balton1/TeamKWordle/model/User.cpp
 	"User.h"
 	<string>
 	<map>
 
-1651344328 /home/balton1/TeamKWordle/model/User.h
+1651358236 /home/balton1/TeamKWordle/model/User.h
 	<string>
 	<map>
 	"Settings.h"
@@ -207,7 +207,7 @@
 
 1651335863 /home/balton1/TeamKWordle/model/Settings.h
 
-1651346587 source:/home/balton1/TeamKWordle/viewmodel/ViewModel.cpp
+1651359006 source:/home/balton1/TeamKWordle/viewmodel/ViewModel.cpp
 	"../model/User.h"
 	"../model/Dictionary.h"
 	"../model/Settings.h"
@@ -216,7 +216,7 @@
 	<string>
 	"ViewModel.h"
 
-1651344106 /home/balton1/TeamKWordle/viewmodel/ViewModel.h
+1651359066 /home/balton1/TeamKWordle/viewmodel/ViewModel.h
 	"../model/User.h"
 	"../model/Dictionary.h"
 	"../model/Settings.h"
@@ -266,12 +266,13 @@
 	<FL/Fl_Toggle_Button.H>
 	<FL/Fl_Return_Button.H>
 
-1651348325 source:/home/balton1/TeamKWordle/view/UserSelectionWindow.cpp
+1651351796 source:/home/balton1/TeamKWordle/view/UserSelectionWindow.cpp
 	"UserSelectionWindow.h"
-	<GameWindow.h>
+	"GameWindow.h"
+	"SettingsWindow.h"
 	<FL/Fl_Box.H>
 
-1651345563 /home/balton1/TeamKWordle/view/UserSelectionWindow.h
+1651351677 /home/balton1/TeamKWordle/view/UserSelectionWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Input.H>
 	<FL/Fl_Button.H>
@@ -291,4 +292,15 @@
 	<fstream>
 	"User.h"
 	"Settings.h"
+
+1651359025 source:/home/balton1/TeamKWordle/view/SettingsWindow.cpp
+	"SettingsWindow.h"
+	<iostream>
+
+1651359066 /home/balton1/TeamKWordle/view/SettingsWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Check_Button.H>
+	<FL/Fl_Button.H>
+	"ViewModel.h"
 
