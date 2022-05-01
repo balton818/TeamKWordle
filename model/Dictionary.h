@@ -46,28 +46,7 @@ public:
     //
     string& getWordToGuess(bool canReuseLetters);
 
-        // Param - wordToInsert the word to insert into the trie
-        //
-        void insertWord(string& wordToInsert);
-
-        // Check if a word is present in the dictionary if it is the word is valid
-        //
-        // Param - wordToCheck the word that is searched for in the trie
-        //
-        // Returns - true if the word is valid, false otherwise
-        //
-
-private:
-
-        // Gets a random word for the player to guess
-        //
-        // Param - reuseLetters - indicates if guess word can reuse letters
-        //
-        // Returns - the word for the player to guess
-        //
-        string& getWordToGuess(bool canReuseLetters);
-
-        unordered_map<char, int> getAnswerCharRates();
+    unordered_map<char, int> getAnswerCharRates();
 
     private:
 

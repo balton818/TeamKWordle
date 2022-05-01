@@ -69,7 +69,7 @@ void ViewModel::initializeGame(string& username)
     cout << "Wordle answer: " << this->currentSolution << endl;
 #endif // EZMODE
 
-    this->guessChecker.setAnswerCharRates(this->dictionary->getCharRates());
+    this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 }
 
