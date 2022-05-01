@@ -14,34 +14,34 @@ namespace model
 //
 class DictionaryNode
 {
-    public:
+public:
 
-        // Dictionary Node constructor
-        //
-        DictionaryNode();
+    // Dictionary Node constructor
+    //
+    DictionaryNode();
 
-        // Dictionary Node destructor
-        //
-        virtual ~DictionaryNode();
+    // Dictionary Node destructor
+    //
+    virtual ~DictionaryNode();
 
-        // checks if current node is the end of a word
-        //
-        // Returns - true if node is end of word, false otherwise
-        //
-        bool isEndOfWord();
+    // checks if current node is the end of a word
+    //
+    // Returns - true if node is end of word, false otherwise
+    //
+    bool isEndOfWord();
 
-        // sets node to be end of word or not
-        //
-        // Param - toSet - indicates if node is to be set as end of word
-        //
-        void setEndOfWord(bool toSet);
+    // sets node to be end of word or not
+    //
+    // Param - toSet - indicates if node is to be set as end of word
+    //
+    void setEndOfWord(bool toSet);
 
-        // the nodes children.
-        //
-        DictionaryNode* children[ALPHA_CHARS];
+    // the nodes children.
+    //
+    DictionaryNode* children[ALPHA_CHARS];
 
-    private:
-        bool endOfWord;
+private:
+    bool endOfWord;
 };
 }
 

@@ -153,7 +153,8 @@ void GameWindow::enterGuess()
     if (this->currentGuess.size() == this->MAX_GUESS_LENGTH)
     {
         string guess;
-        for (char currentChar : this->currentGuess) {
+        for (char currentChar : this->currentGuess)
+        {
             guess.push_back(currentChar);
         }
         if (this->handleCheckerResult(this->viewModel->checkGuess(guess)))
