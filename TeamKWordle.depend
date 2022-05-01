@@ -73,7 +73,7 @@
 	"Dictionary.h"
 	"GameWindow.h"
 
-1651091921 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/main.cpp
 	<FL/Fl.H>
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
@@ -97,18 +97,18 @@
 	<string>
 	<vector>
 
-1651152260 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
+1651155695 /home/jwagner2/Desktop/TeamKWordle/model/Dictionary.h
 	<vector>
 	<bits/stdc++.h>
 	"DictionaryNode.h"
 
-1651091372 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
+1650934171 /home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.h
 	<memory>
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.h
 	"Dictionary.h"
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/view/GameWindow.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/view/GameWindow.h
 	<FL/Fl_Window.H>
 	<FL/Fl_Box.H>
 	<FL/Fl_Button.H>
@@ -122,23 +122,23 @@
 	"GuessCheckerResult.h"
 	<FL/Fl_Window.H>
 
-1651091921 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/model/User.cpp
 	"User.h"
 	<string>
 	<map>
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/model/User.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/model/User.h
 	<string>
 	<map>
 
-1651084491 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
+1651267942 source:/home/jwagner2/Desktop/TeamKWordle/view/GameWindow.cpp
 	"GameWindow.h"
 	<FL/Fl.H>
 	"../enums/SpecialKey.h"
 	<iostream>
 	<string>
 
-1651091921 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
+1651088755 source:/home/jwagner2/Desktop/TeamKWordle/datatier/DictionaryLoader.cpp
 	"DictionaryLoader.h"
 	"Dictionary.h"
 	<iostream>
@@ -153,21 +153,21 @@
 	<sstream>
 	"Dictionary.h"
 
-1651091372 source:/home/jwagner2/Desktop/TeamKWordle/model/Dictionary.cpp
+1651153563 source:/home/jwagner2/Desktop/TeamKWordle/model/Dictionary.cpp
 	"Dictionary.h"
 	<iostream>
 	<string>
 	<random>
 	<bits/stdc++.h>
 
-1651091372 source:/home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.cpp
+1650980447 source:/home/jwagner2/Desktop/TeamKWordle/model/DictionaryNode.cpp
 	"DictionaryNode.h"
 	<iostream>
 
-1651091372 source:/home/jwagner2/Desktop/TeamKWordle/model/Settings.cpp
+1650980447 source:/home/jwagner2/Desktop/TeamKWordle/model/Settings.cpp
 	"Settings.h"
 
-1651091372 /home/jwagner2/Desktop/TeamKWordle/model/Settings.h
+1650980447 /home/jwagner2/Desktop/TeamKWordle/model/Settings.h
 
 1650986749 /home/balton1/TeamKWordle/datatier/DictionaryLoader.h
 	"Dictionary.h"
@@ -212,20 +212,20 @@
 	"Dictionary.h"
 	"../datatier/DictionaryLoader.h"
 
-1651152260 /home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.h
+1651263526 /home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.h
 	"GuessCheckerResult.h"
 	<string>
 	<vector>
 	<bits/stdc++.h>
 
-1651096735 /home/jwagner2/Desktop/TeamKWordle/enums/GuessCheckerResult.h
+1651267667 /home/jwagner2/Desktop/TeamKWordle/enums/GuessCheckerResult.h
 
-1651091921 source:/home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.cpp
+1651267685 source:/home/jwagner2/Desktop/TeamKWordle/model/GuessChecker.cpp
 	"GuessChecker.h"
 	<algorithm>
 	<string>
 
-1651091921 source:/home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.cpp
+1651155934 source:/home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.cpp
 	"../model/User.h"
 	"../model/Dictionary.h"
 	"../model/Settings.h"
@@ -235,7 +235,7 @@
 	"../datatier/DictionaryLoader.h"
 	"ViewModel.h"
 
-1651091921 /home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.h
+1651088755 /home/jwagner2/Desktop/TeamKWordle/viewmodel/ViewModel.h
 	"../model/User.h"
 	"../model/Dictionary.h"
 	"../model/Settings.h"
@@ -252,4 +252,114 @@
 	<FL/Fl_Button.H>
 	<FL/Fl_Toggle_Button.H>
 	<FL/Fl_Return_Button.H>
+
+1651088755 source:/home/jwagner2/TeamKWordle/datatier/DictionaryLoader.cpp
+	"DictionaryLoader.h"
+	"Dictionary.h"
+	<iostream>
+	<fstream>
+	<string>
+	<vector>
+	<algorithm>
+
+1651088755 /home/jwagner2/TeamKWordle/datatier/DictionaryLoader.h
+	"Dictionary.h"
+
+1651155695 /home/jwagner2/TeamKWordle/model/Dictionary.h
+	<vector>
+	<bits/stdc++.h>
+	"DictionaryNode.h"
+
+1650934171 /home/jwagner2/TeamKWordle/model/DictionaryNode.h
+	<memory>
+
+1651088755 source:/home/jwagner2/TeamKWordle/main.cpp
+	<FL/Fl.H>
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<iostream>
+	"datatier/DictionaryLoader.h"
+	"Dictionary.h"
+	"GameWindow.h"
+	"GuessChecker.h"
+	<iostream>
+
+1651088755 /home/jwagner2/TeamKWordle/view/GameWindow.h
+	<FL/Fl_Window.H>
+	<FL/Fl_Box.H>
+	<FL/Fl_Button.H>
+	<FL/Fl_Toggle_Button.H>
+	<FL/Fl_Return_Button.H>
+	<FL/Fl.H>
+	<FL/fl_ask.H>
+	<vector>
+	<string>
+	"ViewModel.h"
+	"GuessCheckerResult.h"
+	<FL/Fl_Window.H>
+
+1651088755 /home/jwagner2/TeamKWordle/viewmodel/ViewModel.h
+	"../model/User.h"
+	"../model/Dictionary.h"
+	"../model/Settings.h"
+	"../model/GuessChecker.h"
+	<string>
+	"../datatier/DictionaryLoader.h"
+
+1651088755 /home/jwagner2/TeamKWordle/model/User.h
+	<string>
+	<map>
+
+1650980447 /home/jwagner2/TeamKWordle/model/Settings.h
+
+1651263526 /home/jwagner2/TeamKWordle/model/GuessChecker.h
+	"GuessCheckerResult.h"
+	<string>
+	<vector>
+	<bits/stdc++.h>
+
+1651267667 /home/jwagner2/TeamKWordle/enums/GuessCheckerResult.h
+
+1650980447 source:/home/jwagner2/TeamKWordle/model/DictionaryNode.cpp
+	"DictionaryNode.h"
+	<iostream>
+
+1650980447 source:/home/jwagner2/TeamKWordle/model/Settings.cpp
+	"Settings.h"
+
+1651088755 source:/home/jwagner2/TeamKWordle/model/User.cpp
+	"User.h"
+	<string>
+	<map>
+
+1651267942 source:/home/jwagner2/TeamKWordle/view/GameWindow.cpp
+	"GameWindow.h"
+	<FL/Fl.H>
+	"../enums/SpecialKey.h"
+	<iostream>
+	<string>
+
+1650895650 /home/jwagner2/TeamKWordle/enums/SpecialKey.h
+
+1651153563 source:/home/jwagner2/TeamKWordle/model/Dictionary.cpp
+	"Dictionary.h"
+	<iostream>
+	<string>
+	<random>
+	<bits/stdc++.h>
+
+1651267685 source:/home/jwagner2/TeamKWordle/model/GuessChecker.cpp
+	"GuessChecker.h"
+	<algorithm>
+	<string>
+
+1651155934 source:/home/jwagner2/TeamKWordle/viewmodel/ViewModel.cpp
+	"../model/User.h"
+	"../model/Dictionary.h"
+	"../model/Settings.h"
+	"../model/GuessChecker.h"
+	<iostream>
+	<string>
+	"../datatier/DictionaryLoader.h"
+	"ViewModel.h"
 
