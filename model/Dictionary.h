@@ -46,24 +46,19 @@ class Dictionary
         //
         string& getWordToGuess(bool canReuseLetters);
 
-
-        // gets the char rates for the current answer
-        //
-        // returns - map of the chars and rates for the current solution.
-        //
-        unordered_map<char, int> Dictionary:: getCharRates()
+        unordered_map<char, int> getAnswerCharRates();
 
     private:
 
         DictionaryNode* root;
         string wordToGuess;
         int getRandomIndex();
-        unordered_map<char, int> rates;
         char trieOffset = 'A';
         int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
+        bool checkIfUniqueChars(char wordBuilder[]);
         void generateWordToGuess(bool canReuseLetters);
         bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
-        bool hasUniqueChars(char wordBuilder[]);
+        unordered_map<char, int> answerCharRates;
 };
 }
 #endif // DICTIONARY_H

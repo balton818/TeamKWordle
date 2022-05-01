@@ -223,7 +223,10 @@ void GameWindow::updateKeyColor(const char* keyLabel, GuessCheckerResult result)
         string label = currentKey->label();
         if (label == keyLabel)
         {
-            currentKey->color(this->determineColorForResult(result));
+            if (result != GuessCheckerResult::DUPLICATE_WRONG)
+            {
+                 currentKey->color(this->determineColorForResult(result));
+            }
             currentKey->redraw();
         }
     }
