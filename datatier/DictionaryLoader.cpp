@@ -3,7 +3,6 @@
 #include "Dictionary.h"
 using namespace model;
 
-#include <iostream>
 #include <fstream>
 #include <string>
 #include <vector>
@@ -37,12 +36,10 @@ Dictionary* DictionaryLoader::readDictionaryFile()
                 transform(line.begin(), line.end(), line.begin(), ::toupper);
                 dictionary->insertWord(line);
             }
-
         }
 
     dictFile.close();
     return dictionary;
 }
-
 
 }

@@ -23,6 +23,11 @@ using namespace enums;
 #include <FL/Fl_Window.H>
 namespace view
 {
+
+// The game window class
+//
+// Author - Team K
+//
 class GameWindow : public Fl_Window
 {
     private:
@@ -56,6 +61,8 @@ class GameWindow : public Fl_Window
         void addEnterKey(int xPosition, int yPosition);
         Fl_Button* backspace;
         void addBackspaceKey(int xPosition, int yPosition);
+        Fl_Button* newGameButton;
+        void addNewGameButton(int xPosition, int yPosition);
 
         vector<string> qwertyKeyLabels;
 
@@ -68,7 +75,10 @@ class GameWindow : public Fl_Window
         static void buttonClick_callback(Fl_Widget* widget, void* data);
         static void enterClick_callback(Fl_Widget* widget, void* data);
         static void backspaceClick_callback(Fl_Widget* widget, void* data);
+        static void newGameClick_callback(Fl_Widget* widget, void* data);
 
+        void clearKeyBoardColors();
+        void clearGuessBoxes();
         void addLetterToCurrentGuess(const char* letter);
         void updateGuessBox(const char* letter);
         void removeLastLetter();
@@ -81,7 +91,18 @@ class GameWindow : public Fl_Window
         Fl_Box* invalidGuess;
 
     public:
+
+        // Constructs a gameWindow for the world game
+        //
+        // params - width - window width
+        //          height - window height
+        //          title - window title
+        //          viewModel - the viewmodel for the window
+        //
         GameWindow(int width, int height, const char* title, ViewModel* viewModel);
+
+        // Deconstructs the game window
+        //
         virtual ~GameWindow();
 };
 }

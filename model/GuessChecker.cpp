@@ -9,6 +9,7 @@ namespace model
 
 GuessChecker::GuessChecker()
 {
+
 }
 
 vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
@@ -24,6 +25,7 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
     for (int index = 0; index < 5; index++)
     {
         char currentLetter = toupper(guess[index]);
+
         if (this->answerCharRates[currentLetter] < this->guessCharRates[currentLetter] &&  this->answerCharRates[currentLetter] != 0)
         {
             if (find(duplicatesInGuess.begin(), duplicatesInGuess.end(), currentLetter) == duplicatesInGuess.end())
@@ -31,8 +33,10 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
                 duplicatesInGuess.push_back(currentLetter);
             }
         }
+
         this->standardGuessParsing(index, currentLetter, result);
     }
+
     if (duplicatesInGuess.size() > 0)
     {
          this->handleGuessDuplicates(result, duplicatesInGuess, guess);
@@ -43,51 +47,62 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
 
 void GuessChecker::handleGuessDuplicates(vector<GuessCheckerResult>& result, vector<char>& duplicatesInGuess, string& guess)
 {
-    int firstInstanceIndex = 6;
-    int correctIndex = -1;
     int duplicates = duplicatesInGuess.size() - 1;
 
     while (duplicates >= 0)
     {
         char currentDuplicate = duplicatesInGuess.at(duplicates);
         int duplicateRate = this->answerCharRates[currentDuplicate];
-        for (int index = 0; index < this->answer.length(); index++)
-        {
-            if (guess[index] == currentDuplicate)
-            {
-                if (result[index] == GuessCheckerResult::CORRECT)
-                {
-                    correctIndex = index;
-                    duplicateRate--;
-
-                }
-                if (correctIndex == firstInstanceIndex && correctIndex != index && duplicateRate <= 0)
-                {
-                    result.at(index) = GuessCheckerResult::DUPLICATE_WRONG;
-                }
-                if (correctIndex < 0 && firstInstanceIndex < 6 && duplicateRate <= 0)
-                {
-                    result.at(index) = GuessCheckerResult::DUPLICATE_WRONG;
-                }
-
-                if (index < firstInstanceIndex)
-                {
-                    firstInstanceIndex = index;
-                    if (index != correctIndex)
-                    {
-                        duplicateRate--;
-                    }
-                }
-
-                if (correctIndex > firstInstanceIndex && this->answerCharRates[currentDuplicate] == 1)
-                {
-                    result.at(firstInstanceIndex) = GuessCheckerResult::DUPLICATE_WRONG;
-                    firstInstanceIndex = index;
-                }
-            }
-        }
+        this->duplicateGuessParsing(currentDuplicate, duplicateRate, guess, result);
         duplicates--;
     }
+}
+
+void GuessChecker::duplicateGuessParsing(char& currentDuplicate, int& duplicateRate, string& guess, vector<GuessCheckerResult>& result)
+{
+    int firstInstanceIndex = 6;
+    int correctIndex = -1;
+
+    for (int index = 0; index < this->answer.length(); index++)
+    {
+        if (guess[index] == currentDuplicate)
+        {
+            this->duplicateGuessParsingConditions(firstInstanceIndex, correctIndex, duplicateRate, result, index);
+
+            if (correctIndex > firstInstanceIndex && this->answerCharRates[currentDuplicate] == 1)
+            {
+                result.at(firstInstanceIndex) = GuessCheckerResult::DUPLICATE_WRONG;
+                firstInstanceIndex = index;
+            }
+        }
+    }
+}
+
+void GuessChecker::duplicateGuessParsingConditions(int& firstInstanceIndex, int& correctIndex, int& duplicateRate, vector<GuessCheckerResult>& result, int currentIndex)
+{
+    if (result[currentIndex] == GuessCheckerResult::CORRECT)
+    {
+        correctIndex = currentIndex;
+        duplicateRate--;
+    }
+    if (correctIndex == firstInstanceIndex && correctIndex != currentIndex && duplicateRate <= 0)
+    {
+        result.at(currentIndex) = GuessCheckerResult::DUPLICATE_WRONG;
+    }
+    if (correctIndex < 0 && firstInstanceIndex < this->answer.size() && duplicateRate <= 0)
+    {
+        result.at(currentIndex) = GuessCheckerResult::DUPLICATE_WRONG;
+    }
+    if (currentIndex < firstInstanceIndex)
+    {
+        firstInstanceIndex = currentIndex;
+
+        if (currentIndex != correctIndex)
+        {
+            duplicateRate--;
+        }
+    }
+
 }
 
 void GuessChecker::standardGuessParsing(int index,char currentLetter, vector<GuessCheckerResult>& result)
@@ -118,22 +133,12 @@ void GuessChecker::setAnswerCharRates(unordered_map<char,int> answerCharRates)
 
 void GuessChecker::determineGuessCharRates(string& guess)
 {
+    this->guessCharRates.clear();
     for (int charPosition = 0; charPosition < guess.size(); charPosition++) {
         this->guessCharRates[guess[charPosition]]++;
     }
 }
 
-bool GuessChecker::answerContains(char letter)
-{
-    for (int index = 0; index < this->answer.length(); index++)
-    {
-        if (this->answer[index] == letter)
-        {
-            return true;
-        }
-    }
-    return false;
-}
 
 GuessChecker::~GuessChecker()
 {

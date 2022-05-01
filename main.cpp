@@ -7,8 +7,10 @@ using namespace std;
 
 #include "datatier/DictionaryLoader.h"
 using namespace datatier;
+
 #include "Dictionary.h"
 using namespace model;
+
 #include "GameWindow.h"
 using namespace view;
 
@@ -20,12 +22,6 @@ using namespace std;
 
 int main (int argc, char ** argv)
 {
-   // DictionaryLoader* load = new DictionaryLoader();
-    //Dictionary dict =   load->readDictionaryFile();
-    //tring answer = dict.getWordToGuess(true);
-
-    //GuessChecker* checker = new GuessChecker();
-    //checker->setAnswer(answer);
     ViewModel* viewModel = new ViewModel();
     string username = "test";
     viewModel->initializeGame(username);
