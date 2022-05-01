@@ -14,9 +14,9 @@ namespace view
 class SettingsWindow : public Fl_Window
 {
     private:
-
+        const char* TITLE_BOX_TEXT = "Settings";
         const char* HARD_MODE = "Hard Mode";
-        const char* REUSE_LETTERS = "Single Letter Occurences";
+        const char* REUSE_LETTERS = "Single Letter Occurrences";
         const char* APPLY_SETTINGS = "Apply Settings";
         int TITLE_BOX_WIDTH = 200;
         int TITLE_BOX_HEIGHT = 50;
@@ -35,8 +35,6 @@ class SettingsWindow : public Fl_Window
         void drawCheckButtons();
         void addApplyButton();
         static void applySettings_callback(Fl_Widget* widget, void* data);
-        void updateSettings(bool hardModeSelected, bool reuseLettersSelected);
-
 
     public:
         SettingsWindow(int width, int height, const char* title, ViewModel* viewModel);

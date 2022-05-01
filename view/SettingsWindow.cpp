@@ -19,7 +19,7 @@ void SettingsWindow::buildWindow()
 void SettingsWindow::buildTitleBox()
 {
     int startX = (this->w() / 2) - (this->TITLE_BOX_WIDTH / 2);
-    this->titleBox = new Fl_Box(startX, 20, this->TITLE_BOX_WIDTH, this->TITLE_BOX_HEIGHT, this->label());
+    this->titleBox = new Fl_Box(startX, 20, this->TITLE_BOX_WIDTH, this->TITLE_BOX_HEIGHT, this->TITLE_BOX_TEXT);
     this->titleBox->box(FL_UP_BOX);
     this->titleBox->labelfont(FL_BOLD+FL_ITALIC);
     this->titleBox->labelsize(36);
@@ -47,13 +47,8 @@ void SettingsWindow::applySettings_callback(Fl_Widget* widget, void* data)
     SettingsWindow* window = (SettingsWindow*)data;
     bool hardModeSelected = window->hardModeButton->value();
     bool reuseLettersSelected = window->reuseLettersButton->value();
-    window->updateSettings(hardModeSelected, reuseLettersSelected);
+    window->viewmodel->updateSettings(hardModeSelected, reuseLettersSelected);
     window->hide();
-}
-
-void SettingsWindow::updateSettings(bool hardModeSelected, bool reuseLettersSelected)
-{
-    this->viewmodel->updateSettings(hardModeSelected, reuseLettersSelected);
 }
 
 SettingsWindow::~SettingsWindow()

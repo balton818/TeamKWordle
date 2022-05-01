@@ -1,5 +1,10 @@
-#define EZMODE 1
- //change to 1 to show answer in terminal
+#define EZMODE 1 //change to 1 to show answer in terminal
+
+#include "UserSelectionWindow.h"
+#include "SettingsWindow.h"
+#include "GameWindow.h"
+#include "GameOverWindow.h"
+using namespace view;
 
 #include "../model/User.h"
 #include "../model/Dictionary.h"
@@ -17,6 +22,8 @@ namespace viewmodel
 
 ViewModel::ViewModel()
 {
+    this->createPages();
+
     this->dictLoader = new DictionaryLoader();
     this->fileHandler = new UserFileHandler();
     this->users = this->fileHandler->loadUserData();
@@ -27,6 +34,17 @@ ViewModel::~ViewModel()
 {
     delete this->dictLoader;
     delete this->fileHandler;
+}
+
+void ViewModel::createPages()
+{
+    UserSelectionWindow* loginPage = new UserSelectionWindow(this->LOGIN_WINDOW_WIDTH, this->LOGIN_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    GameWindow* gamePage = new GameWindow(this->GAME_WINDOW_WIDTH, this->GAME_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+
+    SettingsWindow* settingsPage = new SettingsWindow(this->SETTINGS_WINDOW_WIDTH, this->SETTINGS_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    this->gameWindows.push_back(loginPage);
+    this->gameWindows.push_back(settingsPage);
+    this->gameWindows.push_back(gamePage);
 }
 
 void ViewModel::initializeGame(string& username)
@@ -47,14 +65,17 @@ void ViewModel::initializeGame(string& username)
     this->dictionary = this->dictLoader->readDictionaryFile();
     this->currentSolution = this->dictionary->getWordToGuess(this->gameSettings->getOnlyUniqueChars());
 
-#if EZMODE == 1 //EZMODE value assigned on first line of file
+#if EZMODE == 1 //EZMODE value assigned on first line of this file
     cout << "Wordle answer: " << this->currentSolution << endl;
 #endif // EZMODE
 
-    cout << "Hard: " << this->gameSettings->getHardMode() << endl;
-    cout << "Unique: " << this->gameSettings->getOnlyUniqueChars() << endl;
     this->guessChecker.setAnswerCharRates(this->dictionary->getCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
+}
+
+void ViewModel::displayPage(PageType pageType)
+{
+    this->gameWindows[pageType]->show();
 }
 
 bool ViewModel::userExists(string& username)
@@ -84,11 +105,6 @@ void ViewModel::updateSettings(bool hardModeEnabled, bool letterReuseEnabled)
     this->gameSettings = newSettings;
 }
 
-string& ViewModel::getStats()
-{
-
-}
-
 void ViewModel::saveUser()
 {
 
@@ -103,8 +119,26 @@ void ViewModel::handleWin()
 
 }
 
+vector<int> ViewModel::getCurrentUserStats()
+{
+    vector<int> stats;
+    stats.push_back(this->currentUser->getGamesPlayed());
+    stats.push_back((int)this->currentUser->getWinPercentage());
+    stats.push_back(this->currentUser->getCurrentStreak());
+    stats.push_back(this->currentUser->getMaxWinStreak());
+
+    return stats;
+}
+
+map<int, int> ViewModel::getGuessDistribution()
+{
+    return this->currentUser->getGuessDistribution();
+}
+
 void ViewModel::handleLoss()
 {
-
+    GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    this->gameWindows.push_back(gameOverPage);
+    this->displayPage(PageType::GAME_OVER_PAGE);
 }
 }
