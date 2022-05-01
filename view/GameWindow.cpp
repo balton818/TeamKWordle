@@ -12,7 +12,6 @@ using namespace std;
 namespace view
 {
 
-
 GameWindow::GameWindow(int width, int height, const char* title, ViewModel* viewModel) : Fl_Window(width, height, title)
 {
     this->viewModel = viewModel;
@@ -85,6 +84,13 @@ void GameWindow::drawKeyboard()
     }
     this->addEnterKey((this->WINDOW_WIDTH / 2) - (keyCount[0] * this->KEY_WIDTH) / 2, finalY);
     this->addBackspaceKey(finalX + this->KEY_WIDTH, finalY);
+    this->addNewGameButton(this->WINDOW_WIDTH / 2 -(this->KEY_WIDTH * 1.5), this->WINDOW_HEIGHT - 100);
+}
+
+void GameWindow::addNewGameButton(int xPosition, int yPosition)
+{
+    this->newGameButton = new Fl_Button(xPosition, yPosition, (this->KEY_WIDTH * 3.0), this->KEY_HEIGHT, "Start New Game");
+    this->newGameButton->callback(this->newGameClick_callback, (void*)this);
 }
 
 void GameWindow::addEnterKey(int xPosition, int yPosition)
@@ -103,6 +109,44 @@ void GameWindow::buttonClick_callback(Fl_Widget* widget, void* data)
 {
     GameWindow* window = (GameWindow*)data;
     window->addLetterToCurrentGuess(widget->label());
+}
+
+void GameWindow::newGameClick_callback(Fl_Widget* widget, void* data)
+{
+    GameWindow* window = (GameWindow*)data;
+    window->clearGuessBoxes();
+    window->clearKeyBoardColors();
+    window->viewModel->startNewGame();
+    window->currentGuessNumber = 0;
+
+}
+
+void GameWindow::clearKeyBoardColors()
+{
+    for (Fl_Button* currentKey : this->keyboard)
+    {
+        if (currentKey->color() != FL_GRAY)
+        {
+            currentKey->color(FL_GRAY);
+            currentKey->redraw();
+        }
+    }
+}
+
+void GameWindow::clearGuessBoxes()
+{
+    while(this->currentGuessNumber >= 0)
+    {
+        for (Fl_Box* currentBox : this->guessBoxes[this->currentGuessNumber])
+        {
+            currentBox->label("");
+            currentBox->redraw();
+            currentBox->color(FL_GRAY);
+        }
+
+        this->currentGuessNumber--;
+    }
+
 }
 
 void GameWindow::enterClick_callback(Fl_Widget* widget, void* data)
@@ -153,9 +197,11 @@ void GameWindow::enterGuess()
     if (this->currentGuess.size() == this->MAX_GUESS_LENGTH)
     {
         string guess;
-        for (char currentChar : this->currentGuess) {
+        for (char currentChar : this->currentGuess)
+        {
             guess.push_back(currentChar);
         }
+
         if (this->handleCheckerResult(this->viewModel->checkGuess(guess)))
         {
             this->currentGuessNumber++;
@@ -163,7 +209,8 @@ void GameWindow::enterGuess()
         }
         else
         {
-            fl_message("Invalid word");
+            fl_alert("Invalid word");
+
         }
 
     }
@@ -223,7 +270,10 @@ void GameWindow::updateKeyColor(const char* keyLabel, GuessCheckerResult result)
         string label = currentKey->label();
         if (label == keyLabel)
         {
-            currentKey->color(this->determineColorForResult(result));
+            if (result != GuessCheckerResult::DUPLICATE_WRONG)
+            {
+                 currentKey->color(this->determineColorForResult(result));
+            }
             currentKey->redraw();
         }
     }
@@ -249,5 +299,6 @@ GameWindow::~GameWindow()
 {
     //dtor
 }
+
 }
 

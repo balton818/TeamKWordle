@@ -32,7 +32,7 @@ void ViewModel::initializeGame(string& username)
     this->currentSolution = this->dictionary->getWordToGuess(true);
     cout << "Wordle answer: " << this->currentSolution << endl;
     this->currentUser.setUserName(username);
-    this->guessChecker.answerCharRates(this->dictionary.getCharRates());
+    this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 
 }
@@ -65,7 +65,10 @@ void ViewModel::saveUser()
 }
 void ViewModel::startNewGame()
 {
-
+    this->currentSolution = this->dictionary->getWordToGuess(true);
+    cout << "Wordle answer: " << this->currentSolution << endl;
+    this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
+    this->guessChecker.setAnswer(this->currentSolution);
 }
 
 void ViewModel::handleWin()

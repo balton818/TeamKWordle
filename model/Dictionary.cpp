@@ -5,8 +5,10 @@
 #include <random>
 #include <bits/stdc++.h>
 using namespace std;
+
 namespace model
 {
+
 Dictionary::Dictionary()
 {
     this->root = new DictionaryNode();
@@ -20,9 +22,11 @@ Dictionary::~Dictionary()
 void Dictionary::insertWord(string& wordToInsert)
 {
     DictionaryNode* dictCrawler = this->root;
+
     for (int currentChar = 0; currentChar < wordToInsert.length() -1; currentChar++)
     {
         int insertLocation = wordToInsert[currentChar] - this->trieOffset;
+
         if (dictCrawler->children[insertLocation] == NULL)
         {
             dictCrawler->children[insertLocation] = new DictionaryNode();
@@ -42,6 +46,7 @@ bool Dictionary::isValidWord(string& wordToCheck)
     for (int currentChar = 0; currentChar < wordToCheck.length(); currentChar++)
     {
         int location = wordToCheck[currentChar] - this->trieOffset;
+
         if (dictCrawler->children[location] == NULL)
         {
             return false;
@@ -54,6 +59,7 @@ bool Dictionary::isValidWord(string& wordToCheck)
 
 string& Dictionary::getWordToGuess(bool canReuseLetters)
 {
+    this->wordToGuess = "";
     this->generateWordToGuess(canReuseLetters);
 
     while(this->wordToGuess == "")
@@ -93,29 +99,34 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
 
 bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
 {
-     if (!this->hasUniqueChars(wordBuilder))
+     if (!this->checkIfUniqueChars(wordBuilder))
+    {
+        if (!canReuseLetters)
         {
-            if (!canReuseLetters)
-            {
-                this->wordToGuess = "";
-                return false;
-            }
+            this->wordToGuess = "";
+            return false;
         }
+    }
+
     return true;
 }
 
-unordered_map<char, int> Dictionary:: getCharRates()
+unordered_map<char, int> Dictionary::getAnswerCharRates()
 {
-    return this->rates;
+    return this->answerCharRates;
 }
 
-bool Dictionary::hasUniqueChars(char wordBuilder[])
+bool Dictionary::checkIfUniqueChars(char wordBuilder[])
 {
+    this->answerCharRates.clear();
 
-    for (int charPosition = 0; charPosition < strlen(wordBuilder); charPosition++) {
-        this->rates[wordBuilder[charPosition]]++;
+    for (int charPosition = 0; charPosition < strlen(wordBuilder); charPosition++)
+    {
+        this->answerCharRates[wordBuilder[charPosition]]++;
     }
-    for (auto currentChar : this->rates) {
+
+    for (auto currentChar : this->answerCharRates)
+    {
         if (currentChar.second > 1)
          return false;
     }
@@ -142,4 +153,5 @@ int Dictionary::getRandomIndex()
     uniform_int_distribution<int> range(0, ALPHA_CHARS - 1);
     return range(engine);
 }
+
 }

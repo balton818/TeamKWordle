@@ -8,15 +8,12 @@ namespace model
 
 DictionaryNode::DictionaryNode()
 {
-     //DictionaryNode* dictNode = new DictionaryNode();
-
-	for (int i = 0; i < ALPHA_CHARS; i++)
+    for (int i = 0; i < ALPHA_CHARS; i++)
     {
         this->children[i] = NULL;
     }
 
 	this->endOfWord = false;
-
 }
 
 DictionaryNode::~DictionaryNode()
@@ -27,11 +24,11 @@ DictionaryNode::~DictionaryNode()
     }
 
 }
+
 void DictionaryNode::setEndOfWord(bool toSet)
 {
     this->endOfWord = toSet;
 }
-
 
 bool DictionaryNode::isEndOfWord()
 {

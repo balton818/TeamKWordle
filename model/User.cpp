@@ -39,8 +39,8 @@ double User::getWinPercentage()
 {
     int oneHundred = 100;
     int winPercent = this->gamesWon / this->gamesPlayed;
-    return winPercent * oneHundred;
 
+    return winPercent * oneHundred;
 }
 
 int User::getCurrentStreak()
@@ -57,10 +57,12 @@ int User::getGamesWon()
 {
     return this->gamesWon;
 }
+
 int User::getMaxWinStreak()
 {
     return this->maxWinStreak;
 }
+
 map<int,int> User::getGuessDistribution()
 {
     return this->guessDistribution;
@@ -71,10 +73,13 @@ void User::updateStatsOnWin(int guesses)
     this->currentWinStreak++;
     this->gamesPlayed++;
     this->gamesWon++;
+
     if (this->currentWinStreak > this->maxWinStreak)
     {
         this->maxWinStreak = this->currentWinStreak;
     }
+
     this->guessDistribution[guesses]++;
 }
+
 }
