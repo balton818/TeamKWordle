@@ -40,8 +40,8 @@ void ViewModel::createPages()
 {
     UserSelectionWindow* loginPage = new UserSelectionWindow(this->LOGIN_WINDOW_WIDTH, this->LOGIN_WINDOW_HEIGHT, this->PAGE_TITLE, this);
     GameWindow* gamePage = new GameWindow(this->GAME_WINDOW_WIDTH, this->GAME_WINDOW_HEIGHT, this->PAGE_TITLE, this);
-
     SettingsWindow* settingsPage = new SettingsWindow(this->SETTINGS_WINDOW_WIDTH, this->SETTINGS_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+
     this->gameWindows.push_back(loginPage);
     this->gameWindows.push_back(settingsPage);
     this->gameWindows.push_back(gamePage);
@@ -111,7 +111,8 @@ void ViewModel::saveUser()
 }
 void ViewModel::startNewGame()
 {
-
+    this->initializeGame(this->currentUser->getUsername());
+    this->displayPage(PageType::GAME_PAGE);
 }
 
 void ViewModel::handleWin()

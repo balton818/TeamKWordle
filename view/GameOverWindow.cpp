@@ -41,7 +41,6 @@ void GameOverWindow::addStatsBoxes()
 void GameOverWindow::drawChart()
 {
     map<int, int> distributionMap = this->viewmodel->getGuessDistribution();
-    cout << "map: " << distributionMap.size() << endl;
     int startX = this->w() / 2 - this->CHART_WIDTH / 2;
     int startY = this->h() / 2;
     this->userStatsChart = new Fl_Chart(startX, startY, this->CHART_WIDTH, this->CHART_HEIGHT, "Guess Distribution");
@@ -64,8 +63,9 @@ void GameOverWindow::addPlayAgainButton()
 
 void GameOverWindow::playAgain_callback(Fl_Widget* widget, void* data)
 {
-//    this->viewmodel->startNewGame();
-    cout << "PLAY AGAIN" << endl;
+    GameOverWindow* window = (GameOverWindow*)data;
+    window->viewmodel->startNewGame();
+    window->hide();
 }
 
 void GameOverWindow::addEndGameButton()

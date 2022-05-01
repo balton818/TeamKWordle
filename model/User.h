@@ -78,7 +78,7 @@ public:
     //
     void setUserName(const string& username);
 
-    string getUsername();
+    string& getUsername();
 
     Settings* getSettings();
     void changeSettings(Settings* settings);

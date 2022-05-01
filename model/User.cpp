@@ -93,7 +93,7 @@ void User::updateStatsOnWin(int guesses)
     this->guessDistribution[guesses]++;
 }
 
-string User::getUsername()
+string& User::getUsername()
 {
     return this->username;
 }
