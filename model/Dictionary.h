@@ -46,24 +46,40 @@ public:
     //
     string& getWordToGuess(bool canReuseLetters);
 
+        // Param - wordToInsert the word to insert into the trie
+        //
+        void insertWord(string& wordToInsert);
 
-    // gets the char rates for the current answer
-    //
-    // returns - map of the chars and rates for the current solution.
-    //
-    unordered_map<char, int> getCharRates();
+        // Check if a word is present in the dictionary if it is the word is valid
+        //
+        // Param - wordToCheck the word that is searched for in the trie
+        //
+        // Returns - true if the word is valid, false otherwise
+        //
 
 private:
 
-    DictionaryNode* root;
-    string wordToGuess;
-    int getRandomIndex();
-    unordered_map<char, int> rates;
-    char trieOffset = 'A';
-    int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
-    void generateWordToGuess(bool canReuseLetters);
-    bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
-    bool hasUniqueChars(char wordBuilder[]);
+        // Gets a random word for the player to guess
+        //
+        // Param - reuseLetters - indicates if guess word can reuse letters
+        //
+        // Returns - the word for the player to guess
+        //
+        string& getWordToGuess(bool canReuseLetters);
+
+        unordered_map<char, int> getAnswerCharRates();
+
+    private:
+
+        DictionaryNode* root;
+        string wordToGuess;
+        int getRandomIndex();
+        char trieOffset = 'A';
+        int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
+        bool checkIfUniqueChars(char wordBuilder[]);
+        void generateWordToGuess(bool canReuseLetters);
+        bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
+        unordered_map<char, int> answerCharRates;
 };
 }
 #endif // DICTIONARY_H

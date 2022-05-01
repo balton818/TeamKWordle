@@ -69,8 +69,7 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
     DictionaryNode* dictCrawler = this->root;
     int randomIndex = this->getRandomIndex();
 
-    for (int charIndex = 0; charIndex < sizeof(wordBuilder); charIndex++)
-    {
+    for (int charIndex = 0; charIndex < sizeof(wordBuilder); charIndex++) {
 
         DictionaryNode* tempNode = dictCrawler->children[randomIndex];
         randomIndex = this->getNextLetter(tempNode, dictCrawler, randomIndex);
@@ -94,9 +93,9 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
 
 bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
 {
-    if (!this->hasUniqueChars(wordBuilder))
-    {
-        if (!canReuseLetters)
+     if (!this->checkIfUniqueChars(wordBuilder))
+        {
+            if (!canReuseLetters)
         {
             this->wordToGuess = "";
             return false;
@@ -105,20 +104,17 @@ bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
     return true;
 }
 
-unordered_map<char, int> Dictionary:: getCharRates()
+unordered_map<char, int> Dictionary::getAnswerCharRates()
 {
-    return this->rates;
+    return this->answerCharRates;
 }
 
-bool Dictionary::hasUniqueChars(char wordBuilder[])
+bool Dictionary::checkIfUniqueChars(char wordBuilder[])
 {
-
-    for (int charPosition = 0; charPosition < strlen(wordBuilder); charPosition++)
-    {
-        this->rates[wordBuilder[charPosition]]++;
+    for (int charPosition = 0; charPosition < strlen(wordBuilder); charPosition++) {
+        this->answerCharRates[wordBuilder[charPosition]]++;
     }
-    for (auto currentChar : this->rates)
-    {
+    for (auto currentChar : this->answerCharRates) {
         if (currentChar.second > 1)
             return false;
     }
