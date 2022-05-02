@@ -24,18 +24,10 @@ namespace viewmodel
 ViewModel::ViewModel()
 {
     this->createPages();
-
     this->dictLoader = new DictionaryLoader();
     this->fileHandler = new UserFileHandler();
     this->users = this->fileHandler->loadUserData();
     this->gameSettings = nullptr;
-}
-
-ViewModel::~ViewModel()
-{
-    delete this->dictLoader;
-    delete this->fileHandler;
-
 }
 
 void ViewModel::createPages()
@@ -67,7 +59,7 @@ void ViewModel::initializeGame(string& username)
 
     if (this->dictionary == nullptr)
     {
-         this->dictionary = this->dictLoader->readDictionaryFile();
+        this->dictionary = this->dictLoader->readDictionaryFile();
     }
 
     this->getAndSetAnswer();
@@ -103,7 +95,7 @@ vector<GuessCheckerResult> ViewModel::checkGuess(string& guessToCheck)
     {
         if (this->gameSettings->getHardMode())
         {
-                validGuess = this->guessChecker.validPositions(guessToCheck);
+            validGuess = this->guessChecker.validPositions(guessToCheck);
         }
         if (validGuess)
         {
@@ -131,6 +123,7 @@ void ViewModel::updateSettings(bool hardModeEnabled, bool letterReuseEnabled)
 
 void ViewModel::saveUser()
 {
+    this->currentUser->changeSettings(this->gameSettings);
     stringstream userStream;
     for (auto& currentUser : this->users)
     {
@@ -138,7 +131,6 @@ void ViewModel::saveUser()
     }
     string users = userStream.str();
     this->fileHandler->saveUsersToFile(users);
-
 }
 
 void ViewModel::startNewGame()
@@ -151,7 +143,6 @@ void ViewModel::startNewGame()
     this->createPages();
     this->initializeGame(this->currentUser->getUsername());
     this->displayPage(PageType::GAME_PAGE);
-
 }
 
 void ViewModel::handleWin(int guessesUsed)
@@ -162,7 +153,6 @@ void ViewModel::handleWin(int guessesUsed)
     this->displayPage(PageType::GAME_OVER_PAGE);
     this->users[this->currentUser->getUsername()] = this->currentUser;
     this->saveUser();
-
 }
 
 vector<int> ViewModel::getCurrentUserStats()
@@ -190,4 +180,11 @@ void ViewModel::handleLoss()
     this->users[this->currentUser->getUsername()] = this->currentUser;
     this->saveUser();
 }
+
+ViewModel::~ViewModel()
+{
+    delete this->dictLoader;
+    delete this->fileHandler;
+}
+
 }

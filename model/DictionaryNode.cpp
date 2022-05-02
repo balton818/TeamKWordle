@@ -16,15 +16,6 @@ DictionaryNode::DictionaryNode()
     this->endOfWord = false;
 }
 
-DictionaryNode::~DictionaryNode()
-{
-    for (int i = 0; i < ALPHA_CHARS; i++)
-    {
-        delete this->children[i];
-    }
-
-}
-
 void DictionaryNode::setEndOfWord(bool toSet)
 {
     this->endOfWord = toSet;
@@ -33,6 +24,15 @@ void DictionaryNode::setEndOfWord(bool toSet)
 bool DictionaryNode::isEndOfWord()
 {
     return this->endOfWord;
+}
+
+DictionaryNode::~DictionaryNode()
+{
+    for (int i = 0; i < ALPHA_CHARS; i++)
+    {
+        delete this->children[i];
+    }
+
 }
 
 }

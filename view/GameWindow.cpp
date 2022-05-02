@@ -116,8 +116,6 @@ void GameWindow::newGameClick_callback(Fl_Widget* widget, void* data)
     GameWindow* window = (GameWindow*)data;
     window->resetWindow();
     window->viewModel->startNewGame();
-
-
 }
 
 void GameWindow::resetWindow()
@@ -152,14 +150,12 @@ void GameWindow::clearGuessBoxes()
 
         this->currentGuessNumber--;
     }
-
 }
 
 void GameWindow::enterClick_callback(Fl_Widget* widget, void* data)
 {
     GameWindow* window = (GameWindow*)data;
     window->enterGuess();
-
 }
 
 void GameWindow::backspaceClick_callback(Fl_Widget* widget, void* data)
@@ -227,7 +223,6 @@ void GameWindow::enterGuess()
             fl_alert("Invalid word");
 
         }
-
     }
 }
 
@@ -261,6 +256,7 @@ bool GameWindow::handleCheckerResult(vector<GuessCheckerResult> result)
         this->updateGuessBoxAndKeyColors(result);
         return true;
     }
+
     return false;
 }
 
@@ -299,6 +295,7 @@ void GameWindow::updateKeyColor(const char* keyLabel, GuessCheckerResult result)
             {
                 currentKey->color(this->determineColorForResult(result));
             }
+
             currentKey->redraw();
         }
     }

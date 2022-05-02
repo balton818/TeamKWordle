@@ -9,7 +9,6 @@ namespace model
 
 GuessChecker::GuessChecker()
 {
-
 }
 
 vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
@@ -18,7 +17,6 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
     vector<char> duplicatesInGuess;
 
     this->determineGuessCharRates(guess);
-
 
     for (int index = 0; index < 5; index++)
     {
@@ -100,7 +98,6 @@ void GuessChecker::duplicateGuessParsingConditions(int& firstInstanceIndex, int&
             duplicateRate--;
         }
     }
-
 }
 
 void GuessChecker::standardGuessParsing(int index,char currentLetter, vector<GuessCheckerResult>& result)
@@ -125,6 +122,7 @@ void GuessChecker::standardGuessParsing(int index,char currentLetter, vector<Gue
 void GuessChecker::setAnswer(string& answerWord)
 {
     this->answer = answerWord;
+    this->hardModeCorrectPositions.clear();
 }
 
 void GuessChecker::setAnswerCharRates(unordered_map<char,int> answerCharRates)
@@ -145,8 +143,6 @@ bool GuessChecker::validPositions(string& guess)
 {
     for (auto& currentPair : this->hardModeCorrectPositions)
     {
-        cout << guess.at(currentPair.second) << endl;
-        cout << currentPair.first << endl;
         if (guess.at(currentPair.second) != currentPair.first)
         {
             return false;
@@ -157,6 +153,6 @@ bool GuessChecker::validPositions(string& guess)
 
 GuessChecker::~GuessChecker()
 {
-    //dtor
 }
+
 }

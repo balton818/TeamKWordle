@@ -3,6 +3,7 @@
 #include <iostream>
 namespace view
 {
+
 GameOverWindow::GameOverWindow(int width, int height, const char* title, ViewModel* viewModel) : Fl_Window(width, height, title)
 {
     this->viewmodel = viewModel;
@@ -34,7 +35,6 @@ void GameOverWindow::addStatsBoxes()
 
         Fl_Box* label = new Fl_Box(FL_NO_BOX, startX, this->LABEL_BOX_START_Y, this->BOX_WIDTH, this->LABEL_BOX_HEIGHT, this->statsBoxLabels[index].c_str());
         this->statsLabels.push_back(label);
-
     }
 }
 
@@ -45,6 +45,7 @@ void GameOverWindow::drawChart()
     int startY = this->h() / 2;
     this->userStatsChart = new Fl_Chart(startX, startY, this->CHART_WIDTH, this->CHART_HEIGHT, "Guess Distribution");
     this->userStatsChart->type(FL_HORBAR_CHART);
+
     for (int index = 1; index <= distributionMap.size(); index++)
     {
         stringstream ss;
@@ -96,4 +97,5 @@ GameOverWindow::~GameOverWindow()
     delete this->playAgainButton;
     delete this->endGameButton;
 }
+
 }

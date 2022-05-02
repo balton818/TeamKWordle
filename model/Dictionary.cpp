@@ -14,11 +14,6 @@ Dictionary::Dictionary()
     this->root = new DictionaryNode();
 }
 
-Dictionary::~Dictionary()
-{
-    delete this->root;
-}
-
 void Dictionary::insertWord(string& wordToInsert)
 {
     DictionaryNode* dictCrawler = this->root;
@@ -54,6 +49,7 @@ bool Dictionary::isValidWord(string& wordToCheck)
 
         dictCrawler = dictCrawler->children[location];
     }
+
     return dictCrawler->isEndOfWord();
 }
 
@@ -66,6 +62,7 @@ string& Dictionary::getWordToGuess(bool canReuseLetters)
     {
         this->generateWordToGuess(canReuseLetters);
     }
+
     return this->wordToGuess;
 }
 
@@ -93,10 +90,9 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
             return;
         }
     }
+
     this->wordToGuess = wordBuilder;
 }
-
-
 
 bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
 {
@@ -108,6 +104,7 @@ bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
             return false;
         }
     }
+
     return true;
 }
 
@@ -130,6 +127,7 @@ bool Dictionary::checkIfUniqueChars(char wordBuilder[])
         if (currentChar.second > 1)
             return false;
     }
+
     return true;
 }
 
@@ -140,11 +138,10 @@ int Dictionary::getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCraw
         randomIndex = this->getRandomIndex();
         tempNode = dictCrawler->children[randomIndex];
     }
+
     return randomIndex;
 
 }
-
-
 
 int Dictionary::getRandomIndex()
 {
@@ -152,6 +149,11 @@ int Dictionary::getRandomIndex()
     default_random_engine engine(random());
     uniform_int_distribution<int> range(0, ALPHA_CHARS - 1);
     return range(engine);
+}
+
+Dictionary::~Dictionary()
+{
+    delete this->root;
 }
 
 }

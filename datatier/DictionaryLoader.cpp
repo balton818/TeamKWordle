@@ -14,12 +14,6 @@ namespace datatier
 
 DictionaryLoader::DictionaryLoader()
 {
-
-}
-
-DictionaryLoader::~DictionaryLoader()
-{
-
 }
 
 Dictionary* DictionaryLoader::readDictionaryFile()
@@ -41,6 +35,10 @@ Dictionary* DictionaryLoader::readDictionaryFile()
 
     dictFile.close();
     return dictionary;
+}
+
+DictionaryLoader::~DictionaryLoader()
+{
 }
 
 }

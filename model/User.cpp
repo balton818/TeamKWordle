@@ -8,6 +8,7 @@ using namespace std;
 
 namespace model
 {
+
 User::User(string username)
 {
     this->username = username;
@@ -30,11 +31,6 @@ User::User(string username, int gamesPlayed, int gamesWon, int currentStreak, in
     this->settings = settings;
 }
 
-User::~User()
-{
-    //dtor
-}
-
 void User::setUserName(const string& username)
 {
     this->username = username;
@@ -48,7 +44,6 @@ void User::createGuessDistribution()
         this->guessDistribution.insert({guessNumber, 0});
         guessNumber++;
     }
-
 }
 
 int User::getWinPercentage()
@@ -95,7 +90,7 @@ void User::updateStatsOnWin(int guesses)
         this->maxWinStreak = this->currentWinStreak;
     }
 
-    this->guessDistribution[guesses] =  this->guessDistribution[guesses]++;
+    this->guessDistribution[guesses] =  this->guessDistribution[guesses] + 1;
 }
 
 void User::updateStatsOnLoss()
@@ -132,6 +127,7 @@ string& User::userToString()
     ss << this->currentWinStreak << comma;
     ss << this->maxWinStreak << comma;
     int numberOfGuesses = 7;
+
     while (guessNumber < numberOfGuesses)
     {
         if (guessNumber == 6)
@@ -145,8 +141,13 @@ string& User::userToString()
 
         guessNumber++;
     }
+
     this->userAsText = ss.str();
     return this->userAsText;
+}
+
+User::~User()
+{
 }
 
 }
