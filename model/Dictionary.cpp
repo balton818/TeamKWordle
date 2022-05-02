@@ -75,7 +75,8 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
     DictionaryNode* dictCrawler = this->root;
     int randomIndex = this->getRandomIndex();
 
-    for (int charIndex = 0; charIndex < sizeof(wordBuilder); charIndex++) {
+    for (int charIndex = 0; charIndex < sizeof(wordBuilder); charIndex++)
+    {
 
         DictionaryNode* tempNode = dictCrawler->children[randomIndex];
         randomIndex = this->getNextLetter(tempNode, dictCrawler, randomIndex);
@@ -99,7 +100,7 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
 
 bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
 {
-     if (!this->checkIfUniqueChars(wordBuilder))
+    if (!this->checkIfUniqueChars(wordBuilder))
     {
         if (!canReuseLetters)
         {

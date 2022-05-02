@@ -32,6 +32,7 @@ map<string, User*> UserFileHandler::loadUserData()
             stringstream sstream(line);
             while(getline(sstream, word, ','))
             {
+
                 currentRowValues.push_back(word);
             }
             this->createUserFromData(currentRowValues);
@@ -47,7 +48,6 @@ void UserFileHandler::createUserFromData(vector<string> userData)
     {
         string username = userData[this->usernameIndex];
         bool uniqueCharSetting = userData[this->uniqueCharSettingIndex] == "true";
-        bool reuseCharSetting = userData[this->reuseCharSettingIndex] == "true";
         bool hardModeSetting = userData[this->hardModeSettingIndex] == "true";
         int gamesPlayed = stoi(userData[this->gamesPlayedIndex]);
         int gamesWon = stoi(userData[this->gamesWonIndex]);
@@ -56,7 +56,6 @@ void UserFileHandler::createUserFromData(vector<string> userData)
 
         Settings* userSettings = new Settings();
         userSettings->setOnlyUniqueChars(uniqueCharSetting);
-        userSettings->setPlayerReuseChars(reuseCharSetting);
         userSettings->setHardMode(hardModeSetting);
 
         map<int, int> guessDistribution;
@@ -70,6 +69,14 @@ void UserFileHandler::createUserFromData(vector<string> userData)
         User* currentUser = new User(username, gamesPlayed, gamesWon, currentStreak, maxStreak, guessDistribution, userSettings);
         this->users.insert(pair<string, User*>(username, currentUser));
     }
+}
+
+void UserFileHandler::saveUsersToFile(string& output)
+{
+    fstream file;
+    file.open(this->filename, fstream::out);
+    file << output;
+    file.close();
 }
 
 

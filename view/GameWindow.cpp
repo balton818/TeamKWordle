@@ -208,7 +208,12 @@ void GameWindow::enterGuess()
             guess.push_back(currentChar);
         }
 
-        if (this->handleCheckerResult(this->viewModel->checkGuess(guess)))
+        vector<GuessCheckerResult> results = this->viewModel->checkGuess(guess);
+        if (results.size() == 1)
+        {
+            fl_alert("Invalid Letter Position for Hard Mode");
+        }
+        else if (this->handleCheckerResult(results))
         {
             this->currentGuessNumber++;
             this->currentGuess.clear();
@@ -292,7 +297,7 @@ void GameWindow::updateKeyColor(const char* keyLabel, GuessCheckerResult result)
         {
             if (result != GuessCheckerResult::DUPLICATE_WRONG)
             {
-                 currentKey->color(this->determineColorForResult(result));
+                currentKey->color(this->determineColorForResult(result));
             }
             currentKey->redraw();
         }
@@ -317,7 +322,6 @@ Fl_Color GameWindow::determineColorForResult(GuessCheckerResult checkerResult)
 
 GameWindow::~GameWindow()
 {
-    //dtor
 }
 
 }

@@ -24,6 +24,7 @@ class GuessChecker
         void determineGuessCharRates(string& guess);
         unordered_map<char,int> guessCharRates;
         unordered_map<char,int> answerCharRates;
+        unordered_map<char, int> hardModeCorrectPositions;
         int currentCorrectLetters;
 
         void standardGuessParsing(int index, char currentLetter, vector<GuessCheckerResult>& result);
@@ -63,6 +64,14 @@ class GuessChecker
         // Param - a map with the chars in the current answer as keys and their rates as values
         //
         void setAnswerCharRates(unordered_map<char,int> answerCharRates);
+
+        // Checks a user's char positions against the solution in hard mode
+        //
+        // Param - guess - the user's guess to be checked.
+        //
+        // Returns - true if the previously guessed correct chars are in valid positions false otherwise
+        //
+        bool validPositions(string& guess);
 
 
 };

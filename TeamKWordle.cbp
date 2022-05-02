@@ -54,7 +54,6 @@
 		<Unit filename="model/Settings.h" />
 		<Unit filename="model/User.cpp" />
 		<Unit filename="model/User.h" />
-		<Unit filename="userData.wuf" />
 		<Unit filename="view/GameOverWindow.cpp" />
 		<Unit filename="view/GameOverWindow.h" />
 		<Unit filename="view/GameWindow.cpp" />

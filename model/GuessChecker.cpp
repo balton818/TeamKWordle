@@ -37,7 +37,7 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
 
     if (duplicatesInGuess.size() > 0)
     {
-         this->handleGuessDuplicates(result, duplicatesInGuess, guess);
+        this->handleGuessDuplicates(result, duplicatesInGuess, guess);
     }
 
     return result;
@@ -108,6 +108,9 @@ void GuessChecker::standardGuessParsing(int index,char currentLetter, vector<Gue
     if (this->answer[index] == currentLetter)
     {
         result.push_back(GuessCheckerResult::CORRECT);
+        cout << currentLetter << endl;
+        cout << index << endl;
+        this->hardModeCorrectPositions[currentLetter] = index;
     }
     else if (this->answerCharRates[currentLetter])
     {
@@ -132,11 +135,25 @@ void GuessChecker::setAnswerCharRates(unordered_map<char,int> answerCharRates)
 void GuessChecker::determineGuessCharRates(string& guess)
 {
     this->guessCharRates.clear();
-    for (int charPosition = 0; charPosition < guess.size(); charPosition++) {
+    for (int charPosition = 0; charPosition < guess.size(); charPosition++)
+    {
         this->guessCharRates[guess[charPosition]]++;
     }
 }
 
+bool GuessChecker::validPositions(string& guess)
+{
+    for (auto& currentPair : this->hardModeCorrectPositions)
+    {
+        cout << guess.at(currentPair.second) << endl;
+        cout << currentPair.first << endl;
+        if (guess.at(currentPair.second) != currentPair.first)
+        {
+            return false;
+        }
+    }
+    return true;
+}
 
 GuessChecker::~GuessChecker()
 {

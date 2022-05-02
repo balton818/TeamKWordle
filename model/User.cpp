@@ -3,6 +3,7 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 namespace model
@@ -94,7 +95,7 @@ void User::updateStatsOnWin(int guesses)
         this->maxWinStreak = this->currentWinStreak;
     }
 
-    this->guessDistribution[guesses]++;
+    this->guessDistribution[guesses] =  this->guessDistribution[guesses]++;
 }
 
 void User::updateStatsOnLoss()
@@ -116,6 +117,36 @@ Settings* User::getSettings()
 void User::changeSettings(Settings* settings)
 {
     this->settings = settings;
+}
+
+string& User::userToString()
+{
+    stringstream ss;
+    char comma = ',';
+    int guessNumber = 1;
+    ss << this->username << comma;
+    ss << boolalpha << this->settings->getOnlyUniqueChars() << comma;
+    ss << boolalpha << this->settings->getHardMode() << comma;
+    ss << this->gamesPlayed << comma;
+    ss << this->gamesWon << comma;
+    ss << this->currentWinStreak << comma;
+    ss << this->maxWinStreak << comma;
+    int numberOfGuesses = 7;
+    while (guessNumber < numberOfGuesses)
+    {
+        if (guessNumber == 6)
+        {
+            ss << this->guessDistribution[guessNumber];
+        }
+        else
+        {
+            ss << this->guessDistribution[guessNumber] << comma;
+        }
+
+        guessNumber++;
+    }
+    this->userAsText = ss.str();
+    return this->userAsText;
 }
 
 }

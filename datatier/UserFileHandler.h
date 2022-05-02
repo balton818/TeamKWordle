@@ -17,29 +17,29 @@ namespace datatier
 {
 class UserFileHandler
 {
-    private:
-        int usernameIndex = 0;
-        int uniqueCharSettingIndex = 1;
-        int reuseCharSettingIndex = 2;
-        int hardModeSettingIndex = 3;
-        int gamesPlayedIndex = 4;
-        int gamesWonIndex = 5;
-        int currentWinStreakIndex = 6;
-        int maxWinStreakIndex = 7;
-        int guessDistributionStartIndex = 8;
-        int guessDistributionEndIndex = 13;
+private:
+    int usernameIndex = 0;
+    int uniqueCharSettingIndex = 1;
+    int hardModeSettingIndex = 2;
+    int gamesPlayedIndex = 3;
+    int gamesWonIndex = 4;
+    int currentWinStreakIndex = 5;
+    int maxWinStreakIndex = 6;
+    int guessDistributionStartIndex = 7;
+    int guessDistributionEndIndex = 12;
 
-        User* currentUser;
-        Settings* currentUserSettings;
-        map<string, User*> users;
-        string filename = "userData.wuf";
+    User* currentUser;
+    Settings* currentUserSettings;
+    map<string, User*> users;
+    string filename = "userData.wuf";
 
-        void createUserFromData(vector<string> userData);
+    void createUserFromData(vector<string> userData);
 
-    public:
-        UserFileHandler();
-        virtual ~UserFileHandler();
-        map<string, User*> loadUserData();
+public:
+    UserFileHandler();
+    virtual ~UserFileHandler();
+    map<string, User*> loadUserData();
+    void saveUsersToFile(string& output);
 };
 }
 

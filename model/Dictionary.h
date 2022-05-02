@@ -48,17 +48,17 @@ public:
 
     unordered_map<char, int> getAnswerCharRates();
 
-    private:
+private:
 
-        DictionaryNode* root;
-        string wordToGuess;
-        int getRandomIndex();
-        char trieOffset = 'A';
-        int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
-        bool checkIfUniqueChars(char wordBuilder[]);
-        void generateWordToGuess(bool canReuseLetters);
-        bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
-        unordered_map<char, int> answerCharRates;
+    DictionaryNode* root;
+    string wordToGuess;
+    int getRandomIndex();
+    char trieOffset = 'A';
+    int getNextLetter(DictionaryNode* tempNode, DictionaryNode* dictCrawler,int randomIndex);
+    bool checkIfUniqueChars(char wordBuilder[]);
+    void generateWordToGuess(bool canReuseLetters);
+    bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
+    unordered_map<char, int> answerCharRates;
 };
 }
 #endif // DICTIONARY_H

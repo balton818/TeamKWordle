@@ -58,13 +58,14 @@ void ViewModel::initializeGame(string& username)
 
     this->currentUser = this->users[username];
     cout << "Current player: " << this->currentUser->getUsername() << endl;
+    cout << this->currentUser->getGuessDistribution().size() << endl;
 
     if (this->gameSettings == nullptr)
     {
         this->gameSettings = this->currentUser->getSettings();
     }
 
-    if (this->dictionary == NULL)
+    if (this->dictionary == nullptr)
     {
          this->dictionary = this->dictLoader->readDictionaryFile();
     }
@@ -96,13 +97,25 @@ bool ViewModel::userExists(string& username)
 
 vector<GuessCheckerResult> ViewModel::checkGuess(string& guessToCheck)
 {
+    bool validGuess = this->dictionary->isValidWord(guessToCheck);
     vector<GuessCheckerResult> result;
-    if (this->dictionary->isValidWord(guessToCheck))
+    if (validGuess)
     {
-        cout << "Your last guess: " << guessToCheck << endl;
-        result = this->guessChecker.checkGuess(guessToCheck);
-        return result;
-
+        if (this->gameSettings->getHardMode())
+        {
+                validGuess = this->guessChecker.validPositions(guessToCheck);
+        }
+        if (validGuess)
+        {
+            cout << "Your last guess: " << guessToCheck << endl;
+            result = this->guessChecker.checkGuess(guessToCheck);
+            return result;
+        }
+        else
+        {
+            result.push_back(GuessCheckerResult::DUPLICATE_WRONG);
+            return result;
+        }
     }
     return {};
 }
@@ -118,6 +131,13 @@ void ViewModel::updateSettings(bool hardModeEnabled, bool letterReuseEnabled)
 
 void ViewModel::saveUser()
 {
+    stringstream userStream;
+    for (auto& currentUser : this->users)
+    {
+        userStream << currentUser.second->userToString() << endl;
+    }
+    string users = userStream.str();
+    this->fileHandler->saveUsersToFile(users);
 
 }
 
@@ -140,6 +160,8 @@ void ViewModel::handleWin(int guessesUsed)
     GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
+    this->users[this->currentUser->getUsername()] = this->currentUser;
+    this->saveUser();
 
 }
 
@@ -147,7 +169,6 @@ vector<int> ViewModel::getCurrentUserStats()
 {
     vector<int> stats;
     stats.push_back(this->currentUser->getGamesPlayed());
-    cout <<this->currentUser->getWinPercentage() << endl;
     stats.push_back(this->currentUser->getWinPercentage());
     stats.push_back(this->currentUser->getCurrentStreak());
     stats.push_back(this->currentUser->getMaxWinStreak());
@@ -166,5 +187,7 @@ void ViewModel::handleLoss()
     GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
+    this->users[this->currentUser->getUsername()] = this->currentUser;
+    this->saveUser();
 }
 }

@@ -82,6 +82,7 @@ public:
 
     Settings* getSettings();
     void changeSettings(Settings* settings);
+    string& userToString();
 
 private:
     string username;
@@ -92,6 +93,7 @@ private:
     map<int, int> guessDistribution;
     Settings* settings;
     void createGuessDistribution();
+    string userAsText = "";
 
 
 };

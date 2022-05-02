@@ -13,7 +13,7 @@ DictionaryNode::DictionaryNode()
         this->children[i] = NULL;
     }
 
-	this->endOfWord = false;
+    this->endOfWord = false;
 }
 
 DictionaryNode::~DictionaryNode()

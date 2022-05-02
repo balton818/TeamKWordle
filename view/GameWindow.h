@@ -88,21 +88,21 @@ private:
     int handle(int e);
 
 
-    public:
+public:
 
-        // Constructs a gameWindow for the world game
-        //
-        // params - width - window width
-        //          height - window height
-        //          title - window title
-        //          viewModel - the viewmodel for the window
-        //
-        GameWindow(int width, int height, const char* title, ViewModel* viewModel);
+    // Constructs a gameWindow for the world game
+    //
+    // params - width - window width
+    //          height - window height
+    //          title - window title
+    //          viewModel - the viewmodel for the window
+    //
+    GameWindow(int width, int height, const char* title, ViewModel* viewModel);
 
-        // Deconstructs the game window
-        //
-        virtual ~GameWindow();
-        void resetWindow();
+    // Deconstructs the game window
+    //
+    virtual ~GameWindow();
+    void resetWindow();
 
 
 };
