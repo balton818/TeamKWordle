@@ -78,25 +78,46 @@ public:
     //
     void setUserName(const string& username);
 
+    // gets the current username
+    //
+    // Returns - the current username
+    //
     string& getUsername();
 
+    // gets the user's settings
+    //
+    // returns - the user's settings
+    //
     Settings* getSettings();
+
+    // changes the users settings
+    //
+    // param - settings to apply to the user
+    //
     void changeSettings(Settings* settings);
+
+    // transforms the user and all stats and settings into a string
+    //
+    // returns - the string rep of the user.
+    //
     string& userToString();
 
 private:
+
+    string userAsText = "";
     string username;
+
     int gamesPlayed;
     int gamesWon;
     int currentWinStreak;
     int maxWinStreak;
+
     map<int, int> guessDistribution;
     Settings* settings;
+
     void createGuessDistribution();
-    string userAsText = "";
-
-
 };
+
 }
 
 #endif // USER_H

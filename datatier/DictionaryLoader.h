@@ -13,6 +13,7 @@ namespace datatier
 //
 class DictionaryLoader
 {
+
 public:
 
     // Constructs a dictionary loader
@@ -27,6 +28,7 @@ public:
     //
     Dictionary* readDictionaryFile();
 };
+
 }
 
 #endif // DICTIONARYLOADER_H

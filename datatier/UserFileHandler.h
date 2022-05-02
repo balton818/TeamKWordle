@@ -15,9 +15,39 @@ using namespace model;
 
 namespace datatier
 {
+
+// User file handler class
+//
+// Author - Team K
+//
 class UserFileHandler
 {
+
+public:
+
+    // Constructs a userfile handler for loading and saving users
+    //
+    UserFileHandler();
+
+    // deconstructs a user file handler
+    //
+    virtual ~UserFileHandler();
+
+    // loads user data into the wordle game
+    //
+    // Returns - map of usernames and user pointers
+    //
+    map<string, User*> loadUserData();
+
+    // saves users to file
+    //
+    // Param - output the string of user data to save
+    //
+    void saveUsersToFile(string& output);
+
+
 private:
+
     int usernameIndex = 0;
     int uniqueCharSettingIndex = 1;
     int hardModeSettingIndex = 2;
@@ -34,14 +64,8 @@ private:
     string filename = "userData.wuf";
 
     void createUserFromData(vector<string> userData);
-
-public:
-    UserFileHandler();
-    virtual ~UserFileHandler();
-    map<string, User*> loadUserData();
-    void saveUsersToFile(string& output);
 };
-}
 
+}
 
 #endif // USERFILEHANDLER_H

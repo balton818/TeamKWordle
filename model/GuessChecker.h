@@ -18,20 +18,6 @@ namespace model
 //
 class GuessChecker
 {
-    private:
-
-        string answer;
-        void determineGuessCharRates(string& guess);
-        unordered_map<char,int> guessCharRates;
-        unordered_map<char,int> answerCharRates;
-        unordered_map<char, int> hardModeCorrectPositions;
-        int currentCorrectLetters;
-
-        void standardGuessParsing(int index, char currentLetter, vector<GuessCheckerResult>& result);
-        void handleGuessDuplicates(vector<GuessCheckerResult>& result, vector<char>& duplicatesInGuess,string& guess);
-        void duplicateGuessParsing(char& currentDuplicate, int& duplicateRate, string& guess, vector<GuessCheckerResult>& result);
-        void duplicateGuessParsingConditions(int& firstInstanceIndex, int& correctIndex, int& duplicateRate, vector<GuessCheckerResult>& result, int currentIndex);
-
     public:
 
         // Constructs a GuessChecker
@@ -73,8 +59,24 @@ class GuessChecker
         //
         bool validPositions(string& guess);
 
+    private:
+
+        string answer;
+
+        unordered_map<char,int> guessCharRates;
+        unordered_map<char,int> answerCharRates;
+        unordered_map<char, int> hardModeCorrectPositions;
+
+        int currentCorrectLetters;
+
+        void standardGuessParsing(int index, char currentLetter, vector<GuessCheckerResult>& result);
+        void handleGuessDuplicates(vector<GuessCheckerResult>& result, vector<char>& duplicatesInGuess,string& guess);
+        void duplicateGuessParsing(char& currentDuplicate, int& duplicateRate, string& guess, vector<GuessCheckerResult>& result);
+        void duplicateGuessParsingConditions(int& firstInstanceIndex, int& correctIndex, int& duplicateRate, vector<GuessCheckerResult>& result, int currentIndex);
+        void determineGuessCharRates(string& guess);
 
 };
+
 }
 
 #endif // GUESSCHECKER_H

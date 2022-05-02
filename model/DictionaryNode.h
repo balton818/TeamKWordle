@@ -14,6 +14,7 @@ namespace model
 //
 class DictionaryNode
 {
+
 public:
 
     // Dictionary Node constructor
@@ -41,8 +42,10 @@ public:
     DictionaryNode* children[ALPHA_CHARS];
 
 private:
+
     bool endOfWord;
 };
+
 }
 
 #endif // DICTIONARYNODE_H

@@ -11,6 +11,7 @@ namespace model
 //
 class Settings
 {
+
 public:
 
     // Constructs a settings object
@@ -58,10 +59,12 @@ public:
     bool getHardMode();
 
 private:
+
     bool onlyUniqueChars;
     bool playerCanReuseChars;
     bool hardMode;
 };
+
 }
 
 #endif // SETTINGS_H
