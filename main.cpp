@@ -12,21 +12,17 @@ using namespace datatier;
 using namespace model;
 
 #include "GameWindow.h"
+
+#include "UserSelectionWindow.h"
 using namespace view;
 
-#include "GuessChecker.h"
-using namespace model;
-
-#include <iostream>
-using namespace std;
+#include "ViewModel.h"
+using namespace viewmodel;
 
 int main (int argc, char ** argv)
 {
     ViewModel* viewModel = new ViewModel();
-    string username = "test";
-    viewModel->initializeGame(username);
-    GameWindow mainWindow(500, 700, "Wordle by Alton, Wagner", viewModel);
-    mainWindow.show();
+    viewModel->displayPage(PageType::LOGIN_PAGE);
 
     int exitCode = Fl::run();
     return exitCode;

@@ -6,13 +6,26 @@ using namespace std;
 
 namespace model
 {
-User::User()
+User::User(string username)
 {
+    this->username = username;
     this->currentWinStreak = 0;
     this->gamesPlayed = 0;
     this->gamesWon = 0;
     this->maxWinStreak = 0;
     this->createGuessDistribution();
+    this->settings = new Settings();
+}
+
+User::User(string username, int gamesPlayed, int gamesWon, int currentStreak, int maxStreak, map<int, int> guessDistribution, Settings* settings)
+{
+    this->username = username;
+    this->currentWinStreak = currentStreak;
+    this->gamesPlayed = gamesPlayed;
+    this->gamesWon = gamesWon;
+    this->maxWinStreak = maxStreak;
+    this->guessDistribution = guessDistribution;
+    this->settings = settings;
 }
 
 User::~User()
@@ -28,7 +41,8 @@ void User::setUserName(const string& username)
 void User::createGuessDistribution()
 {
     int guessNumber = 1;
-    while (guessNumber < 7){
+    while (guessNumber < 7)
+    {
         this->guessDistribution.insert({guessNumber, 0});
         guessNumber++;
     }
@@ -80,6 +94,21 @@ void User::updateStatsOnWin(int guesses)
     }
 
     this->guessDistribution[guesses]++;
+}
+
+string& User::getUsername()
+{
+    return this->username;
+}
+
+Settings* User::getSettings()
+{
+    return this->settings;
+}
+
+void User::changeSettings(Settings* settings)
+{
+    this->settings = settings;
 }
 
 }

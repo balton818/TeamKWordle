@@ -30,13 +30,14 @@ Dictionary* DictionaryLoader::readDictionaryFile()
     string line;
 
     while(getline(dictFile, line))
+    {
+        if (line.size() == lineSize)
         {
-            if (line.size() == lineSize)
-            {
-                transform(line.begin(), line.end(), line.begin(), ::toupper);
-                dictionary->insertWord(line);
-            }
+            transform(line.begin(), line.end(), line.begin(), ::toupper);
+            dictionary->insertWord(line);
         }
+
+    }
 
     dictFile.close();
     return dictionary;

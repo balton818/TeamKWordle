@@ -22,6 +22,7 @@
 					<Add directory="datatier" />
 					<Add directory="enums" />
 					<Add directory="viewmodel" />
+					<Add directory="./" />
 				</Compiler>
 				<Linker>
 					<Add option="`fltk-config --ldstaticflags`" />
@@ -37,7 +38,10 @@
 		</Linker>
 		<Unit filename="datatier/DictionaryLoader.cpp" />
 		<Unit filename="datatier/DictionaryLoader.h" />
+		<Unit filename="datatier/UserFileHandler.cpp" />
+		<Unit filename="datatier/UserFileHandler.h" />
 		<Unit filename="enums/GuessCheckerResult.h" />
+		<Unit filename="enums/PageType.h" />
 		<Unit filename="enums/SpecialKey.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model/Dictionary.cpp" />
@@ -50,8 +54,15 @@
 		<Unit filename="model/Settings.h" />
 		<Unit filename="model/User.cpp" />
 		<Unit filename="model/User.h" />
+		<Unit filename="userData.wuf" />
+		<Unit filename="view/GameOverWindow.cpp" />
+		<Unit filename="view/GameOverWindow.h" />
 		<Unit filename="view/GameWindow.cpp" />
 		<Unit filename="view/GameWindow.h" />
+		<Unit filename="view/SettingsWindow.cpp" />
+		<Unit filename="view/SettingsWindow.h" />
+		<Unit filename="view/UserSelectionWindow.cpp" />
+		<Unit filename="view/UserSelectionWindow.h" />
 		<Unit filename="viewmodel/ViewModel.cpp" />
 		<Unit filename="viewmodel/ViewModel.h" />
 		<Extensions>

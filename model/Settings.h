@@ -11,56 +11,56 @@ namespace model
 //
 class Settings
 {
-    public:
+public:
 
-        // Constructs a settings object
-        //
-        Settings();
+    // Constructs a settings object
+    //
+    Settings();
 
-        // Deconstructs a settings object
-        //
-        virtual ~Settings();
+    // Deconstructs a settings object
+    //
+    virtual ~Settings();
 
-        // sets word generation to only produce words with unique chars.
-        //
-        // Param - the bool indicating if the setting is enabled (true) or disabled (false)
-        //
-        void setOnlyUniqueChars(bool toSet);
+    // sets word generation to only produce words with unique chars.
+    //
+    // Param - the bool indicating if the setting is enabled (true) or disabled (false)
+    //
+    void setOnlyUniqueChars(bool toSet);
 
-        // get the bool indicating if the setting is enabled
-        //
-        // Return - true if enabled, false otherwise
-        //
-        bool getOnlyUniqueChars();
+    // get the bool indicating if the setting is enabled
+    //
+    // Return - true if enabled, false otherwise
+    //
+    bool getOnlyUniqueChars();
 
-        // sets the ability of the player to reuse characters
-        //
-        // Param - the bool indicating if the setting is enabled (true) or disabled (false)
-        //
-        void setPlayerReuseChars(bool toSet);
+    // sets the ability of the player to reuse characters
+    //
+    // Param - the bool indicating if the setting is enabled (true) or disabled (false)
+    //
+    void setPlayerReuseChars(bool toSet);
 
-        // get the bool indicating if the setting is enabled
-        //
-        // Return - true if enabled, false otherwise
-        //
-        bool getPlayerReuseChars();
+    // get the bool indicating if the setting is enabled
+    //
+    // Return - true if enabled, false otherwise
+    //
+    bool getPlayerReuseChars();
 
-        // sets hard mode meaning that the player must include any partially or fully correct letters in subsequent guesses.
-        //
-        // Param - the bool indicating if the setting is enabled (true) or disabled (false)
-        //
-        void setHardMode(bool toSet);
+    // sets hard mode meaning that the player must include any partially or fully correct letters in subsequent guesses.
+    //
+    // Param - the bool indicating if the setting is enabled (true) or disabled (false)
+    //
+    void setHardMode(bool toSet);
 
-         // get the bool indicating if the setting is enabled
-        //
-        // Return - true if enabled, false otherwise
-        //
-        bool getHardMode();
+    // get the bool indicating if the setting is enabled
+    //
+    // Return - true if enabled, false otherwise
+    //
+    bool getHardMode();
 
-    private:
-        bool onlyUniqueChars;
-        bool playerCanReuseChars;
-        bool hardMode;
+private:
+    bool onlyUniqueChars;
+    bool playerCanReuseChars;
+    bool hardMode;
 };
 }
 

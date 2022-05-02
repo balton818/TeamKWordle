@@ -89,7 +89,7 @@ void Dictionary::generateWordToGuess(bool canReuseLetters)
     {
         if (!this->reUseLettersCheck(canReuseLetters, wordBuilder))
         {
-           return;
+            return;
         }
     }
     this->wordToGuess = wordBuilder;
@@ -107,7 +107,6 @@ bool Dictionary::reUseLettersCheck(bool canReuseLetters, char wordBuilder[])
             return false;
         }
     }
-
     return true;
 }
 
@@ -128,7 +127,7 @@ bool Dictionary::checkIfUniqueChars(char wordBuilder[])
     for (auto currentChar : this->answerCharRates)
     {
         if (currentChar.second > 1)
-         return false;
+            return false;
     }
     return true;
 }
