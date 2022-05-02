@@ -6,10 +6,10 @@
 #include "GameOverWindow.h"
 using namespace view;
 
-#include "../model/User.h"
-#include "../model/Dictionary.h"
-#include "../model/Settings.h"
-#include "../model/GuessChecker.h"
+#include "User.h"
+#include "Dictionary.h"
+#include "Settings.h"
+#include "GuessChecker.h"
 using namespace model;
 
 #include <typeinfo>
@@ -64,6 +64,7 @@ void ViewModel::initializeGame(string& username)
 
     this->getAndSetAnswer();
 }
+
 
 void ViewModel::getAndSetAnswer()
 {
@@ -179,6 +180,13 @@ void ViewModel::handleLoss()
     this->displayPage(PageType::GAME_OVER_PAGE);
     this->users[this->currentUser->getUsername()] = this->currentUser;
     this->saveUser();
+}
+
+void ViewModel::setSettings(string& username)
+{
+    Settings* settings = this->users[username]->getSettings();
+    SettingsWindow* settingsPage = (SettingsWindow*)this->gameWindows[PageType::SETTINGS_PAGE];
+    settingsPage->updateCheckboxValues(settings);
 }
 
 ViewModel::~ViewModel()

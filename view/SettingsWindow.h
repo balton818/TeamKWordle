@@ -39,6 +39,7 @@ private:
 public:
     SettingsWindow(int width, int height, const char* title, ViewModel* viewModel);
     virtual ~SettingsWindow();
+    void updateCheckboxValues(Settings* settings);
 
 };
 }

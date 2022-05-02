@@ -70,8 +70,14 @@ void UserSelectionWindow::settings_callback(Fl_Widget* widget, void* data)
     string username = window->usernameInput->value();
     if (username.length() > 0)
     {
+        window->viewModel->setSettings(username);
         window->viewModel->displayPage(PageType::SETTINGS_PAGE);
     }
+}
+
+string UserSelectionWindow::getUserText()
+{
+    return this->usernameInput->value();
 }
 
 UserSelectionWindow::~UserSelectionWindow()

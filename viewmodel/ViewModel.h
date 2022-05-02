@@ -75,6 +75,9 @@ public:
     // handles changes on loss
     //
     void handleLoss();
+
+    void setSettings(string& username);
+
     void updateSettings(bool hardModeEnabled, bool letterReuseEnabled);
 
     void displayPage(PageType pageType);

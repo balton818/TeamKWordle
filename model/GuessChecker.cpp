@@ -105,8 +105,6 @@ void GuessChecker::standardGuessParsing(int index,char currentLetter, vector<Gue
     if (this->answer[index] == currentLetter)
     {
         result.push_back(GuessCheckerResult::CORRECT);
-        cout << currentLetter << endl;
-        cout << index << endl;
         this->hardModeCorrectPositions[currentLetter] = index;
     }
     else if (this->answerCharRates[currentLetter])

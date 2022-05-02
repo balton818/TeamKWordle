@@ -58,7 +58,6 @@ void UserFileHandler::createUserFromData(vector<string> userData)
         for (int index = this->guessDistributionStartIndex; index <= this->guessDistributionEndIndex; index++)
         {
             guessDistribution.insert(pair<int,int>(counter, stoi(userData[index])));
-            cout << userData[index] << endl;
             counter++;
         }
 

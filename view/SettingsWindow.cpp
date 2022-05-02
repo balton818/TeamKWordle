@@ -51,6 +51,16 @@ void SettingsWindow::applySettings_callback(Fl_Widget* widget, void* data)
     window->hide();
 }
 
+void SettingsWindow::updateCheckboxValues(Settings* settings)
+{
+    if (settings != nullptr)
+    {
+        this->hardModeButton->value(settings->getHardMode());
+        this->reuseLettersButton->value(settings->getOnlyUniqueChars());
+    }
+
+}
+
 SettingsWindow::~SettingsWindow()
 {
     delete this->titleBox;

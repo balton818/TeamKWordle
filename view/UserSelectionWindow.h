@@ -41,6 +41,8 @@ private:
 public:
     UserSelectionWindow(int width, int height, const char* title, ViewModel* viewModel);
     virtual ~UserSelectionWindow();
+
+    string getUserText();
 };
 }
 
