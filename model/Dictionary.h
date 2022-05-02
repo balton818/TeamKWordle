@@ -46,6 +46,10 @@ public:
     //
     string& getWordToGuess(bool canReuseLetters);
 
+    // gets the rates of chars in the answer
+    //
+    // returns - a map that has a char as the key and its occurence rate as the value
+    //
     unordered_map<char, int> getAnswerCharRates();
 
 private:
@@ -60,5 +64,7 @@ private:
     bool reUseLettersCheck(bool canReuseLetters, char wordBuilder[]);
     unordered_map<char, int> answerCharRates;
 };
+
 }
+
 #endif // DICTIONARY_H

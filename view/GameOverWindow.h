@@ -16,13 +16,38 @@ using namespace viewmodel;
 namespace view
 {
 
+// GameOverWindow class for world game
+//
+// Author - Team K
+//
 class GameOverWindow : public Fl_Window
 {
+
+public:
+
+    // constructs a gameOver window
+    //
+    // params - width - window width
+    //          height - window height
+    //          title - window title
+    //          viewmodel - the current viewmodel
+    //
+    GameOverWindow(int width, int height, const char* title, ViewModel* viewModel);
+
+    // deconstructs a gameover window
+    //
+    virtual ~GameOverWindow();
+
+    // builds the window
+    //
+    void buildWindow();
+
 private:
 
     vector<Fl_Box*> statsBoxes;
     vector<Fl_Box*> statsLabels;
     string statsBoxLabels [4] = {"Games\nPlayed", "Win %", "Current\nStreak", "Max\nStreak"};
+
     int NUMBER_OF_BOXES = 4;
     int LABEL_BOX_START_Y = 130;
     int LABEL_BOX_HEIGHT = 25;
@@ -35,6 +60,7 @@ private:
     int CHART_HEIGHT = 100;
     int BUTTON_WIDTH = 100;
     int BUTTON_HEIGHT = 30;
+
     const char* PLAY_AGAIN = "Play Again";
     const char* END_GAME = "End Game";
 
@@ -49,16 +75,12 @@ private:
     void drawChart();
     void addPlayAgainButton();
     void addEndGameButton();
-    static void endGame_callback(Fl_Widget* widget, void* data);
-    static void playAgain_callback(Fl_Widget* widget, void* data);
-
     void deleteStatsBoxesAndLabels();
 
-public:
-    GameOverWindow(int width, int height, const char* title, ViewModel* viewModel);
-    virtual ~GameOverWindow();
-    void buildWindow();
+    static void endGame_callback(Fl_Widget* widget, void* data);
+    static void playAgain_callback(Fl_Widget* widget, void* data);
 };
+
 }
 
 #endif // GAMEOVERWINDOW_H

@@ -28,6 +28,26 @@ namespace view
 //
 class GameWindow : public Fl_Window
 {
+
+public:
+
+    // Constructs a gameWindow for the world game
+    //
+    // params - width - window width
+    //          height - window height
+    //          title - window title
+    //          viewModel - the viewmodel for the window
+    //
+    GameWindow(int width, int height, const char* title, ViewModel* viewModel);
+
+    // Deconstructs the game window
+    //
+    virtual ~GameWindow();
+
+    // resets the game Window
+    //
+    void resetWindow();
+
 private:
     ViewModel* viewModel;
 
@@ -86,27 +106,8 @@ private:
     void updateKeyColor(const char* keyLabel, GuessCheckerResult checkerResult);
     Fl_Color determineColorForResult(GuessCheckerResult checkerResult);
     int handle(int e);
-
-
-public:
-
-    // Constructs a gameWindow for the world game
-    //
-    // params - width - window width
-    //          height - window height
-    //          title - window title
-    //          viewModel - the viewmodel for the window
-    //
-    GameWindow(int width, int height, const char* title, ViewModel* viewModel);
-
-    // Deconstructs the game window
-    //
-    virtual ~GameWindow();
-    void resetWindow();
-
-
 };
-}
 
+}
 
 #endif // GAMEWINDOW_H

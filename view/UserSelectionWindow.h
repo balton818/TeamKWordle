@@ -11,9 +11,31 @@ using namespace viewmodel;
 
 namespace view
 {
+
+// user selection window class
+//
+// Author - Team K
+//
 class UserSelectionWindow : public Fl_Window
 {
+
+public:
+
+    // constructs a UserSelectionWindow
+    //
+    // params - width - window width
+    //          height - window height
+    //          title - window title
+    //          viewModel - the viewmodel for the window
+    //
+    UserSelectionWindow(int width, int height, const char* title, ViewModel* viewModel);
+
+    // deconstructs a UserSelectionWindow
+    //
+    virtual ~UserSelectionWindow();
+
 private:
+
     Fl_Box* titleBox;
     Fl_Input* usernameInput;
     Fl_Button* changeSettings;
@@ -37,11 +59,8 @@ private:
     void addSettingsButton();
     static void playGame_callback(Fl_Widget* widget, void* data);
     static void settings_callback(Fl_Widget* widget, void* data);
-
-public:
-    UserSelectionWindow(int width, int height, const char* title, ViewModel* viewModel);
-    virtual ~UserSelectionWindow();
 };
+
 }
 
 #endif // USERSELECTIONWINDOW_H

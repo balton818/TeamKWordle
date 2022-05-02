@@ -11,13 +11,36 @@ using namespace viewmodel;
 
 namespace view
 {
+
+// settings window class
+//
+// Author - Team K
+//
 class SettingsWindow : public Fl_Window
 {
+
+public:
+
+    // constructs a settings window
+    //
+    // params - width - window width
+    //          height - window height
+    //          title - window title
+    //          viewModel - the viewmodel for the window
+    //
+    SettingsWindow(int width, int height, const char* title, ViewModel* viewModel);
+
+    // deconstructs a settings window
+    //
+    virtual ~SettingsWindow();
+
 private:
+
     const char* TITLE_BOX_TEXT = "Settings";
     const char* HARD_MODE = "Hard Mode";
     const char* REUSE_LETTERS = "Single Letter Occurrences";
     const char* APPLY_SETTINGS = "Apply Settings";
+
     int TITLE_BOX_WIDTH = 200;
     int TITLE_BOX_HEIGHT = 50;
     int CHECKBOX_SIZE = 20;
@@ -35,12 +58,8 @@ private:
     void drawCheckButtons();
     void addApplyButton();
     static void applySettings_callback(Fl_Widget* widget, void* data);
-
-public:
-    SettingsWindow(int width, int height, const char* title, ViewModel* viewModel);
-    virtual ~SettingsWindow();
-
 };
+
 }
 
 #endif // SETTINGSWINDOW_H

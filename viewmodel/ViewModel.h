@@ -26,6 +26,7 @@ namespace viewmodel
 //
 class ViewModel
 {
+
 public:
 
     // create a view model object
@@ -68,17 +69,34 @@ public:
 
     // handles changes when a user wins
     //
-    // The amount of guesses the user needed to solve
+    // param - The amount of guesses the user needed to solve
     //
     void handleWin(int guessesUsed);
 
     // handles changes on loss
     //
     void handleLoss();
+
+    // updates the settings when changed
+    //
     void updateSettings(bool hardModeEnabled, bool letterReuseEnabled);
 
+    // displays the desired page
+    //
+    // param - the page type to be displayed
+    //
     void displayPage(PageType pageType);
+
+    // gets the current user stats
+    //
+    // returns - vector of the current user stats
+    //
     vector<int> getCurrentUserStats();
+
+    // gets the current users guess distribution
+    //
+    // Returns - a map of the users guess distribution
+    //
     map<int, int> getGuessDistribution();
 
 private:
@@ -110,5 +128,7 @@ private:
     bool userExists(string& username);
 
 };
+
 }
+
 #endif // VIEWMODEL_H
