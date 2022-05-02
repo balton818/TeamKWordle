@@ -51,26 +51,7 @@ public:
 private:
     ViewModel* viewModel;
 
-    int TOP_OFFSET;
-    int WINDOW_WIDTH;
-    int WINDOW_HEIGHT;
-    int GUESS_BOXES_START_X;
-    int GUESS_BOXES_START_Y;
-    int GUESS_BOX_WIDTH;
-    int GUESS_BOX_HEIGHT;
-    const char* INVALID_GUESS = "Invalid Word";
-
-
-    int ROW_SPACING;
-    int COLUMN_SPACING;
-
-    int NUMBER_OF_ROWS;
-    int NUMBER_OF_COLUMNS;
-
-    int KEY_WIDTH;
-    int KEY_HEIGHT;
-
-    int MAX_GUESS_LENGTH;
+    const char* invalidGuess = "Invalid Word";
 
     int currentGuessNumber;
     vector<char> currentGuess;

@@ -18,8 +18,8 @@ void SettingsWindow::buildWindow()
 
 void SettingsWindow::buildTitleBox()
 {
-    int startX = (this->w() / 2) - (this->TITLE_BOX_WIDTH / 2);
-    this->titleBox = new Fl_Box(startX, 20, this->TITLE_BOX_WIDTH, this->TITLE_BOX_HEIGHT, this->TITLE_BOX_TEXT);
+    int startX = (this->w() / 2) - (Constants::SETTINGS_WINDOW_TITLE_BOX_WIDTH / 2);
+    this->titleBox = new Fl_Box(startX, 20, Constants::SETTINGS_WINDOW_TITLE_BOX_WIDTH, Constants::SETTINGS_WINDOW_TITLE_BOX_HEIGHT, "Settings");
     this->titleBox->box(FL_UP_BOX);
     this->titleBox->labelfont(FL_BOLD+FL_ITALIC);
     this->titleBox->labelsize(36);
@@ -30,15 +30,15 @@ void SettingsWindow::drawCheckButtons()
 {
     int startX = this->titleBox->x();
     int startY = this->h() / 2;
-    this->hardModeButton = new Fl_Check_Button(startX, startY, this->CHECKBOX_SIZE, this->CHECKBOX_SIZE, this->HARD_MODE);
-    this->reuseLettersButton = new Fl_Check_Button(startX, this->hardModeButton->y() + this->CHECKBOX_SIZE, this->CHECKBOX_SIZE, this->CHECKBOX_SIZE, this->REUSE_LETTERS);
+    this->hardModeButton = new Fl_Check_Button(startX, startY, Constants::SETTINGS_WINDOW_CHECKBOX_SIZE, Constants::SETTINGS_WINDOW_CHECKBOX_SIZE, "Hard Mode");
+    this->reuseLettersButton = new Fl_Check_Button(startX, this->hardModeButton->y() + Constants::SETTINGS_WINDOW_CHECKBOX_SIZE, Constants::SETTINGS_WINDOW_CHECKBOX_SIZE, Constants::SETTINGS_WINDOW_CHECKBOX_SIZE, "Single Letter Occurrences");
 }
 
 void SettingsWindow::addApplyButton()
 {
-    int startX = this->w() / 2 - this->BUTTON_WIDTH / 2;
-    int startY = this->reuseLettersButton->y() + this->BUTTON_HEIGHT;
-    this->applyButton = new Fl_Button(startX, startY, this->BUTTON_WIDTH, this->BUTTON_HEIGHT, this->APPLY_SETTINGS);
+    int startX = this->w() / 2 - Constants::SETTINGS_WINDOW_BUTTON_WIDTH / 2;
+    int startY = this->reuseLettersButton->y() + Constants::SETTINGS_WINDOW_BUTTON_HEIGHT;
+    this->applyButton = new Fl_Button(startX, startY, Constants::SETTINGS_WINDOW_BUTTON_WIDTH, Constants::SETTINGS_WINDOW_BUTTON_HEIGHT, "Apply Settings");
     this->applyButton->callback(this->applySettings_callback, this);
 }
 

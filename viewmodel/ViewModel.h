@@ -1,17 +1,20 @@
 #ifndef VIEWMODEL_H
 #define VIEWMODEL_H
 
-#include "../model/User.h"
-#include "../model/Dictionary.h"
-#include "../model/Settings.h"
-#include "../model/GuessChecker.h"
+#include "Constants.h"
+using namespace constants;
+
+#include "User.h"
+#include "Dictionary.h"
+#include "Settings.h"
+#include "GuessChecker.h"
 using namespace model;
 
 #include<string>
 using namespace std;
 
-#include "../datatier/DictionaryLoader.h"
-#include "../datatier/UserFileHandler.h"
+#include "DictionaryLoader.h"
+#include "UserFileHandler.h"
 using namespace datatier;
 
 #include "PageType.h"
@@ -77,9 +80,10 @@ public:
     //
     void handleLoss();
 
-    //Sets the settings for the SettingsWindow
-    //to those currently stored for the specified user
+    // Sets the settings for the SettingsWindow
+    // to those currently associated with the specified user
     // param - the user
+    //
     void setSettings(string& username);
 
     // updates the settings when changed
@@ -108,15 +112,7 @@ private:
 
     vector<Fl_Window*> gameWindows;
 
-    const char* PAGE_TITLE = "Wordle by Alton, Wagner";
-    int LOGIN_WINDOW_WIDTH = 400;
-    int LOGIN_WINDOW_HEIGHT = 300;
-    int GAME_WINDOW_WIDTH = 500;
-    int GAME_WINDOW_HEIGHT = 700;
-    int GAME_OVER_WINDOW_WIDTH = 500;
-    int GAME_OVER_WINDOW_HEIGHT = 500;
-    int SETTINGS_WINDOW_WIDTH = 300;
-    int SETTINGS_WINDOW_HEIGHT = 200;
+    const char* pageTitle = "Wordle by Alton, Wagner";
 
     map<string, User*> users;
     User* currentUser;

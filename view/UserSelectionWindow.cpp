@@ -22,8 +22,8 @@ void UserSelectionWindow::buildWindow()
 
 void UserSelectionWindow::addTitleBox()
 {
-    int startX = (this->w() / 2) - (this->TITLE_BOX_WIDTH / 2);
-    this->titleBox = new Fl_Box(startX, 20, this->TITLE_BOX_WIDTH, this->TITLE_BOX_HEIGHT, this->TITLE_BOX_TEXT);
+    int startX = (this->w() / 2) - (Constants::USER_SELECTION_TITLE_BOX_WIDTH / 2);
+    this->titleBox = new Fl_Box(startX, 20, Constants::USER_SELECTION_TITLE_BOX_WIDTH, Constants::USER_SELECTION_TITLE_BOX_HEIGHT, "Wordle");
     this->titleBox->box(FL_UP_BOX);
     this->titleBox->labelfont(FL_BOLD+FL_ITALIC);
     this->titleBox->labelsize(36);
@@ -32,23 +32,23 @@ void UserSelectionWindow::addTitleBox()
 
 void UserSelectionWindow::addInput()
 {
-    int startX = (this->w() / 2) - (this->INPUT_WIDTH / 2);
-    this->usernameInput = new Fl_Input(startX, (this->h() / 2 - this->INPUT_HEIGHT), this->INPUT_WIDTH, this->INPUT_HEIGHT, "Username: ");
+    int startX = (this->w() / 2) - (Constants::USER_SELECTION_INPUT_WIDTH / 2);
+    this->usernameInput = new Fl_Input(startX, (this->h() / 2 - Constants::USER_SELECTION_INPUT_HEIGHT), Constants::USER_SELECTION_INPUT_WIDTH, Constants::USER_SELECTION_INPUT_HEIGHT, "Username: ");
 }
 
 void UserSelectionWindow::addPlayGameButton()
 {
-    int startX = (this->w() / 2) - (this->BUTTON_WIDTH / 2);
-    int startY = (this->h() / 2) + this->BUTTON_TOP_OFFSET;
-    this->playGame = new Fl_Button(startX, startY, this->BUTTON_WIDTH, this->BUTTON_HEIGHT, "Play Game");
+    int startX = (this->w() / 2) - (Constants::USER_SELECTION_BUTTON_WIDTH / 2);
+    int startY = (this->h() / 2) + Constants::USER_SELECTION_BUTTON_TOP_OFFSET;
+    this->playGame = new Fl_Button(startX, startY, Constants::USER_SELECTION_BUTTON_WIDTH, Constants::USER_SELECTION_BUTTON_HEIGHT, "Play Game");
     this->playGame->callback(this->playGame_callback, this);
 }
 
 void UserSelectionWindow::addSettingsButton()
 {
-    int startX = (this->w() / 2) - (this->BUTTON_WIDTH / 2);
-    int startY = (this->h() / 2 + this->BUTTON_HEIGHT + 2 * this->BUTTON_TOP_OFFSET);
-    this->changeSettings = new Fl_Button(startX, startY, this->BUTTON_WIDTH, this->BUTTON_HEIGHT, "Settings");
+    int startX = (this->w() / 2) - (Constants::USER_SELECTION_BUTTON_WIDTH / 2);
+    int startY = (this->h() / 2 + Constants::USER_SELECTION_BUTTON_HEIGHT + 2 * Constants::USER_SELECTION_BUTTON_TOP_OFFSET);
+    this->changeSettings = new Fl_Button(startX, startY, Constants::USER_SELECTION_BUTTON_WIDTH, Constants::USER_SELECTION_BUTTON_HEIGHT, "Settings");
     this->changeSettings->callback(this->settings_callback, this);
 }
 
@@ -73,11 +73,6 @@ void UserSelectionWindow::settings_callback(Fl_Widget* widget, void* data)
         window->viewModel->setSettings(username);
         window->viewModel->displayPage(PageType::SETTINGS_PAGE);
     }
-}
-
-string UserSelectionWindow::getUserText()
-{
-    return this->usernameInput->value();
 }
 
 UserSelectionWindow::~UserSelectionWindow()

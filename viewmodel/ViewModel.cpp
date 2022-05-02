@@ -32,9 +32,9 @@ ViewModel::ViewModel()
 
 void ViewModel::createPages()
 {
-    UserSelectionWindow* loginPage = new UserSelectionWindow(this->LOGIN_WINDOW_WIDTH, this->LOGIN_WINDOW_HEIGHT, this->PAGE_TITLE, this);
-    GameWindow* gamePage = new GameWindow(this->GAME_WINDOW_WIDTH, this->GAME_WINDOW_HEIGHT, this->PAGE_TITLE, this);
-    SettingsWindow* settingsPage = new SettingsWindow(this->SETTINGS_WINDOW_WIDTH, this->SETTINGS_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    UserSelectionWindow* loginPage = new UserSelectionWindow(Constants::LOGIN_WINDOW_WIDTH, Constants::LOGIN_WINDOW_HEIGHT, this->pageTitle, this);
+    GameWindow* gamePage = new GameWindow(Constants::GAME_WINDOW_WIDTH, Constants::GAME_WINDOW_HEIGHT, this->pageTitle, this);
+    SettingsWindow* settingsPage = new SettingsWindow(Constants::SETTINGS_WINDOW_WIDTH, Constants::SETTINGS_WINDOW_HEIGHT, this->pageTitle, this);
 
     this->gameWindows.push_back(loginPage);
     this->gameWindows.push_back(settingsPage);
@@ -149,7 +149,7 @@ void ViewModel::startNewGame()
 void ViewModel::handleWin(int guessesUsed)
 {
     this->currentUser->updateStatsOnWin(guessesUsed);
-    GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    GameOverWindow* gameOverPage = new GameOverWindow(Constants::GAME_OVER_WINDOW_WIDTH, Constants::GAME_OVER_WINDOW_HEIGHT, this->pageTitle, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
     this->users[this->currentUser->getUsername()] = this->currentUser;
@@ -175,7 +175,7 @@ map<int, int> ViewModel::getGuessDistribution()
 void ViewModel::handleLoss()
 {
     this->currentUser->updateStatsOnLoss();
-    GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    GameOverWindow* gameOverPage = new GameOverWindow(Constants::GAME_OVER_WINDOW_WIDTH, Constants::GAME_OVER_WINDOW_HEIGHT, this->pageTitle, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
     this->users[this->currentUser->getUsername()] = this->currentUser;
@@ -184,9 +184,12 @@ void ViewModel::handleLoss()
 
 void ViewModel::setSettings(string& username)
 {
-    Settings* settings = this->users[username]->getSettings();
-    SettingsWindow* settingsPage = (SettingsWindow*)this->gameWindows[PageType::SETTINGS_PAGE];
-    settingsPage->updateCheckboxValues(settings);
+    if (this->users.count(username))
+    {
+        Settings* settings = this->users[username]->getSettings();
+        SettingsWindow* settingsPage = (SettingsWindow*)this->gameWindows[PageType::SETTINGS_PAGE];
+        settingsPage->updateCheckboxValues(settings);
+    }
 }
 
 ViewModel::~ViewModel()

@@ -34,18 +34,11 @@ public:
     //
     virtual ~SettingsWindow();
 
+    //Updates the checkbox values to those found in the Settings object
+    //
+    void updateCheckboxValues(Settings* settings);
+
 private:
-
-    const char* TITLE_BOX_TEXT = "Settings";
-    const char* HARD_MODE = "Hard Mode";
-    const char* REUSE_LETTERS = "Single Letter Occurrences";
-    const char* APPLY_SETTINGS = "Apply Settings";
-
-    int TITLE_BOX_WIDTH = 200;
-    int TITLE_BOX_HEIGHT = 50;
-    int CHECKBOX_SIZE = 20;
-    int BUTTON_WIDTH = 150;
-    int BUTTON_HEIGHT = 30;
 
     ViewModel* viewmodel;
     Fl_Box* titleBox;

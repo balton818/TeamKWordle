@@ -41,15 +41,6 @@ private:
     Fl_Button* changeSettings;
     Fl_Button* playGame;
 
-    int TITLE_BOX_WIDTH = 200;
-    int TITLE_BOX_HEIGHT = 50;
-    int INPUT_WIDTH = 150;
-    int INPUT_HEIGHT = 20;
-    int BUTTON_WIDTH = 100;
-    int BUTTON_HEIGHT = 30;
-    int BUTTON_TOP_OFFSET = 20;
-    const char* TITLE_BOX_TEXT = "Wordle";
-
     ViewModel* viewModel;
 
     void buildWindow();

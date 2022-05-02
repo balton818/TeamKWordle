@@ -23,6 +23,7 @@
 					<Add directory="enums" />
 					<Add directory="viewmodel" />
 					<Add directory="./" />
+					<Add directory="constants" />
 				</Compiler>
 				<Linker>
 					<Add option="`fltk-config --ldstaticflags`" />
@@ -36,6 +37,7 @@
 		<Linker>
 			<Add option="`fltk-config --ldstaticflags`" />
 		</Linker>
+		<Unit filename="constants/Constants.h" />
 		<Unit filename="datatier/DictionaryLoader.cpp" />
 		<Unit filename="datatier/DictionaryLoader.h" />
 		<Unit filename="datatier/UserFileHandler.cpp" />
