@@ -111,17 +111,18 @@ void ViewModel::saveUser()
 
 void ViewModel::startNewGame()
 {
-    this->currentSolution = this->dictionary->getWordToGuess(true);
-   // cout << "Wordle answer: " << this->currentSolution << endl;
+    this->currentSolution = this->dictionary->getWordToGuess(this->gameSettings->getOnlyUniqueChars());
     this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
     this->initializeGame(this->currentUser->getUsername());
-    this->displayPage(PageType::GAME_PAGE);
 
 }
 
 void ViewModel::handleWin()
 {
+    GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
+    this->gameWindows.push_back(gameOverPage);
+    this->displayPage(PageType::GAME_OVER_PAGE);
 
 }
 

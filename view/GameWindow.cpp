@@ -206,6 +206,10 @@ void GameWindow::enterGuess()
         {
             this->currentGuessNumber++;
             this->currentGuess.clear();
+            if (this->currentGuessNumber == 6)
+            {
+                this->viewModel->handleLoss();
+            }
         }
         else
         {
@@ -251,15 +255,25 @@ bool GameWindow::handleCheckerResult(vector<GuessCheckerResult> result)
 
 void GameWindow::updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result)
 {
+    int correctLetters = 0;
     vector<Fl_Box*> currentRow = this->guessBoxes[this->currentGuessNumber];
     for (int index = 0; index < 5; index++)
     {
         Fl_Box* currentBox = currentRow[index];
         GuessCheckerResult currentResult = result[index];
+        if (this->determineColorForResult(currentResult) == FL_GREEN)
+        {
+            correctLetters++;
+        }
         currentBox->color(this->determineColorForResult(currentResult));
         const char* labelText = currentBox->label();
         this->updateKeyColor(labelText, currentResult);
         currentBox->redraw();
+    }
+
+    if (correctLetters == 5)
+    {
+        this->viewModel->handleWin();
     }
 }
 
