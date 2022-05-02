@@ -2,6 +2,7 @@
 
 #include <string>
 #include <map>
+#include <iostream>
 using namespace std;
 
 namespace model
@@ -49,12 +50,12 @@ void User::createGuessDistribution()
 
 }
 
-double User::getWinPercentage()
+int User::getWinPercentage()
 {
     int oneHundred = 100;
-    int winPercent = this->gamesWon / this->gamesPlayed;
+    int winPercent = this->gamesWon*oneHundred / this->gamesPlayed * oneHundred;
 
-    return winPercent * oneHundred;
+    return winPercent / oneHundred;
 }
 
 int User::getCurrentStreak()

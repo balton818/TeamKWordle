@@ -109,8 +109,6 @@ private:
 
     bool userExists(string& username);
 
-
-
 };
 }
 #endif // VIEWMODEL_H

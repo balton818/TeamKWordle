@@ -114,11 +114,17 @@ void GameWindow::buttonClick_callback(Fl_Widget* widget, void* data)
 void GameWindow::newGameClick_callback(Fl_Widget* widget, void* data)
 {
     GameWindow* window = (GameWindow*)data;
-    window->clearGuessBoxes();
-    window->clearKeyBoardColors();
+    window->resetWindow();
     window->viewModel->startNewGame();
-    window->currentGuessNumber = 0;
 
+
+}
+
+void GameWindow::resetWindow()
+{
+    this->clearGuessBoxes();
+    this->clearKeyBoardColors();
+    this->currentGuessNumber = 0;
 }
 
 void GameWindow::clearKeyBoardColors()
@@ -273,7 +279,7 @@ void GameWindow::updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result)
 
     if (correctLetters == 5)
     {
-        this->viewModel->handleWin(this->currentGuessNumber);
+        this->viewModel->handleWin(this->currentGuessNumber + 1);
     }
 }
 

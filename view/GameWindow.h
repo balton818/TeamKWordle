@@ -102,6 +102,8 @@ private:
         // Deconstructs the game window
         //
         virtual ~GameWindow();
+        void resetWindow();
+
 
 };
 }

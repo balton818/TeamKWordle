@@ -15,6 +15,7 @@ using namespace viewmodel;
 
 namespace view
 {
+
 class GameOverWindow : public Fl_Window
 {
     private:

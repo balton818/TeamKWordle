@@ -30,7 +30,7 @@ public:
     //
     // Returns - the players win percentage
     //
-    double getWinPercentage();
+    int getWinPercentage();
 
     // Gets the total games played by the player
     //

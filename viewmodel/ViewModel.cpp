@@ -12,6 +12,7 @@ using namespace view;
 #include "../model/GuessChecker.h"
 using namespace model;
 
+#include <typeinfo>
 #include <iostream>
 #include<string>
 using namespace std;
@@ -34,6 +35,7 @@ ViewModel::~ViewModel()
 {
     delete this->dictLoader;
     delete this->fileHandler;
+
 }
 
 void ViewModel::createPages()
@@ -62,7 +64,11 @@ void ViewModel::initializeGame(string& username)
         this->gameSettings = this->currentUser->getSettings();
     }
 
-    this->dictionary = this->dictLoader->readDictionaryFile();
+    if (this->dictionary == NULL)
+    {
+         this->dictionary = this->dictLoader->readDictionaryFile();
+    }
+
     this->getAndSetAnswer();
 }
 
@@ -77,6 +83,7 @@ void ViewModel::getAndSetAnswer()
     this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 }
+
 void ViewModel::displayPage(PageType pageType)
 {
     this->gameWindows[pageType]->show();
@@ -116,10 +123,14 @@ void ViewModel::saveUser()
 
 void ViewModel::startNewGame()
 {
+    for (auto currentPage : this->gameWindows)
+    {
+        delete currentPage;
+    }
     this->gameWindows.clear();
     this->createPages();
-    this->getAndSetAnswer();
-
+    this->initializeGame(this->currentUser->getUsername());
+    this->displayPage(PageType::GAME_PAGE);
 
 }
 
@@ -136,7 +147,8 @@ vector<int> ViewModel::getCurrentUserStats()
 {
     vector<int> stats;
     stats.push_back(this->currentUser->getGamesPlayed());
-    stats.push_back((int)this->currentUser->getWinPercentage());
+    cout <<this->currentUser->getWinPercentage() << endl;
+    stats.push_back(this->currentUser->getWinPercentage());
     stats.push_back(this->currentUser->getCurrentStreak());
     stats.push_back(this->currentUser->getMaxWinStreak());
 
