@@ -96,6 +96,12 @@ void User::updateStatsOnWin(int guesses)
     this->guessDistribution[guesses]++;
 }
 
+void User::updateStatsOnLoss()
+{
+    this->currentWinStreak = 0;
+    this->gamesPlayed++;
+}
+
 string& User::getUsername()
 {
     return this->username;

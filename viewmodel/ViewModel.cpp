@@ -61,7 +61,13 @@ void ViewModel::initializeGame(string& username)
     {
         this->gameSettings = this->currentUser->getSettings();
     }
+
     this->dictionary = this->dictLoader->readDictionaryFile();
+    this->getAndSetAnswer();
+}
+
+void ViewModel::getAndSetAnswer()
+{
     this->currentSolution = this->dictionary->getWordToGuess(this->gameSettings->getOnlyUniqueChars());
 
 #if EZMODE == 1 //EZMODE value assigned on first line of this file
@@ -71,7 +77,6 @@ void ViewModel::initializeGame(string& username)
     this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
     this->guessChecker.setAnswer(this->currentSolution);
 }
-
 void ViewModel::displayPage(PageType pageType)
 {
     this->gameWindows[pageType]->show();
@@ -111,15 +116,16 @@ void ViewModel::saveUser()
 
 void ViewModel::startNewGame()
 {
-    this->currentSolution = this->dictionary->getWordToGuess(this->gameSettings->getOnlyUniqueChars());
-    this->guessChecker.setAnswerCharRates(this->dictionary->getAnswerCharRates());
-    this->guessChecker.setAnswer(this->currentSolution);
-    this->initializeGame(this->currentUser->getUsername());
+    this->gameWindows.clear();
+    this->createPages();
+    this->getAndSetAnswer();
+
 
 }
 
-void ViewModel::handleWin()
+void ViewModel::handleWin(int guessesUsed)
 {
+    this->currentUser->updateStatsOnWin(guessesUsed);
     GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
@@ -144,6 +150,7 @@ map<int, int> ViewModel::getGuessDistribution()
 
 void ViewModel::handleLoss()
 {
+    this->currentUser->updateStatsOnLoss();
     GameOverWindow* gameOverPage = new GameOverWindow(this->GAME_OVER_WINDOW_WIDTH, this->GAME_OVER_WINDOW_HEIGHT, this->PAGE_TITLE, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);

@@ -68,7 +68,9 @@ class ViewModel
 
         // handles changes when a user wins
         //
-        void handleWin();
+        // The amount of guesses the user needed to solve
+        //
+        void handleWin(int guessesUsed);
 
         // handles changes on loss
         //
@@ -103,8 +105,10 @@ private:
     string currentSolution;
 
     void createPages();
+    void getAndSetAnswer();
 
     bool userExists(string& username);
+
 
 
 };

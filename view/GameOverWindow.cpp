@@ -65,7 +65,6 @@ void GameOverWindow::playAgain_callback(Fl_Widget* widget, void* data)
 {
     GameOverWindow* window = (GameOverWindow*)data;
     window->viewmodel->startNewGame();
-    window->hide();
 }
 
 void GameOverWindow::addEndGameButton()

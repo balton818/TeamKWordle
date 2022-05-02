@@ -273,7 +273,7 @@ void GameWindow::updateGuessBoxAndKeyColors(vector<GuessCheckerResult> result)
 
     if (correctLetters == 5)
     {
-        this->viewModel->handleWin();
+        this->viewModel->handleWin(this->currentGuessNumber);
     }
 }
 

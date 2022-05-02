@@ -17,10 +17,8 @@ vector<GuessCheckerResult> GuessChecker::checkGuess(string& guess)
     vector<GuessCheckerResult> result;
     vector<char> duplicatesInGuess;
 
-    if (this->guessCharRates.size() == 0)
-    {
-        this->determineGuessCharRates(guess);
-    }
+    this->determineGuessCharRates(guess);
+
 
     for (int index = 0; index < 5; index++)
     {
@@ -89,7 +87,7 @@ void GuessChecker::duplicateGuessParsingConditions(int& firstInstanceIndex, int&
     {
         result.at(currentIndex) = GuessCheckerResult::DUPLICATE_WRONG;
     }
-    if (correctIndex < 0 && firstInstanceIndex < this->answer.size() && duplicateRate <= 0)
+    if (correctIndex < 0 && firstInstanceIndex < 6 && duplicateRate <= 0)
     {
         result.at(currentIndex) = GuessCheckerResult::DUPLICATE_WRONG;
     }
