@@ -44,9 +44,13 @@ public:
     //
     virtual ~GameWindow();
 
-    // resets the game Window
+    // Resets the game Window
     //
     void resetWindow();
+
+    // Disables all input functionality
+    //
+    void lockoutControls();
 
 private:
     ViewModel* viewModel;
@@ -55,6 +59,8 @@ private:
 
     int currentGuessNumber;
     vector<char> currentGuess;
+
+    bool controlsEnabled;
 
     Fl_Button* enterKey;
     void addEnterKey(int xPosition, int yPosition);

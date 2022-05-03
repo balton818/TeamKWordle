@@ -148,6 +148,7 @@ void ViewModel::startNewGame()
 
 void ViewModel::handleWin(int guessesUsed)
 {
+    this->disableInput();
     this->currentUser->updateStatsOnWin(guessesUsed);
     GameOverWindow* gameOverPage = new GameOverWindow(Constants::GAME_OVER_WINDOW_WIDTH, Constants::GAME_OVER_WINDOW_HEIGHT, this->pageTitle, this);
     this->gameWindows.push_back(gameOverPage);
@@ -174,12 +175,19 @@ map<int, int> ViewModel::getGuessDistribution()
 
 void ViewModel::handleLoss()
 {
+    this->disableInput();
     this->currentUser->updateStatsOnLoss();
     GameOverWindow* gameOverPage = new GameOverWindow(Constants::GAME_OVER_WINDOW_WIDTH, Constants::GAME_OVER_WINDOW_HEIGHT, this->pageTitle, this);
     this->gameWindows.push_back(gameOverPage);
     this->displayPage(PageType::GAME_OVER_PAGE);
     this->users[this->currentUser->getUsername()] = this->currentUser;
     this->saveUser();
+}
+
+void ViewModel::disableInput()
+{
+    GameWindow* gameWindow = (GameWindow*)this->gameWindows[PageType::GAME_PAGE];
+    gameWindow->lockoutControls();
 }
 
 void ViewModel::setSettings(string& username)

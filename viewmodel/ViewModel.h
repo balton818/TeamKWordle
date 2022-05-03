@@ -125,6 +125,7 @@ private:
 
     void createPages();
     void getAndSetAnswer();
+    void disableInput();
 
     bool userExists(string& username);
 

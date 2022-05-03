@@ -17,6 +17,7 @@ GameWindow::GameWindow(int width, int height, const char* title, ViewModel* view
     this->viewModel = viewModel;
     this->qwertyKeyLabels = {"Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", "Z", "X", "C", "V", "B", "N", "M", "ENTER", "BACK"};
     this->currentGuessNumber = 0;
+    this->controlsEnabled = true;
     this->drawGuessBoxes();
     this->drawKeyboard();
 }
@@ -105,6 +106,19 @@ void GameWindow::resetWindow()
     this->currentGuessNumber = 0;
 }
 
+void GameWindow::lockoutControls()
+{
+    this->controlsEnabled = false;
+    for (auto itr = this->keyboard.begin(); itr != this->keyboard.end(); ++itr)
+    {
+        Fl_Button* button = *itr;
+        button->deactivate();
+    }
+    this->enterKey->deactivate();
+    this->backspace->deactivate();
+    this->newGameButton->deactivate();
+}
+
 void GameWindow::clearKeyBoardColors()
 {
     for (Fl_Button* currentKey : this->keyboard)
@@ -173,7 +187,6 @@ void GameWindow::removeLastLetter()
     }
 }
 
-
 void GameWindow::enterGuess()
 {
     if (this->currentGuess.size() == Constants::GAME_WINDOW_MAX_GUESS_LENGTH)
@@ -209,7 +222,7 @@ void GameWindow::enterGuess()
 int GameWindow::handle(int e)
 {
     int returnValue = Fl_Window::handle(e);
-    if (e == FL_KEYUP)
+    if (e == FL_KEYUP && this->controlsEnabled)
     {
         int keyCode = Fl::event_key();
         if (keyCode == SpecialKey::DELETE)
