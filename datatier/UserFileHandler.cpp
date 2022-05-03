@@ -2,6 +2,9 @@
 
 #include <iostream>
 
+#include "Constants.h"
+using namespace constants;
+
 namespace datatier
 {
 
@@ -39,15 +42,15 @@ map<string, User*> UserFileHandler::loadUserData()
 
 void UserFileHandler::createUserFromData(vector<string> userData)
 {
-    if (userData.size() == this->guessDistributionEndIndex + 1)
+    if (userData.size() == Constants::USER_FILE_GUESS_DISTRIBUTION_END_INDEX + 1)
     {
-        string username = userData[this->usernameIndex];
-        bool uniqueCharSetting = userData[this->uniqueCharSettingIndex] == "true";
-        bool hardModeSetting = userData[this->hardModeSettingIndex] == "true";
-        int gamesPlayed = stoi(userData[this->gamesPlayedIndex]);
-        int gamesWon = stoi(userData[this->gamesWonIndex]);
-        int currentStreak = stoi(userData[this->currentWinStreakIndex]);
-        int maxStreak = stoi(userData[this->maxWinStreakIndex]);
+        string username = userData[Constants::USER_FILE_USERNAME_INDEX];
+        bool uniqueCharSetting = userData[Constants::USER_FILE_UNIQUE_CHAR_SETTING_INDEX] == "true";
+        bool hardModeSetting = userData[Constants::USER_FILE_HARD_MODE_INDEX] == "true";
+        int gamesPlayed = stoi(userData[Constants::USER_FILE_GAMES_PLAYED_INDEX]);
+        int gamesWon = stoi(userData[Constants::USER_FILE_GAMES_WON_INDEX]);
+        int currentStreak = stoi(userData[Constants::USER_FILE_CURRENT_WIN_STREAK_INDEX]);
+        int maxStreak = stoi(userData[Constants::USER_FILE_MAX_WIN_STREAK_INDEX]);
 
         Settings* userSettings = new Settings();
         userSettings->setOnlyUniqueChars(uniqueCharSetting);
@@ -55,7 +58,7 @@ void UserFileHandler::createUserFromData(vector<string> userData)
 
         map<int, int> guessDistribution;
         int counter = 1;
-        for (int index = this->guessDistributionStartIndex; index <= this->guessDistributionEndIndex; index++)
+        for (int index = Constants::USER_FILE_GUESS_DISTRIBUTION_START_INDEX; index <= Constants::USER_FILE_GUESS_DISTRIBUTION_END_INDEX; index++)
         {
             guessDistribution.insert(pair<int,int>(counter, stoi(userData[index])));
             counter++;
@@ -74,8 +77,19 @@ void UserFileHandler::saveUsersToFile(string& output)
     file.close();
 }
 
+void UserFileHandler::deleteAllUsers()
+{
+    for (auto itr = this->users.begin(); itr != this->users.end(); ++itr)
+    {
+        pair<string, User*> currentPair = *itr;
+        User* user = currentPair.second;
+        delete user;
+    }
+}
+
 UserFileHandler::~UserFileHandler()
 {
+    this->deleteAllUsers();
 }
 
 }

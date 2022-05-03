@@ -1,6 +1,10 @@
 #ifndef VIEWMODEL_H
 #define VIEWMODEL_H
 
+#include "DictionaryLoader.h"
+#include "UserFileHandler.h"
+using namespace datatier;
+
 #include "Constants.h"
 using namespace constants;
 
@@ -12,10 +16,6 @@ using namespace model;
 
 #include<string>
 using namespace std;
-
-#include "DictionaryLoader.h"
-#include "UserFileHandler.h"
-using namespace datatier;
 
 #include "PageType.h"
 using namespace enums;
@@ -124,6 +124,7 @@ private:
     string currentSolution;
 
     void createPages();
+    void deleteAllPages();
     void getAndSetAnswer();
     void disableInput();
 

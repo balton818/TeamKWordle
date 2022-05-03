@@ -45,25 +45,13 @@ public:
     //
     void saveUsersToFile(string& output);
 
-
 private:
 
-    int usernameIndex = 0;
-    int uniqueCharSettingIndex = 1;
-    int hardModeSettingIndex = 2;
-    int gamesPlayedIndex = 3;
-    int gamesWonIndex = 4;
-    int currentWinStreakIndex = 5;
-    int maxWinStreakIndex = 6;
-    int guessDistributionStartIndex = 7;
-    int guessDistributionEndIndex = 12;
-
-    User* currentUser;
-    Settings* currentUserSettings;
     map<string, User*> users;
     string filename = "userData.wuf";
 
     void createUserFromData(vector<string> userData);
+    void deleteAllUsers();
 };
 
 }

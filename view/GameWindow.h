@@ -93,6 +93,9 @@ private:
     void updateKeyColor(const char* keyLabel, GuessCheckerResult checkerResult);
     Fl_Color determineColorForResult(GuessCheckerResult checkerResult);
     int handle(int e);
+
+    void deleteGuessBoxes();
+    void deleteKeyboard();
 };
 
 }

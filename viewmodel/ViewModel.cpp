@@ -134,16 +134,23 @@ void ViewModel::saveUser()
     this->fileHandler->saveUsersToFile(users);
 }
 
+
+
 void ViewModel::startNewGame()
+{
+    this->deleteAllPages();
+    this->gameWindows.clear();
+    this->createPages();
+    this->initializeGame(this->currentUser->getUsername());
+    this->displayPage(PageType::GAME_PAGE);
+}
+
+void ViewModel::deleteAllPages()
 {
     for (auto currentPage : this->gameWindows)
     {
         delete currentPage;
     }
-    this->gameWindows.clear();
-    this->createPages();
-    this->initializeGame(this->currentUser->getUsername());
-    this->displayPage(PageType::GAME_PAGE);
 }
 
 void ViewModel::handleWin(int guessesUsed)
@@ -204,6 +211,9 @@ ViewModel::~ViewModel()
 {
     delete this->dictLoader;
     delete this->fileHandler;
+    this->deleteAllPages();
+    delete this->currentUser;
+    delete this->gameSettings;
 }
 
 }

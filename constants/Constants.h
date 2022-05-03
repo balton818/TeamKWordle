@@ -57,6 +57,17 @@ public:
     static const int GAME_OVER_CHART_HEIGHT = 100;
     static const int GAME_OVER_BUTTON_WIDTH = 100;
     static const int GAME_OVER_BUTTON_HEIGHT = 30;
+
+//Constants for UserFileHandler
+    static const int USER_FILE_USERNAME_INDEX = 0;
+    static const int USER_FILE_UNIQUE_CHAR_SETTING_INDEX = 1;
+    static const int USER_FILE_HARD_MODE_INDEX = 2;
+    static const int USER_FILE_GAMES_PLAYED_INDEX = 3;
+    static const int USER_FILE_GAMES_WON_INDEX = 4;
+    static const int USER_FILE_CURRENT_WIN_STREAK_INDEX = 5;
+    static const int USER_FILE_MAX_WIN_STREAK_INDEX = 6;
+    static const int USER_FILE_GUESS_DISTRIBUTION_START_INDEX = 7;
+    static const int USER_FILE_GUESS_DISTRIBUTION_END_INDEX = 12;
 };
 }
 

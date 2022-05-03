@@ -48,11 +48,6 @@ private:
     vector<Fl_Box*> statsLabels;
     string statsBoxLabels [4] = {"Games\nPlayed", "Win %", "Current\nStreak", "Max\nStreak"};
 
-
-
-    const char* PLAY_AGAIN = "Play Again";
-    const char* END_GAME = "End Game";
-
     Fl_Chart* userStatsChart;
     Fl_Button* playAgainButton;
     Fl_Button* endGameButton;

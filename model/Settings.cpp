@@ -9,11 +9,6 @@ Settings::Settings()
     this->hardMode = false;
 }
 
-Settings::~Settings()
-{
-    //dtor
-}
-
 void Settings::setOnlyUniqueChars(bool toSet)
 {
     this->onlyUniqueChars = toSet;
@@ -32,6 +27,11 @@ void Settings::setHardMode(bool toSet)
 bool Settings::getHardMode()
 {
     return this->hardMode;
+}
+
+Settings::~Settings()
+{
+    //dtor
 }
 
 }

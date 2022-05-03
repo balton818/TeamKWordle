@@ -310,8 +310,36 @@ Fl_Color GameWindow::determineColorForResult(GuessCheckerResult checkerResult)
     }
 }
 
+void GameWindow::deleteGuessBoxes()
+{
+    for (int index = 0; index < this->guessBoxes.size(); index++)
+    {
+        vector<Fl_Box*> currentRow = this->guessBoxes[index];
+        for (auto itr = currentRow.begin(); itr != currentRow.end(); ++itr)
+        {
+            Fl_Box* currentBox = *itr;
+            delete currentBox;
+        }
+    }
+}
+
+void GameWindow::deleteKeyboard()
+{
+
+    for (auto itr = this->keyboard.begin(); itr != this->keyboard.end(); ++itr)
+    {
+        Fl_Button* currentKey = *itr;
+        delete currentKey;
+    }
+}
+
 GameWindow::~GameWindow()
 {
+    delete this->enterKey;
+    delete this->backspace;
+    delete this->newGameButton;
+    this->deleteGuessBoxes();
+    this->deleteKeyboard();
 }
 
 }
