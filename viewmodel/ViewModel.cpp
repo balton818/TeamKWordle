@@ -1,4 +1,4 @@
-#define EZMODE 1 //change to 1 to show answer in terminal
+#define EZMODE 0 //change to 1 to show answer in terminal
 
 #include "UserSelectionWindow.h"
 #include "SettingsWindow.h"
@@ -49,8 +49,6 @@ void ViewModel::initializeGame(string& username)
     }
 
     this->currentUser = this->users[username];
-    cout << "Current player: " << this->currentUser->getUsername() << endl;
-    cout << this->currentUser->getGuessDistribution().size() << endl;
 
     if (this->gameSettings == nullptr)
     {

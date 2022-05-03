@@ -17,11 +17,13 @@ namespace model
 class User
 {
 public:
+
     // Constructor for the user object
     //
     User(string username);
 
     User(string username, int gamesPlayed, int gamesWon, int currentStreak, int maxStreak, map<int, int> guessDistribution, Settings* settings);
+
     // user deconstructor
     //
     virtual ~User();

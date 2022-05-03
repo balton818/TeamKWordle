@@ -48,7 +48,7 @@ public:
 
     // gets the rates of chars in the answer
     //
-    // returns - a map that has a char as the key and its occurence rate as the value
+    // returns - a map that has a char as the key and its occurrence rate as the value
     //
     unordered_map<char, int> getAnswerCharRates();
 
